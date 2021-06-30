@@ -18,8 +18,15 @@ public class map {
         rooms.put("Stage3", new String[]{"room31", "room32", "room33", "room34"});
         rooms.put("Stage4", new String[]{"room41", "room42", "room43", "room44"});
 
-        System.out.println(rooms);
         return rooms;
+    }
+
+    public String getRoom(int roomNumber){
+        String room = "";
+
+        room = roomsCreator().get("Stage1")[roomNumber];
+
+        return room;
     }
 
     //Below are methods for contents and movement for each room in the game.
