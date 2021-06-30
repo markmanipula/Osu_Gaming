@@ -31,6 +31,7 @@ public class Player {
         Player player = new Player();
 
         player.move(Direction.NORTH);
+        player.move(Direction.EAST);
 
     }
 }
