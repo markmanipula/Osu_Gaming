@@ -26,8 +26,8 @@ public class Player {
         return item;
     }
 
-    public void move(Direction direction){
-        System.out.println(name + " goes " + direction.toString().toLowerCase());
+    public void move(HashMap<String, String[]> direction){
+        System.out.println(name + " goes " + direction.get("name")[0]);
     }
 
 }
