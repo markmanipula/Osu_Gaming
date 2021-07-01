@@ -29,5 +29,26 @@ public class Client {
 
         player.move(map.room11Contents());
         player.move(map.room42Contents());
+
+        String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
+        boolean running = true;
+        while(running){
+            System.out.println("Current room: " + currentRoom);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("where do you want to go");
+            String playerInput = scanner.next();
+
+            //for the input direction, compare that to directions in current room
+            map.showContent(map.roomParser(currentRoom));
+            String currentDirection = "";
+            if(map.roomParser(currentRoom).containsKey(playerInput) && (playerInput.equals("east") ||
+                    playerInput.equals("west") || playerInput.equals("north") || playerInput.equals("south"))){
+               currentRoom = map.roomParser(currentRoom).get(playerInput)[0];
+            }
+            //then run room??Contents method based on room?? that input direction points to
+
+            player.move(map.room11Contents());
+
+        }
     }
 }
