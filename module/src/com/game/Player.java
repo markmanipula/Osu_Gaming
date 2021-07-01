@@ -1,5 +1,5 @@
 package com.game;
-import com.map.map;
+import com.map.Map;
 
 public class Player {
 
@@ -7,7 +7,8 @@ public class Player {
     private String name = "Jemad";
     private Direction direction;
     private String location;
-    private map map = new map();
+    private Map map = new Map();
+    private String playerCurrentRoom;
 
     //only uses a default constructor
 
@@ -20,20 +21,14 @@ public class Player {
 
     }
 
+    public void getPlayerCurrentRoom(){
+
+    }
+
     public void move(Direction direction){
         System.out.println(name + " goes " + direction.toString().toLowerCase());
-        System.out.println(name + " is currently in " + map.getRoom(direction.ordinal()));
     }
 
-
-    //this is a test main
-    public static void main(String[] args) {
-        Player player = new Player();
-
-        player.move(Direction.NORTH);
-        player.move(Direction.EAST);
-
-    }
 }
 
 
