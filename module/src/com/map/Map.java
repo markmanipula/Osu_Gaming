@@ -29,6 +29,44 @@ public class Map {
         return room;
     }
 
+    public HashMap<String, String[]> roomParser(String roomID){
+        if(roomID.equals("room11")){
+            return room11Contents();
+        }else if(roomID.equals("room12")){
+            return room12Contents();
+        }else if(roomID.equals("room13")){
+            return room13Contents();
+        }else if(roomID.equals("room14")){
+            return room14Contents();
+        }else if(roomID.equals("room21")){
+            return room21Contents();
+        }else if(roomID.equals("room22")){
+            return room22Contents();
+        }else if(roomID.equals("room23")){
+            return room23Contents();
+        }else if(roomID.equals("room24")){
+            return room24Contents();
+        }else if(roomID.equals("room31")){
+            return room31Contents();
+        }else if(roomID.equals("room32")){
+            return room32Contents();
+        }else if(roomID.equals("room33")){
+            return room33Contents();
+        }else if(roomID.equals("room34")){
+            return room34Contents();
+        }else if(roomID.equals("room41")){
+            return room41Contents();
+        }else if(roomID.equals("room42")){
+            return room42Contents();
+        }else if(roomID.equals("room43")){
+            return room43Contents();
+        }else if(roomID.equals("room44")){
+            return room44Contents();
+        }else{
+            return room11Contents();
+        }
+    }
+
     //Below are methods for contents and movement for each room in the game.
     //Each of these methods include all of the contents for each room.
 
