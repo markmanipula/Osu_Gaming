@@ -1,6 +1,5 @@
 package com.map;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -43,7 +42,7 @@ public class Map {
         return contents11;
     }
 
-    public HashMap<String, String[]>  room12Contents(){
+    public HashMap<String, String[]> room12Contents(){
         HashMap<String, String[]> contents12 = new HashMap<>();
         contents12.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
         contents12.put("items", new String[]{"Pool Queue", "eight ball"});

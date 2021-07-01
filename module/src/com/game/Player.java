@@ -1,14 +1,14 @@
 package com.game;
 import com.map.Map;
 
+import java.util.HashMap;
+
 public class Player {
 
     //can't be changed so there's no setter
     private String name = "Jemad";
-    private Direction direction;
-    private String location;
     private Map map = new Map();
-    private String playerCurrentRoom;
+    private Items items = new Items();
 
     //only uses a default constructor
 
@@ -18,11 +18,12 @@ public class Player {
 
     public void attack(){
         System.out.println(name + " attacks");
-
     }
 
-    public void getPlayerCurrentRoom(){
-
+    //return list of items
+    public String[] itemList(HashMap<String, String[]> map){
+        String[] item = items.itemList(map);
+        return item;
     }
 
     public void move(Direction direction){
