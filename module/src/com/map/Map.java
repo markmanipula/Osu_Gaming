@@ -1,11 +1,12 @@
 package com.map;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class Map {
 
+
+    //keep this for now
     public HashMap<String, String[]> roomsCreator(){
         HashMap<String, String[]> rooms = new HashMap<>();
         rooms.put("Stage1", new String[]{"room11", "room12", "room13", "room14"});
@@ -16,9 +17,15 @@ public class Map {
         return rooms;
     }
 
-    public String getRoom(HashMap<String, String[]> rooms, String direction){
+    public String getCurrentRoom(HashMap<String, String[]> rooms, String name){
         String room = "";
-        room = rooms.get(direction)[0];
+        room = rooms.get(name)[0];
+        return room;
+    }
+
+    public String getNextRoom(HashMap<String, String[]> rooms, String name){
+        String room = "";
+        room = rooms.get(name)[0];
         return room;
     }
 
@@ -37,13 +44,14 @@ public class Map {
         contents11.put("items", new String[]{"Pool Queue", "eight ball"});
         contents11.put("enemies", new String[]{"Garcia", "Jack"});
         contents11.put("bosses", new String[]{"Big Ben"});
+        contents11.put("name", new String[] {"room11"});
         contents11.put("east", new String[]{"room12"});
         contents11.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents11;
     }
 
-    public HashMap<String, String[]>  room12Contents(){
+    public HashMap<String, String[]> room12Contents(){
         HashMap<String, String[]> contents12 = new HashMap<>();
         contents12.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
         contents12.put("items", new String[]{"Pool Queue", "eight ball"});
@@ -51,6 +59,7 @@ public class Map {
         contents12.put("bosses", new String[]{"Big Ben"});
         contents12.put("east", new String[]{"room13"});
         contents12.put("south", new String[]{"room11"});
+        contents12.put("name", new String[] {"room12"});
         contents12.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents12;
@@ -64,6 +73,7 @@ public class Map {
         contents13.put("bosses", new String[]{"Big Ben"});
         contents13.put("north", new String[]{"room12"});
         contents13.put("east", new String[]{"room14"});
+        contents13.put("name", new String[] {"room13"});
         contents13.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents13;
@@ -78,6 +88,7 @@ public class Map {
         contents14.put("bosses", new String[]{"Big Ben"});
         contents14.put("east", new String[]{"room21"});
         contents14.put("west", new String[]{"room13"});
+        contents14.put("name", new String[] {"room14"});
         contents14.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents14;
@@ -92,6 +103,7 @@ public class Map {
         contents21.put("west", new String[]{"room14"});
         contents21.put("east", new String[]{"room22"});
         contents21.put("south", new String[]{"room23"});
+        contents21.put("name", new String[] {"room21"});
         contents21.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents21;
@@ -106,6 +118,7 @@ public class Map {
         contents22.put("west", new String[]{"room21"});
         contents22.put("south", new String[]{"room24"});
         contents22.put("shortcut", new String[]{"room23"});
+        contents22.put("name", new String[] {"room22"});
         contents22.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents22;
@@ -120,6 +133,7 @@ public class Map {
         contents23.put("north", new String[]{"room21"});
         contents23.put("east", new String[]{"room24"});
         contents23.put("shortcut", new String[]{"room22"});
+        contents23.put("name", new String[] {"room23"});
         contents23.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents23;
@@ -133,6 +147,7 @@ public class Map {
         contents24.put("bosses", new String[]{"Big Ben"});
         contents24.put("west", new String[]{"room23"});
         contents24.put("south", new String[]{"room31"});
+        contents24.put("name", new String[] {"room24"});
         contents24.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents24;
@@ -146,6 +161,7 @@ public class Map {
         contents31.put("bosses", new String[]{"Big Ben"});
         contents31.put("south", new String[]{"room33"});
         contents31.put("east", new String[]{"room32"});
+        contents31.put("name", new String[] {"room31"});
         contents31.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents31;
@@ -159,6 +175,7 @@ public class Map {
         contents32.put("bosses", new String[]{"Big Ben"});
         contents32.put("west", new String[]{"room31"});
         contents32.put("south", new String[]{"room34"});
+        contents32.put("name", new String[] {"room32"});
         contents32.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents32;
@@ -172,23 +189,25 @@ public class Map {
         contents33.put("bosses", new String[]{"Big Ben"});
         contents33.put("north", new String[]{"room31"});
         contents33.put("east", new String[]{"room34"});
+        contents33.put("name", new String[] {"room33"});
         contents33.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents33;
     }
 
     public HashMap<String, String[]> room34Contents(){
-        HashMap<String, String[]> contents41 = new HashMap<>();
-        contents41.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
-        contents41.put("items", new String[]{"Pool Queue", "eight ball"});
-        contents41.put("enemies", new String[]{"Garcia", "Jack"});
-        contents41.put("bosses", new String[]{"Big Ben"});
-        contents41.put("north", new String[]{"room32"});
-        contents41.put("west", new String[]{"room33"});
-        contents41.put("east", new String[]{"room41"});
-        contents41.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
+        HashMap<String, String[]> contents34 = new HashMap<>();
+        contents34.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
+        contents34.put("items", new String[]{"Pool Queue", "eight ball"});
+        contents34.put("enemies", new String[]{"Garcia", "Jack"});
+        contents34.put("bosses", new String[]{"Big Ben"});
+        contents34.put("north", new String[]{"room32"});
+        contents34.put("west", new String[]{"room33"});
+        contents34.put("east", new String[]{"room41"});
+        contents34.put("name", new String[] {"room34"});
+        contents34.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
-        return contents41;
+        return contents34;
     }
 
     public HashMap<String, String[]> room41Contents(){
@@ -199,6 +218,7 @@ public class Map {
         contents41.put("bosses", new String[]{"Big Ben"});
         contents41.put("west", new String[]{"room34"});
         contents41.put("east", new String[]{"room42"});
+        contents41.put("name", new String[] {"room41"});
         contents41.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents41;
@@ -212,6 +232,7 @@ public class Map {
         contents42.put("bosses", new String[]{"Big Ben"});
         contents42.put("west", new String[]{"room41"});
         contents42.put("south", new String[]{"room43"});
+        contents42.put("name", new String[] {"room42"});
         contents42.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents42;
@@ -225,6 +246,7 @@ public class Map {
         contents43.put("bosses", new String[]{"Big Ben"});
         contents43.put("north", new String[]{"room42"});
         contents43.put("east", new String[]{"room44"});
+        contents43.put("name", new String[] {"room43"});
         contents43.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents43;
@@ -237,6 +259,7 @@ public class Map {
         contents44.put("enemies", new String[]{"Garcia", "Jack"});
         contents44.put("bosses", new String[]{"Big Ben"});
         contents44.put("west", new String[]{"room43"});
+        contents44.put("name", new String[] {"room44"});
         contents44.put("Description", new String[]{"initial setting", "room change 1", "room change 2"});
 
         return contents44;

@@ -1,9 +1,11 @@
 package com.client;
 
 import com.game.Direction;
+import com.game.Items;
 import com.game.Player;
 import com.map.Map;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Client {
@@ -13,17 +15,19 @@ public class Client {
         Player player = new Player();
 
         Map map = new Map();
-        map.room11Contents();
 
-        //how Jemad moves around is buy accessing data
+//        //how Jemad moves around is buy accessing data
+//
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("where do you want to go");
+//        String playerInput = scanner.next();
+//
+//
+//        String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
+//        System.out.println("Current room: " + currentRoom);
+//        player.itemList(map.room11Contents());
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("where do you want to go");
-        String playerInput = scanner.next();
-
-        String currentRoom = map.getRoom(map.room11Contents(), playerInput);
-        System.out.println("Current room: " + currentRoom);
-
-
+        player.move(map.room11Contents());
+        player.move(map.room42Contents());
     }
 }
