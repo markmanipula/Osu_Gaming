@@ -6,8 +6,8 @@ public class CombatDialogue {
         try {
             System.out.println("The Bouncer recognizes him from the warning pictures his boss posted..");
             System.out.println("He quickly straightens up and rushes to attack me...");
-            Thread.sleep(8000);
-            System.out.println("Think quick Jemad.. what will you attack?");
+            Thread.sleep(1000);
+            System.out.println("Think quick Jemad.. what will you do?");
 
         }catch (InterruptedException e){
             System.err.format("An error occured + " + e);

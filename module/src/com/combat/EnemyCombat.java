@@ -7,8 +7,8 @@ import com.map.*;
 public class EnemyCombat extends SotfCharacters{
 
 
-    public EnemyCombat(String name, int maxHP, int currentHp) {
-        super(name, maxHP, currentHp);
+    public EnemyCombat(String name) {
+        super(name, 50, 50);
     }
 
     // hashmap for enemies
@@ -32,12 +32,12 @@ public class EnemyCombat extends SotfCharacters{
 
     // Enemy specific attacks and defense
     @Override
-    public int attack() {
-        return 0;
+    public String attack(String userCommand) {
+        return "";
     }
 
     @Override
-    public int defense() {
-        return 0;
+    public String defense(String userCommand) {
+        return "";
     }
 }

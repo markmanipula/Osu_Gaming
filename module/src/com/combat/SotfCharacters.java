@@ -18,10 +18,10 @@ public abstract class SotfCharacters {
     }
 
     // abstract methods for attacks
-    public abstract int attack();
+    public abstract String attack(String userCommand);
 
     // abstract methods for defense
-    public abstract int defense();
+    public abstract String defense(String userCommand);
 
 
 }
