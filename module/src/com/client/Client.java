@@ -1,11 +1,8 @@
 package com.client;
 
-import com.game.Direction;
-import com.game.Items;
 import com.game.Player;
 import com.map.Map;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Client {
@@ -27,28 +24,47 @@ public class Client {
 //        System.out.println("Current room: " + currentRoom);
 //        player.itemList(map.room11Contents());
 
-        player.move(map.room11Contents());
-        player.move(map.room42Contents());
-
         String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
         boolean running = true;
         while(running){
+            divider();
             System.out.println("Current room: " + currentRoom);
+            //for the input direction, compare that to directions in current room
+            map.showContent(map.roomParser(currentRoom));
             Scanner scanner = new Scanner(System.in);
+            divider();
             System.out.println("where do you want to go");
             String playerInput = scanner.next();
 
-            //for the input direction, compare that to directions in current room
-            map.showContent(map.roomParser(currentRoom));
+            //this should return go
+            String[] command = commandChecker(playerInput);
+
             String currentDirection = "";
-            if(map.roomParser(currentRoom).containsKey(playerInput) && (playerInput.equals("east") ||
-                    playerInput.equals("west") || playerInput.equals("north") || playerInput.equals("south"))){
+            if(map.roomParser(currentRoom).containsKey(playerInput)){
                currentRoom = map.roomParser(currentRoom).get(playerInput)[0];
             }
             //then run room??Contents method based on room?? that input direction points to
-
-            player.move(map.room11Contents());
-
         }
+    }
+
+    public static void divider(){
+        System.out.println("-----------------------");
+    }
+
+    public static String[] commandChecker(String input){
+        //puts words in the array. to access, get first and last index
+        StringBuilder stringBuilder = new StringBuilder("");
+
+        String[] array = input.split(" ");
+
+        return array;
+    }
+
+    public static boolean isValidDirection(String direction){
+         if(direction.equals("east") ||
+                 direction.equals("west") || direction.equals("north") || direction.equals("south")){
+             return true;
+         }
+         return false;
     }
 }
