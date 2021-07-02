@@ -1,10 +1,15 @@
 package com.combat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Arrays;
 
 
 public class PlayerCombatLogic {
-    public int enemyHealth = 50;
+    private int enemyHealth = 10;
+    private int jemadHealth = 100;
+    private int enemyDmg = 0;
+    private int jemadDmg = 0;
 
     //obj to take user input for attacks
      Scanner userInput = new Scanner(System.in);
@@ -50,15 +55,28 @@ public class PlayerCombatLogic {
     }
 
     // method for Player Combat
+    // jemadMoveList is the reference to the hashmap
     public void combatStart() {
         do {
             clearScreen();
+            // Will set and display Jemad current health of '100'
             System.out.println("What kind of attack do I want to do? ");
             System.out.println(Arrays.toString(attacks.jemadAttacks));
             String userCommand = userInput.nextLine();
             System.out.println( attacks.attack(userCommand));
+            //displays points of damage from Jemad's attack
+            enemyDmg = attacks.jemadMoves(userCommand);
+            enemyHealth -= enemyDmg;
+            System.out.println("The Bouncer took " + enemyDmg + " points of damage");
+            // Enemies turn to attack method
+            ArrayList<String> enemyTurn = enemy.enemyMoves();
+            // print out enemy attack and damage to player
+            System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
+            jemadHealth -= Integer.parseInt(enemyTurn.get(1));
+            System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
+            //Jemad turn to attack
 
-        }while(enemyHealth > 1 );
+        }while(enemyHealth > 1 && jemadHealth > 1 );
     }
 
     public void battleOutro(){
