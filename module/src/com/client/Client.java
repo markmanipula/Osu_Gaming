@@ -3,6 +3,7 @@ package com.client;
 import com.game.Player;
 import com.map.Map;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
@@ -34,15 +35,29 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
             divider();
             System.out.println("where do you want to go");
-            String playerInput = scanner.next();
+            //look into moving this to its own class to improve testing. Scanner Class to accept file full of commands.
+            String playerInput = scanner.nextLine();
 
             //this should return go
             String[] command = commandChecker(playerInput);
-
+            System.out.println(command[0]);
+            System.out.println(command[command.length -1]);
             String currentDirection = "";
-            if(map.roomParser(currentRoom).containsKey(playerInput)){
-               currentRoom = map.roomParser(currentRoom).get(playerInput)[0];
+
+            //Create if Statements for our acceptable commands. First one is "go"
+            if(command[0].equals("go") && map.roomParser(currentRoom).containsKey(command[command.length-1])){
+                if(isValidDirection(command[command.length-1])){
+                    currentRoom = map.roomParser(currentRoom).get(command[command.length-1])[0];
+                }
+            }else if(command[0].equals("fight")){
+                //Iterate through enemies array for enemy name
+                String[] test = map.roomParser(currentRoom).get("enemies");
+                //test.contains(command[command.length-1]);
+                System.out.println(Arrays.toString(test));
             }
+       
+
+
             //then run room??Contents method based on room?? that input direction points to
         }
     }
@@ -56,6 +71,9 @@ public class Client {
         StringBuilder stringBuilder = new StringBuilder("");
 
         String[] array = input.split(" ");
+        for(String i : array){
+            i.toLowerCase();
+        }
 
         return array;
     }
@@ -67,4 +85,6 @@ public class Client {
          }
          return false;
     }
+
+
 }
