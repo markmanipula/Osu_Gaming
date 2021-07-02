@@ -1,5 +1,6 @@
 package com.client;
 
+import com.combat.PlayerCombatLogic;
 import com.game.Player;
 import com.map.Map;
 
@@ -11,6 +12,7 @@ public class Client {
     //this is a test main
     public static void main(String[] args) {
         Player player = new Player();
+        PlayerCombatLogic combat = new PlayerCombatLogic();
 
         Map map = new Map();
 
@@ -50,6 +52,7 @@ public class Client {
                     currentRoom = map.roomParser(currentRoom).get(command[command.length-1])[0];
                 }
             }else if(command[0].equals("fight")){
+                combat.combatStart();
                 //Iterate through enemies array for enemy name
                 String[] test = map.roomParser(currentRoom).get("enemies");
                 //test.contains(command[command.length-1]);
