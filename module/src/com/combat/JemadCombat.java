@@ -24,7 +24,7 @@ public class JemadCombat extends SotfCharacters{
     public String attack(String userCommand) {
         if (userCommand.equals("Straight Punch")) {
             return ("Jemad plants his feet and throws a straight punch!");
-            // Straight punch = 50 damage enemyHealth - 50;
+
         } else if (userCommand.equals("Push Kick")) {
             return ("Jemad quickly aims a push kick the enemies mid section");
         } else if (userCommand.equals("Uppercut")) {

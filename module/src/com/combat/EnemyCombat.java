@@ -11,6 +11,10 @@ public class EnemyCombat extends SotfCharacters{
         super(name, 50, 50);
     }
 
+    //array of attack for enemy
+    public String[] enemyAttacks = {"Punch", "Kick"};
+    public String[] enemyDefends = {"Dodge", "block"};
+
     // hashmap for enemies
     public HashMap<String, Integer> enemiesCreator(){
 
