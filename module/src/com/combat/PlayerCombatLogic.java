@@ -57,7 +57,8 @@ public class PlayerCombatLogic {
             System.out.println(Arrays.toString(attacks.jemadAttacks));
             String userCommand = userInput.nextLine();
             System.out.println( attacks.attack(userCommand));
-        }while(enemyHealth >= 0);
+
+        }while(enemyHealth > 1 );
     }
 
     public void battleOutro(){
