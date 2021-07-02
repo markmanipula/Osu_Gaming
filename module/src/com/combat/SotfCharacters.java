@@ -1,5 +1,8 @@
 package com.combat;
 
+import com.game.*;
+import com.map.*;
+
 public abstract class SotfCharacters {
 
     // variables that will apply to both Jemad(The main character) and his Enemies(Will be different types)
@@ -15,10 +18,10 @@ public abstract class SotfCharacters {
     }
 
     // abstract methods for attacks
-    public abstract int attack();
+    public abstract String attack(String userCommand);
 
     // abstract methods for defense
-    public abstract int defense();
+    public abstract String defense(String userCommand);
 
 
 }
