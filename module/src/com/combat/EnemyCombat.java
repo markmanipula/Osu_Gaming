@@ -1,8 +1,10 @@
 package com.combat;
 
-import java.util.HashMap;
+import java.util.*;
+
 import com.game.*;
 import com.map.*;
+import com.map.Map;
 
 public class EnemyCombat extends SotfCharacters{
 
@@ -11,9 +13,25 @@ public class EnemyCombat extends SotfCharacters{
         super(name, 50, 50);
     }
 
-    //array of attack for enemy
-    public String[] enemyAttacks = {"Punch", "Kick"};
-    public String[] enemyDefends = {"Dodge", "block"};
+    public ArrayList<String> enemyMoves() {
+        HashMap<String, Integer> enemyAttack = new HashMap<>();
+        // randomize dmg for attack between 1 - 5
+        enemyAttack.put("Punch", 5);
+        enemyAttack.put("Kick", 5);
+        Set<String> keySet = enemyAttack.keySet();
+        List<String> keyList = new ArrayList<>(keySet);
+        int size = keyList.size();
+        int random = new Random().nextInt(size);
+        String randomKey = keyList.get(random);
+        Integer randomValue = enemyAttack.get(randomKey);
+        ArrayList<String> output = new ArrayList<>();
+        output.add(randomKey);
+        output.add(randomValue.toString());
+
+        return output;
+    }
+
+    //
 
     // hashmap for enemies
     public HashMap<String, Integer> enemiesCreator(){

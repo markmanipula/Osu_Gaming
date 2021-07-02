@@ -1,5 +1,7 @@
 package com.combat;
 
+import java.util.HashMap;
+
 public class JemadCombat extends SotfCharacters{
 
 
@@ -7,6 +9,18 @@ public class JemadCombat extends SotfCharacters{
     public String[] jemadAttacks = {"Straight Punch", "Push Kick", "Uppercut", "Head Kick", "Hip Throw"};
     public String[] jemadDefense = {"Dodge", "Parry", "Block", "Duck"};
 
+    //Hashmap for Jemad attack and damage
+    public int jemadMoves (String moves) {
+
+        HashMap<String, Integer> jemadMoves = new HashMap<>();
+        jemadMoves.put("Straight Punch", 5);
+        jemadMoves.put("Push Kick", 5);
+        jemadMoves.put("Uppercut", 5);
+        jemadMoves.put("Head Kick", 5);
+        jemadMoves.put("Hip Throw", 5);
+
+        return jemadMoves.get(moves);
+    }
     // whatever the name of the method is
     // within the PlayerCombatLogic
 
@@ -19,7 +33,8 @@ public class JemadCombat extends SotfCharacters{
         return "";
     }
 
-    // Jemad specific methods
+    // Jemad specific
+    //made to evaluate userinput and determine dialogue
     @Override
     public String attack(String userCommand) {
         if (userCommand.equals("Straight Punch")) {
