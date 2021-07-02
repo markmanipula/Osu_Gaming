@@ -4,11 +4,10 @@ import java.util.Arrays;
 
 
 public class PlayerCombatLogic {
-    private int enemyHealth = 50;
+    public int enemyHealth = 50;
 
-
+    //obj to take user input for attacks
      Scanner userInput = new Scanner(System.in);
-
 
     // object for combat dialogue
     CombatDialogue dialogue = new CombatDialogue();
@@ -16,11 +15,31 @@ public class PlayerCombatLogic {
     //object for Jemad combat methods
     JemadCombat attacks = new JemadCombat("Jemad");
 
-    //Enemy object
+    //object for enemy combat methods
     EnemyCombat enemy = new EnemyCombat("Bouncer");
 
+    //method to clear screen
+    public final static void clearScreen(){
+        try
+        {
+            final String os = System.getProperty("os.name");
 
-//    EnemyCombat bouncerOne = new EnemyCombat();
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
+        }
+    }
+
+    // Method to determine subtraction to enemy health
 
     // this is a test for fight intro
     public void battleIntro(){
@@ -32,12 +51,13 @@ public class PlayerCombatLogic {
 
     // method for Player Combat
     public void combatStart() {
-        while (enemyHealth >= 0) {
+        do {
+            clearScreen();
             System.out.println("What kind of attack do I want to do? ");
             System.out.println(Arrays.toString(attacks.jemadAttacks));
             String userCommand = userInput.nextLine();
             System.out.println( attacks.attack(userCommand));
-        }
+        }while(enemyHealth >= 0);
     }
 
     public void battleOutro(){
