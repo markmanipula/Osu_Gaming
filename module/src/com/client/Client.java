@@ -67,7 +67,7 @@ public class Client {
                 }
             //if the word is fight or any of its synonym
             }else if(fightSynonym(command[0])){
-                combat.combatStart();
+                combat.combatStart("enemiesCreator");
                 //Iterate through enemies array for enemy name
                 String[] test = map.roomParser(currentRoom).get("enemies");
                 //test.contains(command[command.length-1]);

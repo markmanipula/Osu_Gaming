@@ -56,9 +56,12 @@ public class PlayerCombatLogic {
 
     // method for Player Combat
     // jemadMoveList is the reference to the hashmap
-    public void combatStart() {
+    public void combatStart(String enemyName) {
         do {
             clearScreen();
+            //set enemy health to subclass health value
+            HashMap<String, Integer> currentEnemy = enemy.enemyParser(enemyName);
+            System.out.println(currentEnemy.get("Max Health"));
             // Will set and display Jemad current health of '100'
             System.out.println("What kind of attack do I want to do? ");
             System.out.println(Arrays.toString(attacks.jemadAttacks));
