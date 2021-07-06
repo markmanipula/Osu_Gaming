@@ -13,17 +13,16 @@ public class Client {
 
     //this is a test main
     public static void main(String[] args) {
-        Player player = new Player();
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
         Map map = new Map();
+        Player player = new Player(map);
 
 //        //how Jemad moves around is buy accessing data
 //
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("where do you want to go");
 //        String playerInput = scanner.next();
-//
 //
 //        String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
 //        System.out.println("Current room: " + currentRoom);

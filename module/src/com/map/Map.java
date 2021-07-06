@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class Map {
 
-
     //keep this for now
     public HashMap<String, String[]> roomsCreator(){
         HashMap<String, String[]> rooms = new HashMap<>();
