@@ -4,7 +4,9 @@ import com.combat.PlayerCombatLogic;
 import com.game.Player;
 import com.map.Map;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Client {
@@ -36,7 +38,7 @@ public class Client {
             map.showContent(map.roomParser(currentRoom));
             Scanner scanner = new Scanner(System.in);
             divider();
-            System.out.println("where do you want to go");
+            System.out.println("What do you want to do?");
             //look into moving this to its own class to improve testing. Scanner Class to accept file full of commands.
             String playerInput = scanner.nextLine();
 
@@ -47,19 +49,19 @@ public class Client {
             String currentDirection = "";
 
             //Create if Statements for our acceptable commands. First one is "go"
-            if(command[0].equals("go") && map.roomParser(currentRoom).containsKey(command[command.length-1])){
+            //if the word is go or any of its synonym
+            if(goSynonym(command[0]) && map.roomParser(currentRoom).containsKey(command[command.length-1])){
                 if(isValidDirection(command[command.length-1])){
                     currentRoom = map.roomParser(currentRoom).get(command[command.length-1])[0];
                 }
-            }else if(command[0].equals("fight")){
+            //if the word is fight or any of its synonym
+            }else if(fightSynonym(command[0])){
                 combat.combatStart();
                 //Iterate through enemies array for enemy name
                 String[] test = map.roomParser(currentRoom).get("enemies");
                 //test.contains(command[command.length-1]);
                 System.out.println(Arrays.toString(test));
             }
-       
-
 
             //then run room??Contents method based on room?? that input direction points to
         }
@@ -89,5 +91,40 @@ public class Client {
          return false;
     }
 
+    public static boolean goSynonym(String direction){
+        String[] synonyms = new String[] {"go", "move", "proceed", "advance", "walk", "run", "jump", "travel"};
+
+        for(String word : synonyms){
+            if(direction.equals(word)) return true;
+        }
+        return false;
+    }
+
+    public static boolean fightSynonym(String fight){
+        String[] synonyms = new String[] {"fight", "attack", "tackle", "hit", "charge", "strike", "rush", "push", "storm", "punch", "kick"};
+
+        for(String word : synonyms){
+            if(fight.equals(word)) return true;
+        }
+        return false;
+    }
+
+    public static boolean getSynonym(String get){
+        String[] synonyms = new String[] {"get", "grab", "obtain", "pick", "acquire"};
+
+        for(String word : synonyms){
+            if(get.equals(word)) return true;
+        }
+        return false;
+    }
+
+    public static boolean talkSynonym(String talk){
+        String[] synonyms = new String[] {"talk", "speak", "chat"};
+
+        for(String word : synonyms){
+            if(talk.equals(word)) return true;
+        }
+        return false;
+    }
 
 }
