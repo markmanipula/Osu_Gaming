@@ -2,6 +2,7 @@ package com.map;
 
 import com.game.Items;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -78,15 +79,25 @@ public class Map {
         });
     }
 
-    public String[] roomItems(){
-        String[] roomItems = {"Pool Queue", "eight ball"};
+    public String[] room11Items(){
+        String[] roomItems = {"Pool Queue", "eight ball", "boots"};
         return roomItems;
+    }
+
+    public String[] newRoom11Items(String item){
+        ArrayList<String> output = new ArrayList<>();
+        for(String items: room11Items()){
+            if(!items.equals(item)){
+                output.add(items);
+            }
+        }
+        return output.toArray(new String[0]);
     }
 
     public HashMap<String, String[]> room11Contents(){
         HashMap<String, String[]> contents11 = new HashMap<>();
         contents11.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
-        contents11.put("items", roomItems());
+        contents11.put("items", room11Items());
         contents11.put("enemies", new String[]{"Garcia", "Jack"});
         contents11.put("bosses", new String[]{"Big Ben"});
         contents11.put("name", new String[] {"room11"});

@@ -63,7 +63,7 @@ public class Player{
 
         System.out.println(player.getPlayerItems());
 
-        System.out.println(Arrays.toString(player.map().roomItems()));
+        System.out.println(Arrays.toString(player.map().newRoom11Items(item)));
 
     }
 }
