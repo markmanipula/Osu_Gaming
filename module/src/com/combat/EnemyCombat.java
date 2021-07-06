@@ -59,7 +59,7 @@ public class EnemyCombat extends SotfCharacters{
     public HashMap<String, Integer> enemyParser(String enemyType){
         if (enemyType.equals("bouncer")) {
             return bouncerEnemy();
-        }else if (enemyType.equals("bodyGuard")){
+        }else if (enemyType.equals("bodyguard")){
             return bodyGuardEnemy();
         } else {
             return bouncerEnemy();
