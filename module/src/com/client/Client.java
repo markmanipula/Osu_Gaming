@@ -33,9 +33,20 @@ public class Client {
         boolean running = true;
         while(running){
             divider();
-            System.out.println("Current room: " + currentRoom);
+
             //for the input direction, compare that to directions in current room
-            map.showContent(map.roomParser(currentRoom));
+            //map.showContent(map.roomParser(currentRoom));
+            //Current Variables
+            String currDesc = map.roomParser(currentRoom).get("Description")[0];
+            String[] currEnemies = map.roomParser(currentRoom).get("enemies");
+            String[] currBosses = map.roomParser(currentRoom).get("bosses");
+            String[] currNPC = map.roomParser(currentRoom).get("NPC");
+            String[] currItems = map.roomParser(currentRoom).get("items");
+
+            //Display Basic Room information
+            System.out.println(currentRoom);
+            System.out.println(currDesc);
+
             Scanner scanner = new Scanner(System.in);
             divider();
             System.out.println("What do you want to do?");
@@ -61,6 +72,12 @@ public class Client {
                 String[] test = map.roomParser(currentRoom).get("enemies");
                 //test.contains(command[command.length-1]);
                 System.out.println(Arrays.toString(test));
+            }else if(inspectSynonym(command[0])){
+                //Extra information available on request
+                System.out.println("Enemies in this room: " + Arrays.toString(currEnemies));
+                System.out.println("Bosses in this room: " + Arrays.toString(currBosses));
+                System.out.println("Items in this room: " + Arrays.toString(currItems));
+                System.out.println("People in this room: " + Arrays.toString(currNPC));
             }
 
             //then run room??Contents method based on room?? that input direction points to
@@ -120,6 +137,16 @@ public class Client {
 
     public static boolean talkSynonym(String talk){
         String[] synonyms = new String[] {"talk", "speak", "chat"};
+
+        for(String word : synonyms){
+            if(talk.equals(word)) return true;
+        }
+        return false;
+    }
+
+    public static boolean inspectSynonym(String talk){
+        String[] synonyms = new String[] {"inspect", "look", "investigate", "glance", "examine", "explore", "inquire", "delve", "dig",
+        };
 
         for(String word : synonyms){
             if(talk.equals(word)) return true;
