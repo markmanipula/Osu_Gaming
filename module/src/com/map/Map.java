@@ -1,10 +1,13 @@
 package com.map;
 
+import com.game.Items;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class Map {
 
+    private Items items = new Items();
     //keep this for now
     public HashMap<String, String[]> roomsCreator(){
         HashMap<String, String[]> rooms = new HashMap<>();
@@ -75,10 +78,15 @@ public class Map {
         });
     }
 
+    public String[] roomItems(){
+        String[] roomItems = {"Pool Queue", "eight ball"};
+        return roomItems;
+    }
+
     public HashMap<String, String[]> room11Contents(){
         HashMap<String, String[]> contents11 = new HashMap<>();
         contents11.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
-        contents11.put("items", new String[]{"Pool Queue", "eight ball"});
+        contents11.put("items", roomItems());
         contents11.put("enemies", new String[]{"Garcia", "Jack"});
         contents11.put("bosses", new String[]{"Big Ben"});
         contents11.put("name", new String[] {"room11"});
