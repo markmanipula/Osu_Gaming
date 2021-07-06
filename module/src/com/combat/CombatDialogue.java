@@ -4,6 +4,7 @@ public class CombatDialogue {
 
     public static void printCombatIntro(){
         try {
+            System.out.println("===========================================================");
             System.out.println("The Bouncer recognizes him from the warning pictures his boss posted..");
             System.out.println("He quickly straightens up and rushes to attack me...");
             Thread.sleep(1000);
@@ -16,5 +17,6 @@ public class CombatDialogue {
     public static void printCombatOutro(){
         System.out.println("==============================================================");
         System.out.println("Guess he was not as tough as he thought..");
+        System.out.println("All that training and another enemy down!");
     }
 }
