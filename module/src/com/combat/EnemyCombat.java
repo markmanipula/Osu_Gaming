@@ -14,11 +14,14 @@ public class EnemyCombat extends SotfCharacters{
     }
 
     public ArrayList<String> enemyMoves() {
+        //hashmap for enemy attacks
         HashMap<String, Integer> enemyAttack = new HashMap<>();
-        // randomize dmg for attack between 1 - 5
+        //set dmg to 5 for testing purposes
         enemyAttack.put("Punch", 5);
         enemyAttack.put("Kick", 5);
+        //create Set of Strings to store non-duplicate items
         Set<String> keySet = enemyAttack.keySet();
+        //
         List<String> keyList = new ArrayList<>(keySet);
         int size = keyList.size();
         int random = new Random().nextInt(size);

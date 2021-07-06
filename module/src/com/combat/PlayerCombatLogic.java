@@ -75,6 +75,10 @@ public class PlayerCombatLogic {
             jemadHealth -= Integer.parseInt(enemyTurn.get(1));
             System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
             //Jemad turn to attack
+            if (enemyHealth < 1){
+                System.out.println("Enemy health has now dropped to " + enemyHealth);
+                dialogue.printCombatOutro();
+            }
 
         }while(enemyHealth > 1 && jemadHealth > 1 );
     }
