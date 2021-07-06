@@ -13,12 +13,13 @@ public class Client {
 
     //this is a test main
     public static void main(String[] args) {
-        Player player = new Player();
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
         Map map = new Map();
+        Player player = new Player(map);
 
-//        //how Jemad moves around is buy accessing data
+
+//        //how Jemad moves around is by accessing data
 //
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("where do you want to go");
@@ -35,7 +36,8 @@ public class Client {
             divider();
             System.out.println("Current room: " + currentRoom);
             //for the input direction, compare that to directions in current room
-            map.showContent(map.roomParser(currentRoom));
+            player.map().showContent(map.roomParser(currentRoom));
+            //map.showContent(map.roomParser(currentRoom));
             Scanner scanner = new Scanner(System.in);
             divider();
             System.out.println("What do you want to do?");
