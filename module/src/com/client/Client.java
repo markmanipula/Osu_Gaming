@@ -13,10 +13,10 @@ public class Client {
 
     //this is a test main
     public static void main(String[] args) {
-        Player player = new Player();
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
         Map map = new Map();
+        Player player = new Player(map);
 
 //        //how Jemad moves around is buy accessing data
 //
@@ -24,24 +24,24 @@ public class Client {
 //        System.out.println("where do you want to go");
 //        String playerInput = scanner.next();
 //
-//
 //        String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
 //        System.out.println("Current room: " + currentRoom);
 //        player.itemList(map.room11Contents());
 
-        String currentRoom = map.getCurrentRoom(map.room11Contents(), "name");
+        String currentRoom = player.map().getCurrentRoom(player.map().room11Contents(), "name");
         boolean running = true;
         while(running){
             divider();
 
-            //for the input direction, compare that to directions in current room
+            //for the input direction, compare that to direc
+            // tions in current room
             //map.showContent(map.roomParser(currentRoom));
             //Current Variables
-            String currDesc = map.roomParser(currentRoom).get("Description")[0];
-            String[] currEnemies = map.roomParser(currentRoom).get("enemies");
-            String[] currBosses = map.roomParser(currentRoom).get("bosses");
-            String[] currNPC = map.roomParser(currentRoom).get("NPC");
-            String[] currItems = map.roomParser(currentRoom).get("items");
+            String currDesc = player.map().roomParser(currentRoom).get("Description")[0];
+            String[] currEnemies = player.map().roomParser(currentRoom).get("enemies");
+            String[] currBosses = player.map().roomParser(currentRoom).get("bosses");
+            String[] currNPC = player.map().roomParser(currentRoom).get("NPC");
+            String[] currItems = player.map().roomParser(currentRoom).get("items");
 
             //Display Basic Room information
             System.out.println(currentRoom);
@@ -61,15 +61,16 @@ public class Client {
 
             //Create if Statements for our acceptable commands. First one is "go"
             //if the word is go or any of its synonym
-            if(goSynonym(command[0]) && map.roomParser(currentRoom).containsKey(command[command.length-1])){
+            if(goSynonym(command[0]) && player.map().roomParser(currentRoom).containsKey(command[command.length-1])){
                 if(isValidDirection(command[command.length-1])){
-                    currentRoom = map.roomParser(currentRoom).get(command[command.length-1])[0];
+                    currentRoom = player.map().roomParser(currentRoom).get(command[command.length-1])[0];
                 }
             //if the word is fight or any of its synonym
-            }else if(fightSynonym(command[0])){
-                combat.combatStart("enemiesCreator");
+            }else if(fightSynonym(command[0]) && (Arrays.asList(currEnemies).contains(command[command.length-1]) ||
+                    Arrays.asList(currBosses).contains(command[command.length-1]))){
+                combat.combatStart();
                 //Iterate through enemies array for enemy name
-                String[] test = map.roomParser(currentRoom).get("enemies");
+                String[] test = player.map().roomParser(currentRoom).get("enemies");
                 //test.contains(command[command.length-1]);
                 System.out.println(Arrays.toString(test));
             }else if(inspectSynonym(command[0])){
