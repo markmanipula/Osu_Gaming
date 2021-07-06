@@ -98,7 +98,7 @@ public class Map {
         HashMap<String, String[]> contents11 = new HashMap<>();
         contents11.put("NPC", new String[]{"Bartender", "Cop", "NPC3"});
         contents11.put("items", room11Items());
-        contents11.put("enemies", new String[]{"Garcia", "Jack"});
+        contents11.put("enemies", new String[]{"bouncer", "bodyguard"});
         contents11.put("bosses", new String[]{"Big Ben"});
         contents11.put("name", new String[] {"room11"});
         contents11.put("east", new String[]{"room12"});
