@@ -1,0 +1,10 @@
+{
+"Bouncer": {
+	"Max Health": 25,
+	"Attack": 5
+	},
+"Bodyguard": {
+	"Max Health": 25,
+	"Attack": 5
+		},
+}
