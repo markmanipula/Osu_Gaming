@@ -1,6 +1,5 @@
 package com.client;
 
-import com.json.JsonPath;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,22 +8,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-
-
 public class ClientReadsFromExternal {
 
     public static void main(String[] args) {
 
-        //File src = new File("/Users/marmanip/IdeaProjects/Osu_Gaming/module/src/com/json/Rooms_JSON.txt");
-        //String roomJson = "/Users/marmanip/IdeaProjects/Osu_Gaming/module/src/com/json/Rooms_JSON.txt";
-
-        JsonPath path = new JsonPath();
+        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+        String movesJson = "module/src/com/json/Moves_JSON.txt";
+        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
 
         try {
-            String roomContents = new String((Files.readAllBytes(Paths.get(path.roomPath()))));
-            String enemyContents = new String((Files.readAllBytes(Paths.get(path.enemyPath()))));
-            String moveContents = new String((Files.readAllBytes(Paths.get(path.movesPath()))));
-            String synonymContents = new String((Files.readAllBytes(Paths.get(path.synonymsPath()))));
+            String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
+            String enemyContents = new String((Files.readAllBytes(Paths.get(enemiesJson))));
+            String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
+            String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
 
             JSONObject o = new JSONObject(roomContents);
 
@@ -37,7 +34,6 @@ public class ClientReadsFromExternal {
             System.out.println("-----");
 
             JSONObject a = new JSONObject(enemyContents);
-
             JSONObject enemies = a.getJSONObject("Bouncer");
             System.out.println(enemies);
 
@@ -49,6 +45,9 @@ public class ClientReadsFromExternal {
             JSONObject c = new JSONObject(synonymContents);
             JSONArray synonym = c.getJSONArray("go");
             System.out.println(synonym);
+
+
+
         }
         catch (IOException | JSONException e){
             e.printStackTrace();
