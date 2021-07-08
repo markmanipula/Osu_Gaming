@@ -13,23 +13,23 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Client {
-
     //this is a test main
     public static void main(String[] args) {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
         //for jar file
-//        String roomJson = "com/json/Rooms_JSON.txt";
-//        String enemiesJson = "com/json/Enemies_JSON.txt";
-//        String movesJson = "com/json/Moves_JSON.txt";
-//        String synonymsJson = "com/json/Synonyms_JSON.txt";
+        String roomJson = "com/json/Rooms_JSON.txt";
+        String enemiesJson = "com/json/Enemies_JSON.txt";
+        String movesJson = "com/json/Moves_JSON.txt";
+        String synonymsJson = "com/json/Synonyms_JSON.txt";
+        String storyJson = "com/json/Story_JSON.txt";
 
-        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-        String movesJson = "module/src/com/json/Moves_JSON.txt";
-        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-        String storyJson = "module/src/com/json/Story_JSON.txt";
+//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+//        String movesJson = "module/src/com/json/Moves_JSON.txt";
+//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+//        String storyJson = "module/src/com/json/Story_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
@@ -62,7 +62,6 @@ public class Client {
             JSONArray storyArray = sotfIntro.getJSONArray("Intro");
             String storyIntro = (String) storyArray.get(0);
 //            JSONObject startingRoom = r.getJSONObject("Outside Bar");
-
 
             //Display story intro for user
             System.out.println(storyIntro);
