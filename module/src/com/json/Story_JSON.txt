@@ -23,12 +23,12 @@
 },
 
     "Pool Room":{
-        "Pool Room scene":["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers"],
-        "Intro1":["Located at the head of the deep end on a lavishly tall watch tower sat what Jemad imagined to be the head life guard 'Looks like the information the drunk guy in the bar will pay off'"],
-        "Intro2":["Jemad approaches the head life guard and can see that he notices him as he walks up 'Dont look like you are dressed for this pool party, are you sure you are at the right place old man?'"],
-        "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the lifeguards face turns sour 'Sure, my pool boy here will answer all the questions you have' He motions for the pool boy to get rid of Jemad"],
+        "Pool Room scene":["Covered in a thinly veiled sea of smoke and in that sea, nothing but seedy pool sharks and hustlers. Rows of pool tables with players getting duped after drinking and thinking they could beat one of these sharks. The Pool room is where I can find the information I want from word of mouth"],
+        "Intro1":["'Hey, I am looking for some information on a missing kid' Jemad says being being cut off by a semi sober player 'And I am looking for some information to beat this swindler!!'"],
+        "Intro2":["Jemad looks across the table and sees a well dressed guy across with a grin. 'There goes a guy who looks like he knows what I am looking for' Jemad walks over to the pool shark"],
+        "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the Pool shark face turns sour 'Sure, my friend here will answer all the questions you have' He motions for the security guard to get rid of Jemad"],
         "Combat intro Pool Room":["'Hey old man, I am going to need you to come with me, you are cramping the mood' He runs over to Jemad and throws a kick, Jemad quickly dodges to the side and gets ready to take care of this guy"],
-        "Combat outro Pool Room":["The pool boy lies crumpled against a lounge chair from the last blow 'Now as we were talking about' Jemad cracks his knuckles and walks up to the lifeguard. The lifeguard tries to run but is stopped when as Jemad grapped at his whistle and started to question him on the missing kid" ],
+        "Combat outro Pool Room":["The security guard lies crumpled against a pool table from the last blow 'Now as we were talking about' Jemad cracks his knuckles and walks up to the Pool shark. The Pool shark tries to run but is stopped when as Jemad grapped him at the collar and started to question him on the missing kid" ],
     },
 
 }
