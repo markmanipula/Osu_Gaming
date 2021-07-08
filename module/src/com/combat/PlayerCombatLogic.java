@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 
 public class PlayerCombatLogic {
-    private int enemyHealth = 10;
+    private int currentEnemyHp = 10;
     private int jemadHealth = 100;
     private int enemyDmg = 0;
     private int jemadDmg = 0;
@@ -56,9 +56,13 @@ public class PlayerCombatLogic {
 
     // method for Player Combat
     // jemadMoveList is the reference to the hashmap
-    public void combatStart() {
+    public void combatStart(String enemyName) {
+        HashMap<String, Integer> currentEnemy = enemy.enemyParser(enemyName);
+        int currentEnemyHp = 0;
         do {
             clearScreen();
+            //set enemy health to subclass health value
+            System.out.println(currentEnemy.get("Max Health"));
             // Will set and display Jemad current health of '100'
             System.out.println("What kind of attack do I want to do? ");
             System.out.println(Arrays.toString(attacks.jemadAttacks));
@@ -66,7 +70,11 @@ public class PlayerCombatLogic {
             System.out.println( attacks.attack(userCommand));
             //displays points of damage from Jemad's attack
             enemyDmg = attacks.jemadMoves(userCommand);
-            enemyHealth -= enemyDmg;
+            // take the enemy dmg and modify
+            currentEnemyHp = currentEnemy.get("Max Health");
+            currentEnemyHp -= enemyDmg;
+            currentEnemy.put("Max Health", currentEnemyHp);
+//            currentEnemy.compute("Max Health", (String, Integer) -> Integer -= enemyDmg);
             System.out.println("The Bouncer took " + enemyDmg + " points of damage");
             // Enemies turn to attack method
             ArrayList<String> enemyTurn = enemy.enemyMoves();
@@ -75,8 +83,12 @@ public class PlayerCombatLogic {
             jemadHealth -= Integer.parseInt(enemyTurn.get(1));
             System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
             //Jemad turn to attack
+            if (currentEnemyHp < 1) {
+                System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
+                dialogue.printCombatOutro();
+            }
 
-        }while(enemyHealth > 1 && jemadHealth > 1 );
+        }while(currentEnemyHp > 1 && jemadHealth > 1 );
     }
 
     public void battleOutro(){

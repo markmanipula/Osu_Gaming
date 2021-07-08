@@ -8,6 +8,6 @@ public class TestCombat {
 
         PlayerCombatLogic startFight = new PlayerCombatLogic();
         startFight.battleIntro();
-        startFight.combatStart();
+        startFight.combatStart("bouncer");
     }
 }

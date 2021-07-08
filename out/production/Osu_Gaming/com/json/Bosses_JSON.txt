@@ -1,0 +1,14 @@
+{
+"Bar Tender": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Life Guard": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Big Ben": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+}
