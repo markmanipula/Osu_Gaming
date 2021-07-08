@@ -1,10 +1,31 @@
 {
 "Bouncer": {
 	"Max Health": 25,
-	"Attack": 5
+	"Min Attack": 1
+	"Max Attack": 5
 	},
 "Bodyguard": {
 	"Max Health": 25,
 	"Attack": 5
 		},
+"Pool Shark": {
+     "Max Health": 25,
+     "Attack": 5
+    },
+"Biker": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Pool boy": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Towel boy": {
+          "Max Health": 25,
+          "Attack": 5
+   },
+"Pool boy": {
+          "Max Health": 25,
+          "Attack": 5
+   },
 }
