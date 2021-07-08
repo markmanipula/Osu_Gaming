@@ -18,18 +18,18 @@ public class Client {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
-        //for jar file
-        String roomJson = "com/json/Rooms_JSON.txt";
-        String enemiesJson = "com/json/Enemies_JSON.txt";
-        String movesJson = "com/json/Moves_JSON.txt";
-        String synonymsJson = "com/json/Synonyms_JSON.txt";
-        String storyJson = "com/json/Story_JSON.txt";
+//        //for jar file
+//        String roomJson = "com/json/Rooms_JSON.txt";
+//        String enemiesJson = "com/json/Enemies_JSON.txt";
+//        String movesJson = "com/json/Moves_JSON.txt";
+//        String synonymsJson = "com/json/Synonyms_JSON.txt";
+//        String storyJson = "com/json/Story_JSON.txt";
 
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
+        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+        String movesJson = "module/src/com/json/Moves_JSON.txt";
+        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+        String storyJson = "module/src/com/json/Story_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
@@ -91,7 +91,6 @@ public class Client {
                 //Items
                 JSONArray currItemsJSArr = currRoomJSObj.getJSONArray("items");
 
-
                 //Display Basic Room information
                 System.out.println(currentRoom);
                 System.out.println(des2);
@@ -105,8 +104,8 @@ public class Client {
                 //this gets the verb + noun from the player input. ex: go east, move north, fight Garcia, inspect area, etc.
                 String[] command = commandChecker(playerInput);
 
-                String verb = command[0];
-                String noun = command[command.length -1];
+                String verb = command[0].toLowerCase();
+                String noun = command[command.length -1].toLowerCase();
 
                 //If Statements using methods to validate correct synonyms
                 //If Statements for movement, fight, and inspect(look around)
@@ -120,16 +119,15 @@ public class Client {
                 }else if(contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr)) ||
                         (contains(noun, currBossesJSArr))){
                     combat.combatStart(noun);
-                    //Iterate through enemies array for enemy name
-                    String[] test = player.map().roomParser(currentRoom).get("enemies");
-                    //test.contains(command[command.length-1]);
-                    System.out.println(Arrays.toString(test));
                 }else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
                     System.out.println("Enemies in this room: " + currEnemiesJSArr);
                     System.out.println("Bosses in this room: " + currBossesJSArr);
                     System.out.println("Items in this room: " + currItemsJSArr);
                     System.out.println("People in this room: " + currNPCJSArr);
+                }
+                else{
+                    System.out.println("Invalid input");
                 }
                 //then run room??Contents method based on room?? that input direction points to
             }
@@ -141,6 +139,8 @@ public class Client {
 
     //checks the json array and checks if an element is in the array
     public static boolean contains(String command, JSONArray arr) throws JSONException {
+        if(arr.length() == 0) return false;
+
         for(int i = 0; i< arr.length(); i++){
             if(arr.getString(i).equals(command)){
                 return true;
@@ -154,9 +154,11 @@ public class Client {
     }
 
     public static String[] commandChecker(String input){
+        String[] array = input.split(" ");
+        //handles the empty input
+        if(array.length == 0) return new String[] {""};
         //puts words in the array. to access, get first and last index
         StringBuilder stringBuilder = new StringBuilder("");
-        String[] array = input.split(" ");
         for(String i : array){
             i.toLowerCase();
         }

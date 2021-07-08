@@ -18,6 +18,8 @@ public class JemadCombat extends SotfCharacters{
         jemadMoves.put("Uppercut", 5);
         jemadMoves.put("Head Kick", 5);
         jemadMoves.put("Hip Throw", 5);
+        //outputs 0 damage when not a valid move
+        jemadMoves.put(moves, 0);
 
         return jemadMoves.get(moves);
     }
