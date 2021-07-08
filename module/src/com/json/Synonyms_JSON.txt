@@ -4,4 +4,5 @@
 "get":["get", "grab", "obtain", "pick", "acquire"],
 "talk":["talk", "speak", "chat"],
 "inspect":["inspect", "look", "investigate", "glance", "examine", "explore", "inquire", "delve", "dig"],
-	}
+"direction": ["north", "south", "east", "west"],
+}
