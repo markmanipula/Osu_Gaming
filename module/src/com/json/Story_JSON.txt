@@ -27,6 +27,7 @@
         "Intro1":["Located at the head of the deep end on a lavishly tall watch tower sat what Jemad imagined to be the head life guard 'Looks like the information the drunk guy in the bar will pay off'"],
         "Intro2":["Jemad approaches the head life guard and can see that he notices him as he walks up 'Dont look like you are dressed for this pool party, are you sure you are at the right place old man?'"]
         "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the lifeguards face turns sour 'Sure, my pool boy here will answer all the questions you have' He motions for the pool boy to get rid of Jemad"]
+        "Combat intro Pool Room":[""]
     }
 
 }
