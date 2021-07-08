@@ -6,7 +6,6 @@ import com.map.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,6 +18,12 @@ public class Client {
     public static void main(String[] args) {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
+
+        //for jar file
+//        String roomJson = "com/json/Rooms_JSON.txt";
+//        String enemiesJson = "com/json/Enemies_JSON.txt";
+//        String movesJson = "com/json/Moves_JSON.txt";
+//        String synonymsJson = "com/json/Synonyms_JSON.txt";
 
         String roomJson = "module/src/com/json/Rooms_JSON.txt";
         String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
@@ -144,4 +149,5 @@ public class Client {
         }
         return array;
     }
+
 }

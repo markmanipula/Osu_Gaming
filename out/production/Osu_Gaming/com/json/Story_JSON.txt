@@ -1,0 +1,33 @@
+{
+"Game Intro":{
+	"Jemad is a ex-FBI agent, that has bowed out the service but utilizes his skills learned there as a now private investigator for missing persons cases. Taking a case involving an abducted child who has been thought to be dead, Jemad uncovers a story that is not quite what it seems on the surface. With a break in clues and a lead on where the child is being held, Jemad arrives at the MegaLand Casino and Resort. The madness of Jemad objective is to follow the trail of clues and rescue the child."
+    },
+"Bar":{
+	"Outside Bar":{
+	"Outside Bar scene":["With a amalgam of money, power, and corruption in this city.. so many gather at this bar before enjoying the rest of the Casino. At the back entrance outside the bar lays a solitary door guarded by three bouncers. 'Three guys at the door and some drunk...maybe I can get in with no trouble'"],
+	"Intro1":["With a thunderous crack of a bat, the bouncer levels a drunken patron and motions the others to dispose of him"],
+	"Intro2":["'Hey!' Jemad screams, 'Is that how I am looking forward to be treated for just wanting a drink?'"],
+	"Intro3": ["'..and who is the smart ass wanting to be next?' said the bouncer. 'Wait a minute...I have seen your face before somewhere..'"],
+	"Combat Intro bar":["The Bouncer recognizes him from the warning pictures posted from the higher ups. He quickly straightens up and rushes to attack...get ready"],
+	"Combat outro bar":["'Guess he was not as tough as he thought.. now to take a look inside the bar and see what clues I can find out'"],
+    },
+},
+	"Inside bar": {
+		"Inside bar scene":["Inside you can smell the money on these folks as much as you can smell the expensive drinks that mostly seemed to make it to the floor rather than their mouths. The cities affluent and elite stumbling around in drunken stupor 'Loose lips can reveal great information, even more when alcohol did the loosening'"],
+		"Intro1":["'Is there some sort of celebration tonight?' Jemad asked a lavishly dressed gentleman. 'Get me another drink waiter, my glass is looking empty' he then throws the glass at Jemad"],
+		"Intro2":["'Just need some information on this child here and ill be on my way to get you that drink..' Jemad pulls a photo out and shows it to the man. 'Is this the kind of service that is provided to us here?!? SECURITY' slapping Jemad hand away with the photo"]
+		"Intro3":["Jemad can see from the corner of the room a Security Guard running up to see what the commotion is about 'Get this poor excuse for a waiter out my sight'"],
+		"Combat intro bar":["The security guard moves to grab Jemad by the arm..."],
+		"Combat outro bar":["With a loud thud, the security guard drops like a stone 'Now to go find that guy and get my information'"],
+	"Inside bar outro":["'Sorry our conversation was interrupted' Jemad went back to the drunk gentleman and grabbed him by the collar and squeezed all the information out of him"],
+},
+
+    "Pool Room":{
+        "Pool Room scene":["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers"],
+        "Intro1":["Located at the head of the deep end on a lavishly tall watch tower sat what Jemad imagined to be the head life guard 'Looks like the information the drunk guy in the bar will pay off'"],
+        "Intro2":["Jemad approaches the head life guard and can see that he notices him as he walks up 'Dont look like you are dressed for this pool party, are you sure you are at the right place old man?'"]
+        "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the lifeguards face turns sour 'Sure, my pool boy here will answer all the questions you have' He motions for the pool boy to get rid of Jemad"]
+        "Combat intro Pool Room":[""]
+    }
+
+}
