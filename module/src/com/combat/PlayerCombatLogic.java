@@ -70,6 +70,7 @@ public class PlayerCombatLogic {
             System.out.println( attacks.attack(userCommand));
             //displays points of damage from Jemad's attack
             enemyDmg = attacks.jemadMoves(userCommand);
+            // take the enemy dmg and modify
             currentEnemyHp = currentEnemy.get("Max Health");
             currentEnemyHp -= enemyDmg;
             currentEnemy.put("Max Health", currentEnemyHp);
