@@ -6,7 +6,7 @@
 		"bosses": ["Big Ben"],
 		"name": ["Outside Bar"],
 		"east": ["Inside Bar"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["With a amalgam of money, power, and corruption in this city.. so many gather at this bar before enjoying the rest of the Casino. At the back entrance outside the bar lays a solitary door guarded by three bouncers. 'Three guys at the door and some drunk...maybe I can get in with no trouble'", "room change 1", "room change 2"],
 		},
 	"Inside Bar":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -16,7 +16,7 @@
 		"name": ["Inside Bar"],
 		"south": ["Pool Room"],
 		"west": ["Outside Bar"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Inside you can smell the money on these folks as much as you can smell the expensive drinks that mostly seemed to make it to the floor rather than their mouths. The cities affluent and elite stumbling around in drunken stupor 'Loose lips can reveal great information, even more when alcohol did the loosening'", "room change 1", "room change 2"],
 		},
 	"Pool Room":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -26,7 +26,7 @@
 		"name": ["Pool Room"],
 		"east": ["Alley Behind Bar"],
 		"north": ["Inside Bar"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers", "room change 1", "room change 2"],
 		},
 	"Alley Behind Bar":{
 		"NPC":["Bartender", "Cop", "NPC3"],

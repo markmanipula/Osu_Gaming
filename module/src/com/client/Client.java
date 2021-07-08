@@ -24,12 +24,14 @@ public class Client {
         String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
         String movesJson = "module/src/com/json/Moves_JSON.txt";
         String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+        String storyJson = "module/src/com/json/Story_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
             String enemyContents = new String((Files.readAllBytes(Paths.get(enemiesJson))));
             String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
             String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
+            String storyContents = new String((Files.readAllBytes(Paths.get(storyJson))));
 
             Map map = new Map();
             Player player = new Player(map);
@@ -48,6 +50,17 @@ public class Client {
             JSONArray talkSynonym = s.getJSONArray("talk");
             JSONArray inspectSynonym = s.getJSONArray("inspect");
             JSONArray direction = s.getJSONArray("direction");
+
+            //json for storyContents
+            JSONObject sotfStory = new JSONObject(storyContents);
+            JSONObject sotfIntro = sotfStory.getJSONObject("Game Intro");
+            JSONArray storyArray = sotfIntro.getJSONArray("Intro");
+            String storyIntro = (String) storyArray.get(0);
+//            JSONObject startingRoom = r.getJSONObject("Outside Bar");
+
+
+            //Display story intro for user
+            System.out.println(storyIntro);
 
             boolean running = true;
             while(running){
@@ -73,6 +86,7 @@ public class Client {
 
                 //Items
                 JSONArray currItemsJSArr = currRoomJSObj.getJSONArray("items");
+
 
                 //Display Basic Room information
                 System.out.println(currentRoom);
