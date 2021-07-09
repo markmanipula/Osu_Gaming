@@ -24,12 +24,14 @@ public class Client {
 //        String movesJson = "com/json/Moves_JSON.txt";
 //        String synonymsJson = "com/json/Synonyms_JSON.txt";
 //        String storyJson = "com/json/Story_JSON.txt";
+//        String npcJson = "com/json/NPC_JSON.txt";
 
         String roomJson = "module/src/com/json/Rooms_JSON.txt";
         String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
         String movesJson = "module/src/com/json/Moves_JSON.txt";
         String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
         String storyJson = "module/src/com/json/Story_JSON.txt";
+        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
@@ -37,6 +39,7 @@ public class Client {
             String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
             String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
             String storyContents = new String((Files.readAllBytes(Paths.get(storyJson))));
+            String npcContents = new String((Files.readAllBytes(Paths.get(npcJson))));
 
             Map map = new Map();
             Player player = new Player(map);
@@ -63,6 +66,10 @@ public class Client {
             String storyIntro = (String) storyArray.get(0);
 //            JSONObject startingRoom = r.getJSONObject("Outside Bar");
 
+            //json for npcContents
+            JSONObject n = new JSONObject(npcContents);
+            JSONArray listOfNPCs = n.getJSONArray("NPCs");
+
             //Display story intro for user
             System.out.println(storyIntro);
 
@@ -85,8 +92,11 @@ public class Client {
                 //Bosses
                 JSONArray currBossesJSArr = currRoomJSObj.getJSONArray("bosses");
 
-                //NPC's
+                //NPC's in room_JSON
                 JSONArray currNPCJSArr = currRoomJSObj.getJSONArray("NPC");
+
+                //NPCs in NPC_JSON
+
 
                 //Items
                 JSONArray currItemsJSArr = currRoomJSObj.getJSONArray("items");
@@ -125,8 +135,14 @@ public class Client {
                     System.out.println("Bosses in this room: " + currBossesJSArr);
                     System.out.println("Items in this room: " + currItemsJSArr);
                     System.out.println("People in this room: " + currNPCJSArr);
-                }
-                else{
+                }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
+                    JSONObject npcJSObj = n.getJSONObject(noun);
+                    String npcSaying1 = npcJSObj.getString("saying1");
+                    String npcName = npcJSObj.getString("name");
+                    //add logic for if user's item causes new interaction with npc, then second voice line
+                    
+                    System.out.println(npcName + ": " + npcSaying1);
+                }else{
                     System.out.println("Invalid input");
                 }
                 //then run room??Contents method based on room?? that input direction points to
