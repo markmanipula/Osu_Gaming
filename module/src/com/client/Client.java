@@ -58,6 +58,8 @@ public class Client {
             JSONArray talkSynonym = s.getJSONArray("talk");
             JSONArray inspectSynonym = s.getJSONArray("inspect");
             JSONArray direction = s.getJSONArray("direction");
+            JSONArray legendSynonym = s.getJSONArray("legend");
+            JSONArray quitSynonym = s.getJSONArray("quit");
 
             //json for storyContents
             JSONObject sotfStory = new JSONObject(storyContents);
@@ -135,7 +137,6 @@ public class Client {
                     //this if statement is for looking around gathering for info. look, inspect
                 }else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
-                    PlayerCombatLogic.clearScreen();
                     System.out.println("Enemies in this room: " + currEnemiesJSArr);
                     System.out.println("Bosses in this room: " + currBossesJSArr);
                     System.out.println("Items in this room: " + currItemsJSArr);
@@ -144,23 +145,33 @@ public class Client {
 
                     //this if statement is for talking to npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
-                    PlayerCombatLogic.clearScreen();
                     JSONObject npcJSObj = n.getJSONObject(noun);
                     String npcSaying1 = npcJSObj.getString("saying1");
                     String npcName = npcJSObj.getString("name");
                     //add logic for if user's item causes new interaction with npc, then second voice line
                     
                     System.out.println(npcName + ": " + npcSaying1);
+                    Thread.sleep(1000);
                     //this if statement is for getting/ taking items in the room
                 }else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
-                    PlayerCombatLogic.clearScreen();
                     System.out.println(noun + " taken");
                     player.addItem(noun);
+                    Thread.sleep(1000);
+                    //get items
                 }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
-                    PlayerCombatLogic.clearScreen();
                     System.out.println(completeNoun + " taken");
                     player.addItem(completeNoun);
+                    Thread.sleep(1000);
+                    //Display Legend with command "legend"
+                }else if(contains(verb, legendSynonym) || contains(noun, legendSynonym)){
+                    PlayerCombatLogic.clearScreen();
+                    Player.legend();
 
+                }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
+                    PlayerCombatLogic.clearScreen();
+                    System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
+                    Thread.sleep(1000);
+                    System.exit(0);
                 }else{
                     System.out.println("Invalid input");
                 }
