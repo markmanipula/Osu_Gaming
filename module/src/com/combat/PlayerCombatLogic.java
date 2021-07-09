@@ -66,7 +66,7 @@ public class PlayerCombatLogic {
             // Will set and display Jemad current health of '100'
             System.out.println("What kind of attack do I want to do? ");
             System.out.println(Arrays.toString(attacks.jemadAttacks));
-            String userCommand = userInput.nextLine();
+            String userCommand = userInput.nextLine().toLowerCase();
             System.out.println( attacks.attack(userCommand));
             //displays points of damage from Jemad's attack
             enemyDmg = attacks.jemadMoves(userCommand);
