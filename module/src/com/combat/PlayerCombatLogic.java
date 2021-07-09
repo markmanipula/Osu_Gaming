@@ -35,23 +35,26 @@ public class PlayerCombatLogic {
 
     //method to clear screen
     public final static void clearScreen(){
-        try
-        {
-            final String os = System.getProperty("os.name");
+//        try
+//        {
+//            final String os = System.getProperty("os.name");
+//
+//            if (os.contains("Windows"))
+//            {
+//                Runtime.getRuntime().exec("cls");
+//            }
+//            else
+//            {
+//                Runtime.getRuntime().exec("clear");
+//            }
+//        }
+//        catch (final Exception e)
+//        {
+//            //  Handle any exceptions.
+//        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
-            if (os.contains("Windows"))
-            {
-                Runtime.getRuntime().exec("cls");
-            }
-            else
-            {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            //  Handle any exceptions.
-        }
     }
 
     // Method to determine subtraction to enemy health
@@ -63,8 +66,11 @@ public class PlayerCombatLogic {
         dialogue.printCombatIntro();
 
     }
+    //for JAR file
+    String movesJson = "com/json/Moves_JSON.txt";
 
-    String movesJson = "module/src/com/json/Moves_JSON.txt";
+    //for intellij Terminal
+    //String movesJson = "module/src/com/json/Moves_JSON.txt";
     String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents

@@ -1,6 +1,7 @@
 package com.client;
 
 import com.combat.PlayerCombatLogic;
+import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
 import org.json.JSONArray;
@@ -17,20 +18,20 @@ public class Client {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
-//        //for jar file
-//        String roomJson = "com/json/Rooms_JSON.txt";
-//        String enemiesJson = "com/json/Enemies_JSON.txt";
-//        String movesJson = "com/json/Moves_JSON.txt";
-//        String synonymsJson = "com/json/Synonyms_JSON.txt";
-//        String storyJson = "com/json/Story_JSON.txt";
-//        String npcJson = "com/json/NPC_JSON.txt";
+        //for jar file
+        String roomJson = "com/json/Rooms_JSON.txt";
+        String enemiesJson = "com/json/Enemies_JSON.txt";
+        String movesJson = "com/json/Moves_JSON.txt";
+        String synonymsJson = "com/json/Synonyms_JSON.txt";
+        String storyJson = "com/json/Story_JSON.txt";
+        String npcJson = "com/json/NPC_JSON.txt";
 
-        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-        String movesJson = "module/src/com/json/Moves_JSON.txt";
-        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-        String storyJson = "module/src/com/json/Story_JSON.txt";
-        String npcJson = "module/src/com/json/NPC_JSON.txt";
+//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+//        String movesJson = "module/src/com/json/Moves_JSON.txt";
+//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+//        String storyJson = "module/src/com/json/Story_JSON.txt";
+//        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
@@ -70,7 +71,7 @@ public class Client {
             JSONArray listOfNPCs = n.getJSONArray("NPCs");
 
             //Display story intro for user
-            System.out.println(storyIntro);
+            GameStart.start(storyIntro);
 
             boolean running = true;
             while(running){
@@ -121,6 +122,7 @@ public class Client {
                 //this if statement is for movement. go west, east, etc
                 if(contains(verb, goSynonym) && currRoomJSObj.has(noun)){
                     if(contains(noun, direction)){
+                        PlayerCombatLogic.clearScreen();
                         currentRoomArray = currRoomJSObj.getJSONArray(noun);
                         currentRoom = (String) currentRoomArray.get(0);
                     }
@@ -133,6 +135,7 @@ public class Client {
                     //this if statement is for looking around gathering for info. look, inspect
                 }else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
+                    PlayerCombatLogic.clearScreen();
                     System.out.println("Enemies in this room: " + currEnemiesJSArr);
                     System.out.println("Bosses in this room: " + currBossesJSArr);
                     System.out.println("Items in this room: " + currItemsJSArr);
@@ -141,6 +144,7 @@ public class Client {
 
                     //this if statement is for talking to npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
+                    PlayerCombatLogic.clearScreen();
                     JSONObject npcJSObj = n.getJSONObject(noun);
                     String npcSaying1 = npcJSObj.getString("saying1");
                     String npcName = npcJSObj.getString("name");
@@ -149,9 +153,11 @@ public class Client {
                     System.out.println(npcName + ": " + npcSaying1);
                     //this if statement is for getting/ taking items in the room
                 }else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
+                    PlayerCombatLogic.clearScreen();
                     System.out.println(noun + " taken");
                     player.addItem(noun);
                 }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
+                    PlayerCombatLogic.clearScreen();
                     System.out.println(completeNoun + " taken");
                     player.addItem(completeNoun);
 
@@ -161,7 +167,7 @@ public class Client {
                 //then run room??Contents method based on room?? that input direction points to
             }
 
-        }catch (IOException | JSONException e){
+        }catch (IOException | JSONException | InterruptedException e){
             e.printStackTrace();
         }
     }
