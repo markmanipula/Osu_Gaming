@@ -1,6 +1,6 @@
 {
 	"Outside Bar":{
-		"NPC":["biker", "Cop", "NPC3"],
+		"NPC":["biker"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -9,8 +9,8 @@
 		"Description": ["With a amalgam of money, power, and corruption in this city.. so many gather at this bar before enjoying the rest of the Casino. At the back entrance outside the bar lays a solitary door guarded by three bouncers. 'Three guys at the door and some drunk...maybe I can get in with no trouble'", "room change 1", "room change 2"],
 		},
 	"Inside Bar":{
-		"NPC":["friendly bartender", "Cop", "NPC3"],
-		"items": ["Pool Cue", "eight ball", "boots"],
+		"NPC":["friendly bartender"],
+		"items": ["Pool Cue", "eight ball", "boots with a fur", "watch"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
 		"name": ["Inside Bar"],
@@ -19,7 +19,7 @@
 		"Description": ["Inside you can smell the money on these folks as much as you can smell the expensive drinks that mostly seemed to make it to the floor rather than their mouths. The cities affluent and elite stumbling around in drunken stupor 'Loose lips can reveal great information, even more when alcohol did the loosening'", "room change 1", "room change 2"],
 		},
 	"Pool Room":{
-		"NPC":["Pool Player", "Cop", "NPC3"],
+		"NPC":["Pool Player"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -29,7 +29,7 @@
 		"Description": ["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers", "room change 1", "room change 2"],
 		},
 	"Alley Behind Bar":{
-		"NPC":["beggar", "Cop", "NPC3"],
+		"NPC":["beggar"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -39,7 +39,7 @@
 		"Description": ["initial setting", "room change 1", "room change 2"],
 		},
 	"Locker Room":{
-		"NPC":["guy in towel", "Cop", "NPC3"],
+		"NPC":["guy in towel"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -50,7 +50,7 @@
 		"Description": ["initial setting", "room change 1", "room change 2"],
 		},
 	"Pool Deck":{
-		"NPC":["Bartender", "Cop", "NPC3"],
+		"NPC":["Bartender"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -61,7 +61,7 @@
 		"Description": ["initial setting", "room change 1", "room change 2"],
 		},
 	"Pool Bar":{
-		"NPC":["Bartender", "Cop", "NPC3"],
+		"NPC":["Bartender"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -72,7 +72,7 @@
 		"Description": ["initial setting", "room change 1", "room change 2"],
 		},
 	"Pool Deck: Upper Level":{
-		"NPC":["Bartender", "Cop", "NPC3"],
+		"NPC":["Bartender"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
@@ -83,7 +83,7 @@
 		"Description": ["initial setting", "room change 1", "room change 2"],
 		},
 	"Slot Machines":{
-		"NPC":["Bartender", "Cop", "NPC3"],
+		"NPC":["Bartender"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["bouncer", "bodyguard"],
 		"bosses": ["Big Ben"],
