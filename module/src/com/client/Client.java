@@ -83,6 +83,7 @@ public class Client {
                 //Current Variables
                 //Description
                 JSONObject currRoomJSObj = r.getJSONObject(currentRoom);
+
                 JSONArray des1 = currRoomJSObj.getJSONArray("Description");
                 String des2 = (String) des1.get(0);
                 //Enemies
@@ -93,9 +94,6 @@ public class Client {
 
                 //NPC's in room_JSON
                 JSONArray currNPCJSArr = currRoomJSObj.getJSONArray("NPC");
-
-                //NPCs in NPC_JSON
-
 
                 //Items
                 JSONArray currItemsJSArr = currRoomJSObj.getJSONArray("items");
@@ -115,25 +113,33 @@ public class Client {
 
                 String verb = command[0].toLowerCase();
                 String noun = command[command.length -1].toLowerCase();
+                String completeNoun = completeNoun(command);
 
                 //If Statements using methods to validate correct synonyms
                 //If Statements for movement, fight, and inspect(look around)
+
+                //this if statement is for movement. go west, east, etc
                 if(contains(verb, goSynonym) && currRoomJSObj.has(noun)){
                     if(contains(noun, direction)){
                         currentRoomArray = currRoomJSObj.getJSONArray(noun);
                         currentRoom = (String) currentRoomArray.get(0);
                     }
-                    //if the word is fight or any of its synonym
-                    //Arrays.asList(currEnemies).contains(command[command.length-1]
-                }else if(contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr)) ||
+
+                    //this if statement is for fighting, attack bartender, kick someone etc
+                }else if(contains(verb, fightSynonym) && ((contains(noun, currEnemiesJSArr)) || contains(completeNoun, currBossesJSArr)) ||
                         (contains(noun, currBossesJSArr))){
                     combat.combatStart(noun);
+
+                    //this if statement is for looking around gathering for info. look, inspect
                 }else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
                     System.out.println("Enemies in this room: " + currEnemiesJSArr);
                     System.out.println("Bosses in this room: " + currBossesJSArr);
                     System.out.println("Items in this room: " + currItemsJSArr);
                     System.out.println("People in this room: " + currNPCJSArr);
+                    System.out.println("Items in your bag :" + player.getPlayerItems());
+
+                    //this if statement is for talking to npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
                     JSONObject npcJSObj = n.getJSONObject(noun);
                     String npcSaying1 = npcJSObj.getString("saying1");
@@ -141,6 +147,14 @@ public class Client {
                     //add logic for if user's item causes new interaction with npc, then second voice line
                     
                     System.out.println(npcName + ": " + npcSaying1);
+                    //this if statement is for getting/ taking items in the room
+                }else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
+                    System.out.println(noun + " taken");
+                    player.addItem(noun);
+                }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
+                    System.out.println(completeNoun + " taken");
+                    player.addItem(completeNoun);
+
                 }else{
                     System.out.println("Invalid input");
                 }
@@ -178,6 +192,20 @@ public class Client {
             i.toLowerCase();
         }
         return array;
+    }
+
+    public static String completeNoun(String[] input){
+        if(input.length <= 1) return "";
+        StringBuilder stringBuilder = new StringBuilder("");
+        for(int i = 1; i < input.length; i++){
+            stringBuilder.append(input[i]);
+            stringBuilder.append(" ");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+        String completeNoun = stringBuilder.toString();
+
+        return completeNoun;
     }
 
 }
