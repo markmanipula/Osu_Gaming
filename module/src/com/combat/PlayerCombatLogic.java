@@ -1,4 +1,11 @@
 package com.combat;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -22,6 +29,9 @@ public class PlayerCombatLogic {
 
     //object for enemy combat methods
     EnemyCombat enemy = new EnemyCombat("Bouncer");
+
+    public PlayerCombatLogic() throws IOException, JSONException {
+    }
 
     //method to clear screen
     public final static void clearScreen(){
@@ -54,6 +64,13 @@ public class PlayerCombatLogic {
 
     }
 
+    String movesJson = "module/src/com/json/Moves_JSON.txt";
+    String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
+
+    //json for moveContents
+    JSONObject j = new JSONObject(moveContents);
+    JSONArray jemadMovesList = j.getJSONArray("Jemad Attacks");
+
     // method for Player Combat
     // jemadMoveList is the reference to the hashmap
     public void combatStart(String enemyName) {
@@ -62,14 +79,17 @@ public class PlayerCombatLogic {
         do {
             clearScreen();
             //set enemy health to subclass health value
-            System.out.println(currentEnemy.get("Max Health"));
+            System.out.println("Current enemy health :" + currentEnemy.get("Max Health"));
             // Will set and display Jemad current health of '100'
             System.out.println("What kind of attack do I want to do? ");
-            System.out.println(Arrays.toString(attacks.jemadAttacks));
-            String userCommand = userInput.nextLine().toLowerCase();
-            System.out.println( attacks.attack(userCommand));
+            //this outputs jemad moves reading an external json file
+            System.out.println(jemadMovesList);
+
+            String userAttack = userInput.nextLine().toLowerCase();
+            System.out.println(attacks.attack(userAttack));
+
             //displays points of damage from Jemad's attack
-            enemyDmg = attacks.jemadMoves(userCommand);
+            enemyDmg = attacks.jemadMoves(userAttack);
             // take the enemy dmg and modify
             currentEnemyHp = currentEnemy.get("Max Health");
             currentEnemyHp -= enemyDmg;
@@ -93,5 +113,13 @@ public class PlayerCombatLogic {
 
     public void battleOutro(){
         dialogue.printCombatOutro();
+    }
+
+
+    //test main
+    public static void main(String[] args) throws IOException, JSONException {
+
+        JemadCombat jemad = new JemadCombat("jemad");
+
     }
 }
