@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class GameStart {
 
 
+
     public static void start(String intro) throws InterruptedException {
         PlayerCombatLogic.clearScreen();
         System.out.println("-----------------------\n" +
@@ -18,7 +19,7 @@ public class GameStart {
         Thread.sleep(2000);
         PlayerCombatLogic.clearScreen();
 
-
+        System.out.println("\n" + "\n"+ "\n"+ "\n");
         System.out.println(" _________      .__       .__  __            _____    __  .__             ___________.__          __        \n" +
                 " /   _____/_____ |__|______|__|/  |_    _____/ ____\\ _/  |_|  |__   ____   \\_   _____/|__| _______/  |_      \n" +
                 " \\_____  \\\\____ \\|  \\_  __ \\  \\   __\\  /  _ \\   __\\  \\   __\\  |  \\_/ __ \\   |    __)  |  |/  ___/\\   __\\     \n" +
@@ -40,10 +41,14 @@ public class GameStart {
         PlayerCombatLogic.clearScreen();
 
         System.out.println(intro);
-
+        System.out.println("\n" + "\n"+ "\n"+ "\n"+ "\n"+ "\n"+ "\n");
         System.out.println("----------------------Press Enter----------------------");
         Scanner scanner2 = new Scanner(System.in);
         String startInput2 = scanner.nextLine();
         PlayerCombatLogic.clearScreen();
+        //Display Legend
+        Player.legend();
+        System.out.println("you step out of your cab, in front of the entrance to a bar at the casino. ");
+        Thread.sleep(3000);
     }
 }

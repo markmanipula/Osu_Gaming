@@ -1,4 +1,5 @@
 package com.game;
+import com.combat.PlayerCombatLogic;
 import com.map.Map;
 
 import java.util.*;
@@ -47,6 +48,24 @@ public class Player{
 
     public Map map(){
         return map;
+    }
+
+    public static void legend(){
+        PlayerCombatLogic.clearScreen();
+        System.out.println("--------------------------Legend--------------------------");
+        System.out.println("go + north/east/south/west: move around to different rooms\n");
+        System.out.println("map: display map\n");
+        System.out.println("fight + enemy: fight an opponent!\n");
+        System.out.println("inspect: look around at your surroundings. also displays your items\n");
+        System.out.println("talk + name: talk to friendly characters\n");
+        System.out.println("get + item: add an item to your inventory\n");
+        System.out.println("legend: display legend\n");
+        System.out.println("quit: quit game\n");
+        System.out.println("If you don't remember a command, try a synonym. It might just work!\n");
+        System.out.println("----------------------Enter to Close----------------------");
+        Scanner scanner = new Scanner(System.in);
+        String startInput1 = scanner.nextLine();
+        PlayerCombatLogic.clearScreen();
     }
 
 
