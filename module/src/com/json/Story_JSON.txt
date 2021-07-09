@@ -30,5 +30,12 @@
         "Combat intro Pool Room":["'Hey old man, I am going to need you to come with me, you are cramping the mood' He runs over to Jemad and throws a kick, Jemad quickly dodges to the side and gets ready to take care of this guy"],
         "Combat outro Pool Room":["The security guard lies crumpled against a pool table from the last blow 'Now as we were talking about' Jemad cracks his knuckles and walks up to the Pool shark. The Pool shark tries to run but is stopped when as Jemad grapped him at the collar and started to question him on the missing kid" ],
     },
-
+    "Alley Behind Bar":{
+        "Bar alley scene":["Rows of bikes and rows of bikers besides them. Within the middle of them all is none other than the Bartender himself. According to the Security guard, The Bartender mixes the drinks to the cities most scummiest, nothing gets by without his knowing. If anyone would know where to look for this kid, he would know"],
+        "Intro1":["'I see you got the boys back together, Is this the rehearsal for your comeback album?' Jemad says as a row of helmeted bikers turned to look at him"],
+        "Intro2":["'We heard there was a smart mouth rat scurrying around my bar asking to many questions' The Bartender spat"],
+        "Intro3":["'You think you are going to get information on the kid through me? Seems like you took a few shots and lost your damn mind in my bar.' said the Bartender 'Would it help if I bought you a drink to loosen your lips, rather than loosening your jaw with my fist?' quipped Jemad."],
+        "Combat intro Bar alley":["'You should have brought a army to do this dirty work' said the Bar Tender as he takes off his jacket to reveal muscles honed for fighting. He rushes to Jemad and gets ready to attack"],
+        "Combat outro Bar alley":["'Heh, aint no butler around here, I take the trash out myself' Jemad says as he pulls out a note from the Bartender tossed jacket, written on it 'Keep the kid in the pool house until I come from the game floor' looks like it's time to go for a dip at the pool"],
+    },
 }
