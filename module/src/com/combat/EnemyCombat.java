@@ -2,6 +2,7 @@ package com.combat;
 
 import java.util.*;
 
+
 import com.game.*;
 import com.map.*;
 import com.map.Map;
@@ -14,14 +15,18 @@ public class EnemyCombat extends SotfCharacters{
     }
 
     public ArrayList<String> enemyMoves() {
+
+        int randomDamage = JemadCombat.randomDamage(1,3);
+
         //hashmap for enemy attacks
         HashMap<String, Integer> enemyAttack = new HashMap<>();
         //set dmg to 5 for testing purposes
-        enemyAttack.put("Punch", 5);
-        enemyAttack.put("Kick", 5);
+        enemyAttack.put("Punch", randomDamage);
+        enemyAttack.put("Kick", randomDamage);
+
         //create Set of Strings to store non-duplicate items
         Set<String> keySet = enemyAttack.keySet();
-        //
+
         List<String> keyList = new ArrayList<>(keySet);
         int size = keyList.size();
         int random = new Random().nextInt(size);

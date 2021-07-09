@@ -1,25 +1,27 @@
 package com.combat;
 
+import java.awt.image.RasterOp;
 import java.util.HashMap;
+import java.util.Random;
 
 public class JemadCombat extends SotfCharacters{
 
-
-    // array of Jemad basic attack and defense options
-    public String[] jemadAttacks = {"straight punch", "push kick", "uppercut", "head Kick", "hip throw"};
-    public String[] jemadDefense = {"Dodge", "Parry", "Block", "Duck"};
-
+    Random random = new Random();
     //Hashmap for Jemad attack and damage
     public int jemadMoves (String moves) {
 
+        int randomDamage = randomDamage(2,6);
+
         HashMap<String, Integer> jemadMoves = new HashMap<>();
-        jemadMoves.put("straight punch", 5);
-        jemadMoves.put("push kick", 5);
-        jemadMoves.put("uppercut", 5);
-        jemadMoves.put("head kick", 5);
-        jemadMoves.put("hip throw", 5);
+        jemadMoves.put("straight punch", randomDamage);
+        jemadMoves.put("push kick", randomDamage);
+        jemadMoves.put("uppercut", randomDamage);
+        jemadMoves.put("head kick", randomDamage);
+        jemadMoves.put("hip throw", randomDamage);
         //outputs 0 damage when not a valid move
-        jemadMoves.put(moves, 0);
+        if(!jemadMoves.containsKey(moves)){
+            return 0;
+        }
 
         return jemadMoves.get(moves);
     }
@@ -41,7 +43,6 @@ public class JemadCombat extends SotfCharacters{
     public String attack(String userCommand) {
         if (userCommand.equals("straight punch")) {
             return ("Jemad plants his feet and throws a straight punch!");
-
         } else if (userCommand.equals("push kick")) {
             return ("Jemad quickly aims a push kick the enemies mid section");
         } else if (userCommand.equals("uppercut")) {
@@ -53,5 +54,10 @@ public class JemadCombat extends SotfCharacters{
         } else {
             return "not a valid move";
         }
+    }
+
+    public static int randomDamage(int min, int max){
+         int randomDamage = min + (int)(Math.random() * ((max - min) + 1));
+         return randomDamage;
     }
     }
