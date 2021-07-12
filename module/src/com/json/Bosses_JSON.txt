@@ -1,5 +1,5 @@
 {
-"Bar Tender": {
+"BarTender": {
 	"Max Health": 50,
 	"Attack": 10
 	},

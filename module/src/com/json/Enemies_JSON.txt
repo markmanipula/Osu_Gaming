@@ -4,7 +4,7 @@
 	"Min Attack": 1
 	"Max Attack": 5
 	},
-"Bodyguard": {
+"security guard": {
 	"Max Health": 25,
 	"Attack": 5
 		},
@@ -20,9 +20,37 @@
        "Max Health": 25,
        "Attack": 5
    },
-"Towel boy": {
-          "Max Health": 25,
-          "Attack": 5
+"Locker Guard": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"dishwasher": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Slots guard": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Pit guard": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+""Chef"": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Elevator man": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Hall Guard": {
+       "Max Health": 25,
+       "Attack": 5
+   },
+"Pool boy": {
+       "Max Health": 25,
+       "Attack": 5
    },
 "Ninja": {
    "Max Health": 50,

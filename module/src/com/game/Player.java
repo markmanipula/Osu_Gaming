@@ -27,6 +27,9 @@ public class Player{
     //Display enemies in room
     public static ArrayList<String> displayedBosses = new ArrayList<>();
 
+    //Rooms already visited
+    public static ArrayList<String> roomsVisited = new ArrayList<>();
+
     //only uses a constructor with a map
     public Player(Map map){
         this.map = map;
