@@ -47,10 +47,12 @@ public class Player{
     }
 
     public void addItem(String item){
+        if(item == null || item == "") return;
         playerItems.add(item);
     }
 
     public void removeItem(String item){
+        if(item == null || item == "") return;
         playerItems.remove(item);
     }
 

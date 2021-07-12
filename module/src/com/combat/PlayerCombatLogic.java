@@ -68,10 +68,10 @@ public class PlayerCombatLogic {
 
     }
     //for JAR file
-    String movesJson = "com/json/Moves_JSON.txt";
+    //String movesJson = "com/json/Moves_JSON.txt";
 
     //for intellij Terminal
-    //String movesJson = "module/src/com/json/Moves_JSON.txt";
+    String movesJson = "module/src/com/json/Moves_JSON.txt";
     String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents

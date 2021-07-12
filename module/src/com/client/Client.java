@@ -21,19 +21,19 @@ public class Client {
 
 
         //for jar file
-        String roomJson = "com/json/Rooms_JSON.txt";
-        String enemiesJson = "com/json/Enemies_JSON.txt";
-        String movesJson = "com/json/Moves_JSON.txt";
-        String synonymsJson = "com/json/Synonyms_JSON.txt";
-        String storyJson = "com/json/Story_JSON.txt";
-        String npcJson = "com/json/NPC_JSON.txt";
+//        String roomJson = "com/json/Rooms_JSON.txt";
+//        String enemiesJson = "com/json/Enemies_JSON.txt";
+//        String movesJson = "com/json/Moves_JSON.txt";
+//        String synonymsJson = "com/json/Synonyms_JSON.txt";
+//        String storyJson = "com/json/Story_JSON.txt";
+//        String npcJson = "com/json/NPC_JSON.txt";
 
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
-//        String npcJson = "module/src/com/json/NPC_JSON.txt";
+        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+        String movesJson = "module/src/com/json/Moves_JSON.txt";
+        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+        String storyJson = "module/src/com/json/Story_JSON.txt";
+        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
@@ -192,7 +192,7 @@ public class Client {
 
     //checks the json array and checks if an element is in the array
     public static boolean contains(String command, JSONArray arr) throws JSONException {
-        if(arr.length() == 0) return false;
+        if(arr == null || arr.length() == 0) return false;
 
         for(int i = 0; i< arr.length(); i++){
             if(arr.getString(i).equals(command)){
@@ -207,6 +207,9 @@ public class Client {
     }
 
     public static String[] commandChecker(String input){
+
+        if(input == null) return new String[]{""};
+
         String[] array = input.split(" ");
         //handles the empty input
         if(array.length == 0) return new String[] {""};
@@ -219,7 +222,7 @@ public class Client {
     }
 
     public static String completeNoun(String[] input){
-        if(input.length <= 1) return "";
+        if( input == null || input.length <= 1) return "";
         StringBuilder stringBuilder = new StringBuilder("");
         for(int i = 1; i < input.length; i++){
             stringBuilder.append(input[i]);
