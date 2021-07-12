@@ -25,10 +25,10 @@
     "Pool Room":{
         "Pool Room scene":["Covered in a thinly veiled sea of smoke and in that sea, nothing but seedy pool sharks and hustlers. Rows of pool tables with players getting duped after drinking and thinking they could beat one of these sharks. The Pool room is where I can find the information I want from word of mouth"],
         "Intro1":["'Hey, I am looking for some information on a missing kid' Jemad says being being cut off by a semi sober player 'And I am looking for some information to beat this swindler!!'"],
-        "Intro2":["Jemad looks across the table and sees a well dressed guy across with a grin. 'There goes a guy who looks like he knows what I am looking for' Jemad walks over to the pool shark"],
-        "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the Pool shark face turns sour 'Sure, my friend here will answer all the questions you have' He motions for the security guard to get rid of Jemad"],
+        "Intro2":["Jemad looks across the table and sees a well dressed guy across with a grin. 'There goes a guy who looks like he knows what I am looking for' Jemad walks over to the Con man"],
+        "Intro3":["'Lost my kid and someone told me you're the guy to speak to on where to find them?' The look on the Con man's face turns sour 'Sure, my friend here will answer all the questions you have' He motions for a bigger Pool Shark to get rid of Jemad"],
         "Combat intro Pool Room":["'Hey old man, I am going to need you to come with me, you are cramping the mood' He runs over to Jemad and throws a kick, Jemad quickly dodges to the side and gets ready to take care of this guy"],
-        "Combat outro Pool Room":["The security guard lies crumpled against a pool table from the last blow 'Now as we were talking about' Jemad cracks his knuckles and walks up to the Pool shark. The Pool shark tries to run but is stopped when as Jemad grapped him at the collar and started to question him on the missing kid" ],
+        "Combat outro Pool Room":["The Pool Shark lies crumpled against a pool table from the last blow 'Now as we were talking about' Jemad cracks his knuckles and walks up to the Pool shark. The Con man tries to run but is stopped when as Jemad grapped him at the collar and started to question him on the missing kid" ],
     },
     "Alley Behind Bar":{
         "Bar alley scene":["Rows of bikes and rows of bikers besides them. Within the middle of them all is none other than the Bartender himself. According to the Security guard, The Bartender mixes the drinks to the cities most scummiest, nothing gets by without his knowing. If anyone would know where to look for this kid, he would know"],
@@ -44,8 +44,8 @@
         "Intro1":["'Hey! you are not supposed to be in here looking around our things! Security! Where is the Security here!' Screamed the old man wrapped in a a small towel."],
         "Intro2":["Jeez, well there goes my eyesight and in advance, thank you for the nightmares I will have of your small towel. 'Looking for a kid that was held here about a week ago, you wouldn't know anything about that would you?'"],
         "Intro3":["'Security! get this thief out of here! and make sure he will not be able to walk back here as well, I dont like the questions he is asking...'"],
-        "Combat intro Locker Room":["Ask the security guard rushes to Jemad, the old man moves out of the way and heads towards the lockers to get dressed. 'Hey! where you going? we didnt finish our conversation! Jemad yelled as he got ready to deal with the hired muscles'"],
-        "Combat outro locker Room":["'Lay there and enjoy this steam, it is really good on the pores.' Said Jemad as there Security guard laid there unconscious. 'Jeez man you are still out here assaulting people vision with that tiny towel? Before I go blind, lets talk about how much you know and what I am looking for, and be quick about it!'"],
+        "Combat intro Locker Room":["As the Locker Guard rushes to Jemad, the old man moves out of the way and heads towards the lockers to get dressed. 'Hey! where you going? we didnt finish our conversation! Jemad yelled as he got ready to deal with the hired muscles'"],
+        "Combat outro locker Room":["'Lay there and enjoy this steam, it is really good on the pores.' Said Jemad as there Locker Guard laid there unconscious. 'Jeez man you are still out here assaulting people vision with that tiny towel? Before I go blind, lets talk about how much you know and what I am looking for, and be quick about it!'"],
     },
     "Pool Deck":{
     "Pool Room scene":["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers. 'According to the old man... the kid was passed off that the head life guard to be taken to the upper deck. How do I get to the upper deck?'"],
@@ -78,7 +78,7 @@
         "Intro1":["As Jemad walked through the rows of Slot Machines looking for a area where he could inquire where the Pit boss location was. As he walked for a few minutes he could see from the corner of his eyes that security was starting to follow him and keep his distance"],
         "Intro2":["Jemad thought to himself? 'How can I find this Pit Boss' just as quickly as he thought it, an idea popped into his head"],
         "Intro3":["Jemad runs and launches a heavy kick at a near by Slot machine causing it to start spewing thousands and thousands of coins onto the ground. All casino players started to run and scramble in order to grab the money for themselves"],
-        "Combat intro Slot Machines":["The Security guards runs up to Jemad fist clenched. 'You boys finally here to show me around?'"],
+        "Combat intro Slot Machines":["The Slots guard runs up to Jemad fist clenched. 'You boys finally here to show me around?'"],
         "Combat outro Slot Machines":["As the security guard laid on the ground only held up by Jemad grasp of his collar 'Now which way to the Pit Boss, I dont have all day' said Jemad. The Security points towards the poker tables as the next stop"],
         },
     "Poker Tables":{
@@ -87,7 +87,7 @@
         "Intro2":["'How much chips will you like to wager?' As he motioned for Jemad to lay them on the table. Jemad fished in his pocket and found a chip he took off a security guard at the slot machines"],
         "Intro3":["'I have a whole 5 bucks to spend and ready to win big!' Jemad said with a smirk. 'Ahhh... well since you are such a high roller, we have a special seat for you sir' and with that the poker dealer snapped his fingers and nodded towards Jemad"],
         "Combat Intro Poker Table":["A bouncer walks up to Jemad and grabs him by his arm, 'Come with me sir..' and with a sharp yank he lifts Jemad out of the chair. Seems like I cant catch a break as Jemad shoved the bouncer back"],
-        "Combat outro Poker Table":["As the bouncer falls to the floor with a loud thud, Jemad fixes his jacket and turns to the poker dealer. 'I wont make you eat this chip if you tell me what I need to know, where is your Pit boss..'"],
+        "Combat outro Poker Table":["As the Pit guard falls to the floor with a loud thud, Jemad fixes his jacket and turns to the poker dealer. 'I wont make you eat this chip if you tell me what I need to know, where is your Pit boss..'"],
 
     },
     "Steak House":{
@@ -113,16 +113,16 @@
     "Intro1":["The Elevator stops on the 45th floor, and in walks a man that clearly is here for nothing good Jemad thought. 'Nice night for fishing huh?'Jemad stated to try and through the bouncer of guard"],
     "Intro2":["The bouncer turns around with a snarl and walk up to close enough that he could smell his breath. 'Woooooooo, I see hygiene is not part of the requirement to become a hired muscle huh?' Jemad waves his hands back and forth in front of his nose"],
     "Intro3":["The bouncer got more and more agitated and grabbed Jemad by the collar. 'I am sensing a pattern here with you guys, fight first and I ask questions later is that it?'"],
-    "Combat intro Elevator":["The bouncer tosses Jemad at the other end of the elevator and hits the emergency button to stop their ascent. Looks like I cant just sit back and enjoy this ride huh? Jemad thinks as he gets ready to battle"],
-    "Combat outro Elevator":["As the bouncer laid on the floor unconscious, Jemad walks over to the elevator buttons and presses the hotel lobby. 'Well that was unnecessary' smirked Jemad as he looked at the bouncer laying on the floor"],
+    "Combat intro Elevator":["The Elevator man tosses Jemad at the other end of the elevator and hits the emergency button to stop their ascent. Looks like I cant just sit back and enjoy this ride huh? Jemad thinks as he gets ready to battle"],
+    "Combat outro Elevator":["As the elevator man laid on the floor unconscious, Jemad walks over to the elevator buttons and presses the hotel lobby. 'Well that was unnecessary' smirked Jemad as he looked at the bouncer laying on the floor"],
     },
     "Hotel Halls":{
         "Hotel Halls scene":["Ostrich feather wall paper and marble floors is what graced the patrons lucky enough to set foot into the Hotel suites. At the very end of the lobby stood the concierge behind a chest high desk. With eyes glued on Jemad as he walked up, it seems he has been waiting for him "],
         "Intro1":["'How much would a room on the top floor cost for a night or two?' said Jemad. 'More than you could earn in 4 lifetimes said the concierge' with a smirk"],
-        "Intro2":["'I guess hospitality is not your number one priority here is it?' laughed Jemad. The concierge snaps his fingers and out from behind the desk door jumps out a Security guard."],
+        "Intro2":["'I guess hospitality is not your number one priority here is it?' laughed Jemad. The concierge snaps his fingers and out from behind the desk door jumps out a Hall Guard."],
         "Intro3":["'How many of you guys do I need to leave unconscious before you get the idea that this is not the way? Jeez' sighed Jemad."],
-        "Combat intro Hotel Halls":["The Security Guard lunges at Jemad from behind the desk but missed as Jemad simply stepped out the way.'Not starting out good for you huh?' Jemad gets ready to take this guy out"],
-        "Combat outro Hotel halls":["Finishing off the Security Guard, Jemad quickly turns to the concierge and says 'Before you even think of calling another guard let me tell you something' Jemad breaks the concierge finger leaving him wailing"],
+        "Combat intro Hotel Halls":["The Hall Guard lunges at Jemad from behind the desk but missed as Jemad simply stepped out the way.'Not starting out good for you huh?' Jemad gets ready to take this guy out"],
+        "Combat outro Hotel halls":["Finishing off the Hall Guard, Jemad quickly turns to the concierge and says 'Before you even think of calling another guard let me tell you something' Jemad breaks the concierge finger leaving him wailing"],
     },
     "Balcony":{
         "Balcony scene":["The Balconies at the Hotels were wide enough to have a party on it alone, and the rooms could fit a small family by itself. thousands of feet off the ground, the balcony over looked hundreds of buildings into the city"],
