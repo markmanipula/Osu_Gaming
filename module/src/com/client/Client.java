@@ -74,6 +74,10 @@ public class Client {
             JSONObject n = new JSONObject(npcContents);
             JSONArray listOfNPCs = n.getJSONArray("NPCs");
 
+            //json for enemies
+            JSONObject e = new JSONObject(enemyContents);
+
+
             //Display story intro for user
             GameStart.start(storyIntro);
 
@@ -132,12 +136,14 @@ public class Client {
                     }
 
                     //this if statement is for fighting enemies
-                }else if(contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
-                    combat.combatStart(noun);
+                }else if((contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))) || (contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
+                    //combat.combatStart(noun);
+                    combat.combatMethod(e, noun);
 
                     //this if statement is for fighting boss
-                }else if(contains(completeNoun, currBossesJSArr) || (contains(completeNoun, currBossesJSArr))) {
-                    combat.combatStart(completeNoun);
+                }else if((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr))) ||(contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
+                    //combat.combatStart(completeNoun);
+                    combat.combatMethod(e, completeNoun);
                 }
                 //this if statement is for looking around gathering for info. look, inspect
                 else if(contains(verb, inspectSynonym)){
