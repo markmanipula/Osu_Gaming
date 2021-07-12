@@ -121,6 +121,7 @@ public class PlayerCombatLogic {
             if (currentEnemyHp < 1) {
                 System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
                 Player.addDefeatedEnemy(enemyName);
+                Player.addDefeatedBoss(enemyName);
                 dialogue.printCombatOutro();
             }
 

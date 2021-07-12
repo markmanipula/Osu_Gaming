@@ -32,7 +32,7 @@
 		"NPC":["beggar"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": [""],
-		"bosses": ["BarTender"],
+		"bosses": ["Bartender"],
 		"name": ["Alley Behind Bar"],
 		"east": ["Locker Room"],
 		"west": ["Pool Room"],
