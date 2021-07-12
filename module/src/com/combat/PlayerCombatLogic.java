@@ -128,6 +128,36 @@ public class PlayerCombatLogic {
         }while(currentEnemyHp > 1 && jemadHealth > 1 );
     }
 
+    public void combatMethod(JSONObject object, String enemyName) throws InterruptedException, JSONException {
+        clearScreen();
+        printFight();
+        Thread.sleep(700);
+
+
+        JSONObject currentEnemy = object.getJSONObject(enemyName);
+        do{
+            System.out.println("Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemy.getJSONObject("Max Health"));
+
+
+        if (currentEnemyHp < 1) {
+            System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
+            Player.addDefeatedEnemy(enemyName);
+            Player.addDefeatedBoss(enemyName);
+            dialogue.printCombatOutro();
+        }
+
+    }while(currentEnemyHp > 1 && jemadHealth > 1 );
+    }
+
+    public void printFight(){
+        System.out.println("___________.___  ________  ___ ______________._.\n" +
+                "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +
+                " |    __)  |   /   \\  ___/    ~    \\|    |   | |\n" +
+                " |     \\   |   \\    \\_\\  \\    Y    /|    |    \\|\n" +
+                " \\___  /   |___|\\______  /\\___|_  / |____|    __\n" +
+                "     \\/                \\/       \\/            \\/");
+    }
+
     public void battleOutro() throws InterruptedException {
         dialogue.printCombatOutro();
     }

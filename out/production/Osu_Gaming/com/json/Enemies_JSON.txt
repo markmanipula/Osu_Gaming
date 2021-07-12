@@ -1,8 +1,8 @@
 {
-"Bouncer": {
+"bouncer": {
 	"Max Health": 25,
-	"Min Attack": 1
-	"Max Attack": 5
+	"Min Attack": 1,
+	"Max Attack": 5,
 	},
 "security guard": {
 	"Max Health": 25,
@@ -36,7 +36,7 @@
        "Max Health": 25,
        "Attack": 5
    },
-""Chef"": {
+"Chef": {
        "Max Health": 25,
        "Attack": 5
    },
@@ -45,10 +45,6 @@
        "Attack": 5
    },
 "Hall Guard": {
-       "Max Health": 25,
-       "Attack": 5
-   },
-"Pool boy": {
        "Max Health": 25,
        "Attack": 5
    },

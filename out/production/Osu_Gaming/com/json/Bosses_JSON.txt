@@ -1,5 +1,5 @@
 {
-"BarTender": {
+"Bartender": {
 	"Max Health": 50,
 	"Attack": 10
 	},
