@@ -10,7 +10,7 @@ public class JemadCombat extends SotfCharacters{
     //Hashmap for Jemad attack and damage
     public int jemadMoves (String moves) {
 
-        int randomDamage = randomDamage(2,6);
+        int randomDamage = randomDamage(7,12);
 
         HashMap<String, Integer> jemadMoves = new HashMap<>();
         jemadMoves.put("straight punch", randomDamage);

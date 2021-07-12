@@ -5,7 +5,7 @@ import org.json.JSONException;
 import java.io.IOException;
 
 public class TestCombat {
-    public static void main(String[] args) throws IOException, JSONException {
+    public static void main(String[] args) throws IOException, JSONException, InterruptedException {
 
         JemadCombat JemadPlayer = new JemadCombat("Jemad");
 

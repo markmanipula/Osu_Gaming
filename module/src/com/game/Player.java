@@ -15,6 +15,18 @@ public class Player{
     //so only unique items will be added on the players bag
     private Set<String> playerItems = new HashSet<>();
 
+    //Defeated Enemies ArrayList
+    public static ArrayList<String> defeatedEnemies = new ArrayList<>();
+
+    //Display enemies in room
+    public static ArrayList<String> displayedEnemies = new ArrayList<>();
+
+    //Defeated Enemies ArrayList
+    public static ArrayList<String> defeatedBosses = new ArrayList<>();
+
+    //Display enemies in room
+    public static ArrayList<String> displayedBosses = new ArrayList<>();
+
     //only uses a constructor with a map
     public Player(Map map){
         this.map = map;
@@ -66,6 +78,17 @@ public class Player{
         Scanner scanner = new Scanner(System.in);
         String startInput1 = scanner.nextLine();
         PlayerCombatLogic.clearScreen();
+    }
+
+    //add defeated enemies
+    public String[] showDefeatedEnemiesList(HashMap<String, String[]> map){
+        String[] itemList = map.get("enemies");
+        System.out.println(Arrays.toString(itemList));
+        return itemList;
+    }
+
+    public static void addDefeatedEnemy(String enemy){
+        defeatedEnemies.add(enemy);
     }
 
 
