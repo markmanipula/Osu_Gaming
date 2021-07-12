@@ -131,13 +131,16 @@ public class Client {
                         currentRoom = (String) currentRoomArray.get(0);
                     }
 
-                    //this if statement is for fighting, attack bartender, kick someone etc
-                }else if(contains(verb, fightSynonym) && ((contains(noun, currEnemiesJSArr)) || contains(completeNoun, currBossesJSArr)) ||
-                        (contains(noun, currBossesJSArr))){
+                    //this if statement is for fighting enemies
+                }else if(contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
                     combat.combatStart(noun);
 
-                    //this if statement is for looking around gathering for info. look, inspect
-                }else if(contains(verb, inspectSynonym)){
+                    //this if statement is for fighting boss
+                }else if(contains(completeNoun, currBossesJSArr) || (contains(completeNoun, currBossesJSArr))) {
+                    combat.combatStart(completeNoun);
+                }
+                //this if statement is for looking around gathering for info. look, inspect
+                else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
 
                     onlyDisplayUndefeatedEnemies(currEnemiesJSArr);

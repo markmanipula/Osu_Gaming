@@ -93,6 +93,9 @@ public class Player{
         defeatedEnemies.add(enemy);
     }
 
+    public static void addDefeatedBoss(String boss){
+        defeatedBosses.add(boss);
+    }
 
     //test client main
     public static void main(String[] args) {
