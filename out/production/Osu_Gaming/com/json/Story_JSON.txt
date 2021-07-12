@@ -36,6 +36,6 @@
         "Intro2":["'We heard there was a smart mouth rat scurrying around my bar asking to many questions' The Bartender spat"],
         "Intro3":["'You think you are going to get information on the kid through me? Seems like you took a few shots and lost your damn mind in my bar.' said the Bartender 'Would it help if I bought you a drink to loosen your lips, rather than loosening your jaw with my fist?' quipped Jemad."],
         "Combat intro Bar alley":["'You should have brought a army to do this dirty work' said the Bar Tender as he takes off his jacket to reveal muscles honed for fighting. He rushes to Jemad and gets ready to attack"],
-        "Combat outro Bar alley":["'Heh, aint no butler around here, I take the trash out myself' Jemad says as he pulls out a note from the Bartender tossed jacket, written on it 'Keep the kid in the pool house until I come from the game floor' looks like it's time to get for a dip at the pool"],
+        "Combat outro Bar alley":["'Heh, aint no butler around here, I take the trash out myself' Jemad says as he pulls out a note from the Bartender tossed jacket, written on it 'Keep the kid in the pool house until I come from the game floor' looks like it's time to go for a dip at the pool"],
     },
 }

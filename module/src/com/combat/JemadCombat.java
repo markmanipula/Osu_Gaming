@@ -41,6 +41,8 @@ public class JemadCombat extends SotfCharacters{
     //made to evaluate userinput and determine dialogue
     @Override
     public String attack(String userCommand) {
+        if(userCommand == null) return "not a valid move";
+
         if (userCommand.equals("straight punch")) {
             return ("Jemad plants his feet and throws a straight punch!");
         } else if (userCommand.equals("push kick")) {
