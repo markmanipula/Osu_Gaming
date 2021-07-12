@@ -47,7 +47,7 @@
 		"east": ["Pool Deck"],
 		"south": ["Pool Bar"],
 		"west": ["Alley Behind Bar"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Lockers far as the eyes can see with benches to accommodate the patrons that come to enjoy the Pools and spas of the Megaland Casino and resort. The steam wafting from the sauna as people of power speak their business and dealings in the underworld environment of this city. 'The kid was held here until someone came to collect them, there has to be some sort of clue into where they took them next' said Jemad.", "room change 1", "room change 2"],
 		},
 	"Pool Deck":{
 		"NPC":["Bartender"],
@@ -58,7 +58,7 @@
 		"west": ["Locker Room"],
 		"south": ["Pool Deck: Upper Level"],
 		"shortcut": ["Pool Bar"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Filled with fake tans and airheads, a massive pool filled with the cities elite socialites. On the side, staged a uncountable amount of lounge chairs as waiters scurried around to fill the drinks of their customers. 'According to the old man... the kid was passed off that the head life guard to be taken to the upper deck. How do I get to the upper deck?'", "room change 1", "room change 2"],
 		},
 	"Pool Bar":{
 		"NPC":["Bartender"],
@@ -69,7 +69,7 @@
 		"east": ["Pool Deck: Upper Level"],
 		"shortcut": ["Pool Deck"],
 		"north":["Locker Room"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Drinks as colorful as the bathing suits of the swimmers guzzling them down. The Pool bar stretched almost as long as the length of the pool. According to the life guard, the kid was held with the bar manager until they were ready to take them inside, where did they take the kid after is the question? And who is the bar manager?", "room change 1", "room change 2"],
 		},
 	"Pool Deck: Upper Level":{
 		"NPC":["Bartender"],
@@ -80,7 +80,7 @@
 		"south": ["Slot Machines"],
 		"west": ["Pool Bar"],
 		"north":["Pool Deck"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Jemad never before seen architecture built around a pool to make it look like a natural waterfall indoors. Few people moved around this floor as the bar manager explained as it is reserved only for the inner circle of the cities elite. 'This is where the bar manager told me I can find this Big Ben guy' Jemad says as he scans the area to find his target", "room change 1", "room change 2"],
 		},
 	"Slot Machines":{
 		"NPC":["Bartender"],
@@ -90,7 +90,7 @@
 		"name": ["Slot Machines"],
 		"east": ["Poker Tables"],
 		"south": ["Steak House"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["A barrage of dings and whistles roared across the floor as hundreads if not thousands of slot machines ready to swindle the money out of people pockets. 'Big Ben said that the kid was taking here for the Pit Boss in order to be taken to the hotel suite, I have to get the key from him in order to get to the top floor'", "room change 1", "room change 2"],
 		},
 	"Poker Tables":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -100,7 +100,7 @@
 		"name": ["Poker Tables"],
 		"west": ["Slot Machines"],
 		"south": ["VIP Room"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["High stake bets is all that is welcomed at these poker tables. Tables filled with mountains of poker chips that ranged in not only the thousands but millions. Jemad scanned the area and picked out a table that had only a few people seated.", "room change 1", "room change 2"],
 		},
 	"Steak House":{
 		"NPC":["waiter", "Cop", "NPC3"],
@@ -110,7 +110,7 @@
 		"name": ["Steak House"],
 		"east": ["VIP Room"],
 		"north": ["Slot Machines"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["When the poker dealer told me the pit boss was eatting at the Steak house, Jemad thought a classic road side greasy dirt hole. What was here was a 5 star restaurant where people drowned their frustrations in mountains of food", "room change 1", "room change 2"],
 		},
 	"VIP Room":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -121,7 +121,7 @@
 		"east": ["Elevator"],
 		"north": ["Poker Tables"],
 		"west": ["Steak House"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["If ever there was a VIP area to cater to a select people, Jemad was standing in one. High end chairs looking good enough to fall asleep in, waiters standing by to wait on every whim of the players. In the middle, a solitary table with just six seats for the highest of rollers the city has to offer. At the table, only 1 seat was filled by who Jemad could only assume was the Pit Boss", "room change 1", "room change 2"],
 		},
 	"Elevator":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -131,7 +131,7 @@
 		"name": ["Elevator"],
 		"east": ["Hotel Halls"],
 		"west": ["VIP Room"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["To call this a elevator would be a understatement. This elevator is so massive that it could fit a whole marching band. Jemad slides the key card he got off the Pit Boss into the slot and selects the hotel lobby. 'Jeez, you need a VIP card just to even see the lobby?' The Elevator starts to slow move as the numbers on the dial increases", "room change 1", "room change 2"],
 		},
 	"Hotel Halls":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -141,7 +141,7 @@
 		"name": ["Hotel Halls"],
 		"south": ["Balcony"],
 		"west": ["Elevator"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["Ostrich feather wall paper and marble floors is what graced the patrons lucky enough to set foot into the Hotel suites. At the very end of the lobby stood the concierge behind a chest high desk. With eyes glued on Jemad as he walked up, it seems he has been waiting for him ", "room change 1", "room change 2"],
 		},
 	"Balcony":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -151,7 +151,7 @@
 		"name": ["Balcony"],
 		"east": ["Rooftop: Final Boss"],
 		"north": ["Hotel Halls"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["The Balconies at the Hotels were wide enough to have a party on it alone, and the rooms could fit a small family by itself. thousands of feet off the ground, the balcony over looked hundreads of buildings into the city", "room change 1", "room change 2"],
 		},
 	"Rooftop: Final Boss":{
 		"NPC":["Bartender", "Cop", "NPC3"],
@@ -160,6 +160,6 @@
 		"bosses": ["Big Ben"],
 		"name": ["Rooftop: Final Boss"],
 		"west": ["Balcony"],
-		"Description": ["initial setting", "room change 1", "room change 2"],
+		"Description": ["'At Last' Jemad thought to himself as he finally made it to the Roof top suite balcony. Inside he could see a office with a large solid wood desk and 2 figures standing near it. One figure was tall and solid, the other about waist high to Jemad. 'Must be the kid but who are they with?' Jemad walks inside to finally bring this madness to a close", "room change 1", "room change 2"],
 		},
 }

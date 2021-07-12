@@ -69,7 +69,7 @@
         "Intro2":["As they walked up to a makeshift hut with lavish curtains and furniture, inside sat a man that could only be for certain Big Ben. Big aint the word for this asshole, and from the discolored and scarred knuckles, Jemad observed."],
         "Intro3":["'Mr. Jemad, I have been waiting for you' Said Big Ben. 'The hero, looking to free the child from the grasp of evil huh? Did you ever think to ask why the kid is here with us? heh' laughed Big Ben 'You gonna lecture me all day or tell me what I need to know? If I see one more speedo, I think I will literally go blind. Where's the kid Paul Bunyan.'"],
        "Combat intro Pool Deck Upper level":["'There is the smart mouth we have heard about since you came into the bar, dont worry... I'll shut that mouth once and for all' As Big Ben stood up and walked towards Jemad with a menacing smile"],
-       "Combat outro Pool Deck Upper level":[""Breathing heavy, Jemad gets to one knee looking over the felled goliath. '...And stay down' Jemad said with a chuckle. 'You are going to give me all the information you know concerning this kid'"]
+       "Combat outro Pool Deck Upper level":["Breathing heavy, Jemad gets to one knee looking over the felled goliath. '...And stay down' Jemad said with a chuckle. 'You are going to give me all the information you know concerning this kid'"]
     },
 },
 "Casino Floor":{
@@ -80,10 +80,10 @@
         "Intro3":["Jemad runs and launches a heavy kick at a near by Slot machine causing it to start spewing thousands and thousands of coins onto the ground. All casino players started to run and scramble in order to grab the money for themselves"],
         "Combat intro Slot Machines":["The Security guards runs up to Jemad fist clenched. 'You boys finally here to show me around?'"],
         "Combat outro Slot Machines":["As the security guard laid on the ground only held up by Jemad grasp of his collar 'Now which way to the Pit Boss, I dont have all day' said Jemad. The Security points towards the poker tables as the next stop"],
-        }
+        },
     "Poker Tables":{
         "Poker Table Scene":["High stake bets is all that is welcomed at these poker tables. Tables filled with mountains of poker chips that ranged in not only the thousands but millions. Jemad scanned the area and picked out a table that had only a few people seated."],
-        "Intro1":["'Welcome sir, you picked the finest table to win big" smiled the poker dealer.],
+        "Intro1":["'Welcome sir, you picked the finest table to win big!' smiled the poker dealer."],
         "Intro2":["'How much chips will you like to wager?' As he motioned for Jemad to lay them on the table. Jemad fished in his pocket and found a chip he took off a security guard at the slot machines"],
         "Intro3":["'I have a whole 5 bucks to spend and ready to win big!' Jemad said with a smirk. 'Ahhh... well since you are such a high roller, we have a special seat for you sir' and with that the poker dealer snapped his fingers and nodded towards Jemad"],
         "Combat Intro Poker Table":["A bouncer walks up to Jemad and grabs him by his arm, 'Come with me sir..' and with a sharp yank he lifts Jemad out of the chair. Seems like I cant catch a break as Jemad shoved the bouncer back"],
@@ -115,19 +115,19 @@
     "Intro3":["The bouncer got more and more agitated and grabbed Jemad by the collar. 'I am sensing a pattern here with you guys, fight first and I ask questions later is that it?'"],
     "Combat intro Elevator":["The bouncer tosses Jemad at the other end of the elevator and hits the emergency button to stop their ascent. Looks like I cant just sit back and enjoy this ride huh? Jemad thinks as he gets ready to battle"],
     "Combat outro Elevator":["As the bouncer laid on the floor unconscious, Jemad walks over to the elevator buttons and presses the hotel lobby. 'Well that was unnecessary' smirked Jemad as he looked at the bouncer laying on the floor"],
-    }
+    },
     "Hotel Halls":{
         "Hotel Halls scene":["Ostrich feather wall paper and marble floors is what graced the patrons lucky enough to set foot into the Hotel suites. At the very end of the lobby stood the concierge behind a chest high desk. With eyes glued on Jemad as he walked up, it seems he has been waiting for him "],
         "Intro1":["'How much would a room on the top floor cost for a night or two?' said Jemad. 'More than you could earn in 4 lifetimes said the concierge' with a smirk"],
-        "Intro2":["'I guess hospitality is not your number one priority here is it?" laughed Jemad. The concierge snaps his fingers and out from behind the desk door jumps out a Security guard.],
-        "Intro3":["'How many of you guys do I need to leave unconcious before you get the idea that this is not the way? Jeez' sighed Jemad."],
+        "Intro2":["'I guess hospitality is not your number one priority here is it?' laughed Jemad. The concierge snaps his fingers and out from behind the desk door jumps out a Security guard."],
+        "Intro3":["'How many of you guys do I need to leave unconscious before you get the idea that this is not the way? Jeez' sighed Jemad."],
         "Combat intro Hotel Halls":["The Security Guard lunges at Jemad from behind the desk but missed as Jemad simply stepped out the way.'Not starting out good for you huh?' Jemad gets ready to take this guy out"],
         "Combat outro Hotel halls":["Finishing off the Security Guard, Jemad quickly turns to the concierge and says 'Before you even think of calling another guard let me tell you something' Jemad breaks the concierge finger leaving him wailing"],
     },
     "Balcony":{
-        "Balcony scene":["The Balconies at the Hotels were wide enough to have a party on it alone, and the rooms could fit a small family by itself. thousands of feet off the ground, the balcony over looked hundreads of buildings into the city"],
+        "Balcony scene":["The Balconies at the Hotels were wide enough to have a party on it alone, and the rooms could fit a small family by itself. thousands of feet off the ground, the balcony over looked hundreds of buildings into the city"],
         "Intro1":["According to the concierge, the big boss men are waiting for Jemad with weapons at the ready to take him out. The best way to get to the rooftop apartment is by using the balcony."],
-        "Intro2":["'Good thing I aint afraid of heights' Jemad says to himself as he takes a look over the side. Just as he turns around, he barely has time to dodge a object hurtiling towards his head"],
+        "Intro2":["'Good thing I aint afraid of heights' Jemad says to himself as he takes a look over the side. Just as he turns around, he barely has time to dodge a object hurtling towards his head"],
         "Intro3":["As he looks up, he see's a figure cloaked all in black, eyes barely seen behind a face covering. 'Are you kidding me? A Ninja in this day and age? I always wanted to fight a ninja I guess..'"],
         "Combat intro Balcony":["The ninja rushes towards Jemad ready to strike"],
         "Combat outro Balcony":["'As the ninja tumbled over the edge of the balcony unto the bottom one below. Jemad looks over the side 'I thought ninjas always landed on their fight?' he said with a smile as he continued to climb up the balcony on his way to the rooftop floor"],
@@ -137,10 +137,10 @@
         "Intro1":["'You finally made it to my humble abode, I would offer you a drink but I know you would just like to get down to business. You were offered money to bring this child back to their family because I 'Kidnapped' them right? What if I told you that this child belongs right where they were meant to be?'"],
         "Intro2":["'Take a look for yourself Jemad, this child was not kidnapped but returned to me... I am the child birth father' the Don Fury throws birth certificates on the floor infront of Jemad in plain sight as proof that he was duped. A rival family taken out by Don Fury guys in a last ditch effort kidnapped his child and raised them as their own."],
         "Intro3":["'You see Jemad, you are fighting for the wrong side, the kid belongs here with me!' Jemad looks up and can see the tears in the kids face, no matter the farce Jemad still had to finish the job"],
-        "Combat intro "Rooftop: Final Boss":["'Your fighting on the wrong side of this one Jemad' spat Don Fury, as he removed his jacket show casing that this guy was no punk. Ripped with muscle from head to toe, the Don could handle his own. This is it Jemad, the last fight..."],
-        "Combat outro "Rooftop: Final Boss":["Barely able to stand, Jemad has done it. He walks over to the kid as they hid behind the desk looking at the Don unconscious body. 'Well, what am I going to do now?' The kid was indeed the child of Don Fury, but was raised to be loved by their enemy. "],
+        "Combat intro Rooftop: Final Boss":["'Your fighting on the wrong side of this one Jemad' spat Don Fury, as he removed his jacket show casing that this guy was no punk. Ripped with muscle from head to toe, the Don could handle his own. This is it Jemad, the last fight..."],
+        "Combat outro Rooftop: Final Boss":["Barely able to stand, Jemad has done it. He walks over to the kid as they hid behind the desk looking at the Don unconscious body. 'Well, what am I going to do now?' The kid was indeed the child of Don Fury, but was raised to be loved by their enemy. "],
 
-    }
+    },
 "Game Outro":{
     "outro":["After all this Madness, the only correct thing to do is to let the kid decide. Go back to a family that held them hostage at birth but came to love and raise them as their own, or stay with a father they know nothing about apart from sharing the same blood. The decision is not an easy one to make for someone so young. What would you do if in the same position Jemad?"],
 }
