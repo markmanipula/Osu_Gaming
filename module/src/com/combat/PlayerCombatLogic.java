@@ -1,4 +1,5 @@
 package com.combat;
+import com.game.Player;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,11 +80,19 @@ public class PlayerCombatLogic {
 
     // method for Player Combat
     // jemadMoveList is the reference to the hashmap
-    public void combatStart(String enemyName) {
+    public void combatStart(String enemyName) throws InterruptedException {
         HashMap<String, Integer> currentEnemy = enemy.enemyParser(enemyName);
         int currentEnemyHp = 0;
+
+        clearScreen();
+        System.out.println("___________.___  ________  ___ ______________._.\n" +
+                "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +
+                " |    __)  |   /   \\  ___/    ~    \\|    |   | |\n" +
+                " |     \\   |   \\    \\_\\  \\    Y    /|    |    \\|\n" +
+                " \\___  /   |___|\\______  /\\___|_  / |____|    __\n" +
+                "     \\/                \\/       \\/            \\/");
+        Thread.sleep(700);
         do {
-            clearScreen();
             //set enemy health to subclass health value
             System.out.println("Current enemy health :" + currentEnemy.get("Max Health"));
             // Will set and display Jemad current health of '100'
@@ -111,15 +120,19 @@ public class PlayerCombatLogic {
             //Jemad turn to attack
             if (currentEnemyHp < 1) {
                 System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
+                Player.addDefeatedEnemy(enemyName);
                 dialogue.printCombatOutro();
             }
 
         }while(currentEnemyHp > 1 && jemadHealth > 1 );
     }
 
-    public void battleOutro(){
+    public void battleOutro() throws InterruptedException {
         dialogue.printCombatOutro();
     }
+
+
+
 
 
     //test main
