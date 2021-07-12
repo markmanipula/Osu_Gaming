@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
@@ -17,6 +18,7 @@ public class Client {
     public static void main(String[] args) throws IOException, JSONException {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
+
 
         //for jar file
 //        String roomJson = "com/json/Rooms_JSON.txt";
@@ -137,12 +139,17 @@ public class Client {
                     //this if statement is for looking around gathering for info. look, inspect
                 }else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
-                    System.out.println("Enemies in this room: " + currEnemiesJSArr);
-                    System.out.println("Bosses in this room: " + currBossesJSArr);
+
+                    onlyDisplayUndefeatedEnemies(currEnemiesJSArr);
+                    onlyDisplayUndefeatedBosses(currBossesJSArr);
+
+                    System.out.println("Enemies in this room: " + Player.displayedEnemies);
+                    System.out.println("Bosses in this room: " + Player.displayedBosses);
                     System.out.println("Items in this room: " + currItemsJSArr);
                     System.out.println("People in this room: " + currNPCJSArr);
                     System.out.println("Items in your bag :" + player.getPlayerItems());
-
+                    Player.displayedEnemies.clear();
+                    Player.displayedBosses.clear();
                     //this if statement is for talking to npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
                     JSONObject npcJSObj = n.getJSONObject(noun);
@@ -226,6 +233,35 @@ public class Client {
         String completeNoun = stringBuilder.toString();
 
         return completeNoun;
+    }
+
+    public static ArrayList<String> onlyDisplayUndefeatedEnemies(JSONArray enemiesJS) throws JSONException {
+        for(int i =0; i< enemiesJS.length(); i++){
+            boolean addEnemy = true;
+            for(int y =0; y < Player.defeatedEnemies.toArray().length; y++){
+                if(enemiesJS.get(i).equals(Player.defeatedEnemies.get(y))){
+                    addEnemy = false;
+                }
+            }
+            if(addEnemy == true){
+                Player.displayedEnemies.add((String) enemiesJS.get(i));
+            }
+        };
+        return Player.displayedEnemies;
+    }
+    public static ArrayList<String> onlyDisplayUndefeatedBosses(JSONArray bossesJS) throws JSONException {
+        for(int i =0; i< bossesJS.length(); i++){
+            boolean addBoss = true;
+            for(int y =0; y < Player.defeatedBosses.toArray().length; y++){
+                if(bossesJS.get(i).equals(Player.defeatedBosses.get(y))){
+                    addBoss = false;
+                }
+            }
+            if(addBoss == true){
+                Player.displayedBosses.add((String) bossesJS.get(i));
+            }
+        };
+        return Player.displayedBosses;
     }
 
 }
