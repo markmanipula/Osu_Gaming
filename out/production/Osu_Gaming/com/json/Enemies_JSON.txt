@@ -24,8 +24,8 @@
           "Max Health": 25,
           "Attack": 5
    },
-"Pool boy": {
-          "Max Health": 25,
-          "Attack": 5
-   },
+"Ninja": {
+   "Max Health": 50,
+   	"Attack": 10
+},
 }
