@@ -1,5 +1,6 @@
 package com.combat;
 
+import com.game.GameStart;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -308,5 +309,11 @@ public class CombatDialogue {
 
 
 
+
+
+    }
+    public static void gameOver(){
+        GameStart thisIsTheEnd = new GameStart();
+        thisIsTheEnd.gameEnd();
     }
 }
