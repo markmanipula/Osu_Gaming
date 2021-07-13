@@ -135,8 +135,26 @@ public class PlayerCombatLogic {
 
 
         JSONObject currentEnemy = object.getJSONObject(enemyName);
+        currentEnemyHp = (int) currentEnemy.get("Max Health");
         do{
-            System.out.println("Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemy.getJSONObject("Max Health"));
+            System.out.println("=Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemyHp + "=");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("==========================================================================================\n");
+            System.out.println(jemadMovesList);
+            String userAttack = userInput.nextLine().toLowerCase();
+            System.out.println("Your next attack:");
+            enemyDmg = attacks.jemadMoves(userAttack);
+            System.out.println("You used " + userAttack + "! for " + enemyDmg + "damage!");
+            String pressEnter = userInput.nextLine().toLowerCase();
+            System.out.println("Enter to continue: ");
+
+
 
 
         if (currentEnemyHp < 1) {
