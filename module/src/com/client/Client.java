@@ -134,17 +134,26 @@ public class Client {
                         currentRoomArray = currRoomJSObj.getJSONArray(noun);
                         currentRoom = (String) currentRoomArray.get(0);
                     }
-
-                    //this if statement is for fighting enemies
-                }else if((contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))) || (contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
-                    //combat.combatStart(noun);
-                    combat.combatMethod(e, noun);
-
-                    //this if statement is for fighting boss
-                }else if((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr))) ||(contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
-                    //combat.combatStart(completeNoun);
-                    combat.combatMethod(e, completeNoun);
                 }
+
+                //this if statement is for fighting boss for one complete noun
+                else if((contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
+                    combat.combatMethod(e, completeNoun);
+
+                    //this if statement is for fighting enemies for one word noun
+                } else if (contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
+                    combat.combatMethod(e, noun);
+                }
+
+                //this if statement is for fighting boss for one complete noun
+                else if((contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
+                    combat.combatMethod(e, completeNoun);
+
+                    //this if statement is for fighting boss for one word noun
+                }else if ((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr)))){
+                    combat.combatMethod(e, noun);
+                }
+
                 //this if statement is for looking around gathering for info. look, inspect
                 else if(contains(verb, inspectSynonym)){
                     //Extra information available on request
