@@ -21,7 +21,7 @@
 	"Pool Room":{
 		"NPC":["Pool Player"],
 		"items": ["Pool Cue", "eight ball", "boots"],
-		"enemies": ["Pool Shark"],
+		"enemies": ["pool shark"],
 		"bosses": [""],
 		"name": ["Pool Room"],
 		"east": ["Alley Behind Bar"],
@@ -126,7 +126,7 @@
 	"Elevator":{
 		"NPC":["Bartender", "Cop", "NPC3"],
 		"items": ["Pool Cue", "eight ball", "boots"],
-		"enemies": ["Elevator man"],
+		"enemies": ["elevator man"],
 		"bosses": [""],
 		"name": ["Elevator"],
 		"east": ["Hotel Halls"],

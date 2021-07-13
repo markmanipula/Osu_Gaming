@@ -128,8 +128,9 @@ public class PlayerCombatLogic {
 //        }while(currentEnemyHp > 1 && jemadHealth > 1 );
 //    }
 
-    public void combatMethod(JSONObject object, String enemyName) throws InterruptedException, JSONException {
+    public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException, JSONException {
         clearScreen();
+        CombatDialogue.printStoryIntro(story, enemyName);
         printFight();
         Thread.sleep(700);
 
@@ -149,7 +150,7 @@ public class PlayerCombatLogic {
             String userAttack = userInput.nextLine().toLowerCase();
             System.out.println("Your next attack:");
             enemyDmg = attacks.jemadMoves(userAttack);
-            System.out.println("You used " + userAttack + "! for " + enemyDmg + "damage!");
+            System.out.println("You used " + userAttack + "! for " + enemyDmg + " damage!");
             currentEnemyHp-= enemyDmg;
             System.out.println("Press the enter key to continue");
             String pressEnter = userInput.nextLine().toLowerCase();
@@ -159,6 +160,7 @@ public class PlayerCombatLogic {
             Player.addDefeatedEnemy(enemyName);
             Player.addDefeatedBoss(enemyName);
             dialogue.printCombatOutro();
+            CombatDialogue.printStoryOutro(story, enemyName);
         }
 
     }while(currentEnemyHp > 1 && jemadHealth > 1 );

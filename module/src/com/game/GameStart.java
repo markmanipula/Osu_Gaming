@@ -57,7 +57,7 @@ public class GameStart {
         PlayerCombatLogic.clearScreen();
         //Display Legend
         Player.legend();
-        System.out.println("you step out of your cab, in front of the entrance to a bar at the casino. ");
+        System.out.println("you step out of your cab, in front of the entrance to a bar at the casino... ");
         Thread.sleep(3000);
     }
     //Runs when player finishes game
