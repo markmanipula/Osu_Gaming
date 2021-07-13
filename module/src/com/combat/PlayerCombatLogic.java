@@ -1,8 +1,10 @@
 package com.combat;
+import com.game.GameStart;
 import com.game.Player;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.client.Client;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,6 +32,9 @@ public class PlayerCombatLogic {
 
     //object for enemy combat methods
     EnemyCombat enemy = new EnemyCombat("Bouncer");
+
+    //Combat dialogue objects
+    GameStart endGame = new GameStart();
 
     public PlayerCombatLogic() throws IOException, JSONException {
     }
@@ -78,55 +83,7 @@ public class PlayerCombatLogic {
     JSONObject j = new JSONObject(moveContents);
     JSONArray jemadMovesList = j.getJSONArray("Jemad Attacks");
 
-    // method for Player Combat
-    // jemadMoveList is the reference to the hashmap
-//    public void combatStart(String enemyName) throws InterruptedException {
-//        HashMap<String, Integer> currentEnemy = enemy.enemyParser(enemyName);
-//        int currentEnemyHp = 0;
-//
-//        clearScreen();
-//        System.out.println("___________.___  ________  ___ ______________._.\n" +
-//                "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +
-//                " |    __)  |   /   \\  ___/    ~    \\|    |   | |\n" +
-//                " |     \\   |   \\    \\_\\  \\    Y    /|    |    \\|\n" +
-//                " \\___  /   |___|\\______  /\\___|_  / |____|    __\n" +
-//                "     \\/                \\/       \\/            \\/");
-//        Thread.sleep(700);
-//        do {
-//            //set enemy health to subclass health value
-//            System.out.println("Current enemy health :" + currentEnemy.get("Max Health"));
-//            // Will set and display Jemad current health of '100'
-//            System.out.println("What kind of attack do I want to do? ");
-//            //this outputs jemad moves reading an external json file
-//            System.out.println(jemadMovesList);
-//
-//            String userAttack = userInput.nextLine().toLowerCase();
-//            System.out.println(attacks.attack(userAttack));
-//
-//            //displays points of damage from Jemad's attack
-//            enemyDmg = attacks.jemadMoves(userAttack);
-//            // take the enemy dmg and modify
-//            currentEnemyHp = currentEnemy.get("Max Health");
-//            currentEnemyHp -= enemyDmg;
-//            currentEnemy.put("Max Health", currentEnemyHp);
-////            currentEnemy.compute("Max Health", (String, Integer) -> Integer -= enemyDmg);
-//            System.out.println("The Bouncer took " + enemyDmg + " points of damage");
-//            // Enemies turn to attack method
-//            ArrayList<String> enemyTurn = enemy.enemyMoves();
-//            // print out enemy attack and damage to player
-//            System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
-//            jemadHealth -= Integer.parseInt(enemyTurn.get(1));
-//            System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
-//            //Jemad turn to attack
-//            if (currentEnemyHp < 1) {
-//                System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
-//                Player.addDefeatedEnemy(enemyName);
-//                Player.addDefeatedBoss(enemyName);
-//                dialogue.printCombatOutro();
-//            }
-//
-//        }while(currentEnemyHp > 1 && jemadHealth > 1 );
-//    }
+
 
     public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException, JSONException {
         clearScreen();
@@ -154,6 +111,13 @@ public class PlayerCombatLogic {
             currentEnemyHp-= enemyDmg;
             System.out.println("Press the enter key to continue");
             String pressEnter = userInput.nextLine().toLowerCase();
+            //enemy turn to attack
+            // Enemies turn to attack method
+            ArrayList<String> enemyTurn = enemy.enemyMoves();
+           // print out enemy attack and damage to player
+            System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
+            jemadHealth -= Integer.parseInt(enemyTurn.get(1));
+            System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
 
         if (currentEnemyHp < 1) {
             System.out.println("Enemy health has now dropped to 0");
@@ -161,6 +125,14 @@ public class PlayerCombatLogic {
             Player.addDefeatedBoss(enemyName);
             dialogue.printCombatOutro();
             CombatDialogue.printStoryOutro(story, enemyName);
+        }else if (jemadHealth < 1){
+            System.out.println("..damn, my skills are getting dull\n");
+            System.out.println("*Jemad passes out and never heard from again...*");
+            Thread.sleep(3000);
+            System.out.println("Better luck next time...");
+            System.out.println("Press Enter to exit");
+            String userContinue = userInput.nextLine().toLowerCase();
+            System.exit(0);
         }
 
     }while(currentEnemyHp > 1 && jemadHealth > 1 );

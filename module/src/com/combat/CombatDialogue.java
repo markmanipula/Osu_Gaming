@@ -312,7 +312,7 @@ public class CombatDialogue {
 
 
     }
-    public static void gameOver(){
+    public void gameOver(){
         GameStart thisIsTheEnd = new GameStart();
         thisIsTheEnd.gameEnd();
     }
