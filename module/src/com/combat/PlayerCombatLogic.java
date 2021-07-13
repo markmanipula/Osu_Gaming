@@ -1,4 +1,14 @@
 package com.combat;
+import com.game.GameStart;
+import com.game.Player;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import com.client.Client;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -23,25 +33,34 @@ public class PlayerCombatLogic {
     //object for enemy combat methods
     EnemyCombat enemy = new EnemyCombat("Bouncer");
 
+    //Combat dialogue objects
+    GameStart endGame = new GameStart();
+
+    public PlayerCombatLogic() throws IOException, JSONException {
+    }
+
     //method to clear screen
     public final static void clearScreen(){
-        try
-        {
-            final String os = System.getProperty("os.name");
+//        try
+//        {
+//            final String os = System.getProperty("os.name");
+//
+//            if (os.contains("Windows"))
+//            {
+//                Runtime.getRuntime().exec("cls");
+//            }
+//            else
+//            {
+//                Runtime.getRuntime().exec("clear");
+//            }
+//        }
+//        catch (final Exception e)
+//        {
+//            //  Handle any exceptions.
+//        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
-            if (os.contains("Windows"))
-            {
-                Runtime.getRuntime().exec("cls");
-            }
-            else
-            {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            //  Handle any exceptions.
-        }
     }
 
     // Method to determine subtraction to enemy health
@@ -53,45 +72,87 @@ public class PlayerCombatLogic {
         dialogue.printCombatIntro();
 
     }
+    //for JAR file
+    String movesJson = "com/json/Moves_JSON.txt";
 
-    // method for Player Combat
-    // jemadMoveList is the reference to the hashmap
-    public void combatStart(String enemyName) {
-        HashMap<String, Integer> currentEnemy = enemy.enemyParser(enemyName);
-        int currentEnemyHp = 0;
-        do {
+    //for intellij Terminal
+//    String movesJson = "module/src/com/json/Moves_JSON.txt";
+    String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
+
+    //json for moveContents
+    JSONObject j = new JSONObject(moveContents);
+    JSONArray jemadMovesList = j.getJSONArray("Jemad Attacks");
+
+
+
+    public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException, JSONException {
+        clearScreen();
+        CombatDialogue.printStoryIntro(story, enemyName);
+        printFight();
+        Thread.sleep(700);
+
+        JSONObject currentEnemy = object.getJSONObject(enemyName);
+        currentEnemyHp = (int) currentEnemy.get("Max Health");
+        do{
             clearScreen();
-            //set enemy health to subclass health value
-            System.out.println(currentEnemy.get("Max Health"));
-            // Will set and display Jemad current health of '100'
-            System.out.println("What kind of attack do I want to do? ");
-            System.out.println(Arrays.toString(attacks.jemadAttacks));
-            String userCommand = userInput.nextLine();
-            System.out.println( attacks.attack(userCommand));
-            //displays points of damage from Jemad's attack
-            enemyDmg = attacks.jemadMoves(userCommand);
-            // take the enemy dmg and modify
-            currentEnemyHp = currentEnemy.get("Max Health");
-            currentEnemyHp -= enemyDmg;
-            currentEnemy.put("Max Health", currentEnemyHp);
-//            currentEnemy.compute("Max Health", (String, Integer) -> Integer -= enemyDmg);
-            System.out.println("The Bouncer took " + enemyDmg + " points of damage");
+            System.out.println("=Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemyHp + "=");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("=\n");
+            System.out.print("==========================================================================================\n");
+            System.out.println(jemadMovesList);
+            String userAttack = userInput.nextLine().toLowerCase();
+            System.out.println("Your next attack:");
+            enemyDmg = attacks.jemadMoves(userAttack);
+            System.out.println("You used " + userAttack + "! for " + enemyDmg + " damage!");
+            currentEnemyHp-= enemyDmg;
+
+            //enemy turn to attack
             // Enemies turn to attack method
             ArrayList<String> enemyTurn = enemy.enemyMoves();
-            // print out enemy attack and damage to player
+           // print out enemy attack and damage to player
             System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
             jemadHealth -= Integer.parseInt(enemyTurn.get(1));
             System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
-            //Jemad turn to attack
-            if (currentEnemyHp < 1) {
-                System.out.println("Enemy health has now dropped to " + this.currentEnemyHp);
-                dialogue.printCombatOutro();
-            }
+            System.out.println("Press the enter key to continue");
+            String pressEnter = userInput.nextLine().toLowerCase();
 
-        }while(currentEnemyHp > 1 && jemadHealth > 1 );
+        if (currentEnemyHp < 1) {
+            System.out.println("Enemy health has now dropped to 0");
+            Player.addDefeatedEnemy(enemyName);
+            Player.addDefeatedBoss(enemyName);
+            dialogue.printCombatOutro();
+            CombatDialogue.printStoryOutro(story, enemyName);
+        }else if (jemadHealth < 1){
+            System.out.println("..damn, my skills are getting dull\n");
+            System.out.println("*Jemad passes out and never heard from again...*");
+            Thread.sleep(3000);
+            System.out.println("Better luck next time...");
+            System.out.println("Press Enter to exit");
+            String userContinue = userInput.nextLine().toLowerCase();
+            System.exit(0);
+        }
+
+    }while(currentEnemyHp > 1 && jemadHealth > 1 );
     }
 
-    public void battleOutro(){
+    public void printFight(){
+        System.out.println("___________.___  ________  ___ ______________._.\n" +
+                "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +
+                " |    __)  |   /   \\  ___/    ~    \\|    |   | |\n" +
+                " |     \\   |   \\    \\_\\  \\    Y    /|    |    \\|\n" +
+                " \\___  /   |___|\\______  /\\___|_  / |____|    __\n" +
+                "     \\/                \\/       \\/            \\/");
+    }
+
+    public void battleOutro() throws InterruptedException {
         dialogue.printCombatOutro();
     }
+
+
+
 }

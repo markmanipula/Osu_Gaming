@@ -1,8 +1,10 @@
 {
 "go":["go", "move", "proceed", "advance", "walk", "run", "jump", "travel"],
 "fight":["fight", "attack", "tackle", "hit", "charge", "strike", "rush", "push", "storm", "punch", "kick"],
-"get":["get", "grab", "obtain", "pick", "acquire"],
+"get":["get", "take", "grab", "obtain", "pick", "acquire"],
 "talk":["talk", "speak", "chat"],
 "inspect":["inspect", "look", "investigate", "glance", "examine", "explore", "inquire", "delve", "dig"],
 "direction": ["north", "south", "east", "west"],
+"legend": ["legend"],
+"quit": ["quit"],
 }

@@ -1,14 +1,21 @@
 {
-"Bar Tender": {
+"bartender": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Life Guard": {
+"life guard": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Big Ben": {
+"big ben": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-}
+"pit boss": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Don Fury": {
+    "Max Health": 75,
+    "Attack": 10
+},
