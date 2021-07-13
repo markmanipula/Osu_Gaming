@@ -1,17 +1,17 @@
 {
-"Bartender": {
+"bartender": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Life Guard": {
+"life guard": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Big Ben": {
+"big ben": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Pit Boss": {
+"pit boss": {
 	"Max Health": 50,
 	"Attack": 10
 	},
