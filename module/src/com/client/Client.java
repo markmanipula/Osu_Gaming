@@ -17,6 +17,7 @@ public class Client {
     //this is a test main
     public static void main(String[] args) throws IOException, JSONException {
 
+
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
 
@@ -309,4 +310,7 @@ public class Client {
 
     }
 
+    public static void startingRoom() {
+
+    }
 }
