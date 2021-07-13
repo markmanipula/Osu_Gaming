@@ -142,7 +142,7 @@
 
     },
 "Game Outro":{
-    "outro":["After all this Madness, the only correct thing to do is to let the kid decide. Go back to a family that held them hostage at birth but came to love and raise them as their own, or stay with a father they know nothing about apart from sharing the same blood. The decision is not an easy one to make for someone so young. What would you do if in the same position Jemad?"],
+    "outro":"After all this Madness, the only correct thing to do is to let the kid decide. Go back to a family that held them hostage at birth but came to love and raise them as their own, or stay with a father they know nothing about apart from sharing the same blood. The decision is not an easy one to make for someone so young. What would you do if in the same position Jemad?",
 }
 }
 

@@ -61,7 +61,7 @@ public class GameStart {
         Thread.sleep(3000);
     }
     //Runs when player finishes game
-    public void gameEnd(){
+    public static void gameEnd(){
         //Clears screen for player
         PlayerCombatLogic.clearScreen();
 
