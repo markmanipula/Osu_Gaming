@@ -8,7 +8,6 @@ public class Player{
 
     //can't be changed so there's no setter
     private String name = "Jemad";
-    //take out map?
     private Map map = new Map();
     private Items items = new Items();
 
@@ -63,10 +62,6 @@ public class Player{
         return playerItems;
     }
 
-    public Map map(){
-        return map;
-    }
-
     public static void legend(){
         PlayerCombatLogic.clearScreen();
         System.out.println("--------------------------Legend--------------------------");
@@ -98,23 +93,6 @@ public class Player{
 
     public static void addDefeatedBoss(String boss){
         defeatedBosses.add(boss);
-    }
-
-    //test client main
-    public static void main(String[] args) {
-
-        Map map = new Map();
-        Player player = new Player(map);
-
-        player.itemList(player.map().room11Contents());
-        String item = player.items.getItem(map.room11Contents(), "Pool Queue");
-
-        player.addItem(item);
-
-        System.out.println(player.getPlayerItems());
-
-        System.out.println(Arrays.toString(player.map().newRoom11Items(item)));
-
     }
 }
 

@@ -52,4 +52,20 @@
    "Max Health": 50,
    	"Attack": 10
 },
+"Bartender": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Life Guard": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Big Ben": {
+	"Max Health": 50,
+	"Attack": 10
+	},
+"Don Fury": {
+    "Max Health": 75,
+    "Attack": 10,
+},
 }
