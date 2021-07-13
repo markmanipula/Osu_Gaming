@@ -11,6 +11,10 @@
 	"Max Health": 50,
 	"Attack": 10
 	},
+"Pit Boss": {
+	"Max Health": 50,
+	"Attack": 10
+	},
 "Don Fury": {
     "Max Health": 75,
     "Attack": 10

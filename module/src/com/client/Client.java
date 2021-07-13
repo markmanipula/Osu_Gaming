@@ -138,20 +138,20 @@ public class Client {
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
-                    combat.combatMethod(e, completeNoun);
+                    combat.combatMethod(e, sotfStory, completeNoun);
 
                     //this if statement is for fighting enemies for one word noun
                 } else if (contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
-                    combat.combatMethod(e, noun);
+                    combat.combatMethod(e, sotfStory, noun);
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
-                    combat.combatMethod(e, completeNoun);
+                    combat.combatMethod(e, sotfStory, completeNoun);
 
                     //this if statement is for fighting boss for one word noun
                 }else if ((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr)))){
-                    combat.combatMethod(e, noun);
+                    combat.combatMethod(e, sotfStory, noun);
                 }
 
                 //this if statement is for looking around gathering for info. look, inspect
