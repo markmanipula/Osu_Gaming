@@ -17,10 +17,7 @@ public class Client {
     //this is a test main
     public static void main(String[] args) throws IOException, JSONException {
 
-
         PlayerCombatLogic combat = new PlayerCombatLogic();
-
-
 
         //for jar file
 //        String roomJson = "com/json/Rooms_JSON.txt";
@@ -86,9 +83,6 @@ public class Client {
             boolean running = true;
             while(running){
                 divider();
-                //testing
-                //Player.defeatedBosses.add("Don Fury");
-                System.out.println(Player.defeatedBosses.toString());
             //Create If statements. Starts false, then after you visit once it is true for the rest of the game.
 
                 //for the input direction, compare that to direc

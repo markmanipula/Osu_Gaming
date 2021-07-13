@@ -161,7 +161,7 @@ public class CombatDialogue {
                 scenes.add(bi3);
                 scenes.add(bci);
                 break;
-            case "Bartender":
+            case "bartender":
                 String abbi1 = (String) story.getJSONObject("Bar").getJSONObject("Alley Behind Bar").getString("Intro1");
                 String abbi2 = (String) story.getJSONObject("Bar").getJSONObject("Alley Behind Bar").getString("Intro2");
                 String abbi3 = (String) story.getJSONObject("Bar").getJSONObject("Alley Behind Bar").getString("Intro3");
@@ -171,8 +171,8 @@ public class CombatDialogue {
                 scenes.add(abbi3);
                 scenes.add(abbci);
                 break;
-            case "Life Guard": break;
-            case "Pit Boss":
+            case "life guard": break;
+            case "pit boss":
                 String vri1 = (String) story.getJSONObject("Casino Floor").getJSONObject("VIP Room").getString("Intro1");
                 String vri2 = (String) story.getJSONObject("Casino Floor").getJSONObject("VIP Room").getString("Intro2");
                 String vri3 = (String) story.getJSONObject("Casino Floor").getJSONObject("VIP Room").getString("Intro3");
@@ -182,7 +182,7 @@ public class CombatDialogue {
                 scenes.add(vri3);
                 scenes.add(vrci);
                 break;
-            case "Big Ben":
+            case "big ben":
                 String pduli1 = (String) story.getJSONObject("Pool & Cabanas").getJSONObject("Pool Deck Upper Level").getString("Intro1");
                 String pduli2 = (String) story.getJSONObject("Pool & Cabanas").getJSONObject("Pool Deck Upper Level").getString("Intro2");
                 String pduli3 = (String) story.getJSONObject("Pool & Cabanas").getJSONObject("Pool Deck Upper Level").getString("Intro3");
@@ -276,19 +276,19 @@ public class CombatDialogue {
                     String bi1 = (String) story.getJSONObject("Hotel Suite").getJSONObject("Balcony").getString("Combat outro Balcony");
                     scenes.add(bi1);
                     break;
-                case "Bartender":
+                case "bartender":
                     String abbo = (String) story.getJSONObject("Bar").getJSONObject("Alley Behind Bar").getString("Combat outro Bar alley");
 
                     scenes.add(abbo);
                     break;
 
-                case "Life Guard": break;
-                case "Pit Boss":
+                case "life guard": break;
+                case "pit boss":
                     String vri1 = (String) story.getJSONObject("Casino Floor").getJSONObject("VIP Room").getString("Combat outro VIP Room");
                     scenes.add(vri1);
                     break;
 
-                case "Big Ben":
+                case "big ben":
                     String pduli1 = (String) story.getJSONObject("Pool & Cabanas").getJSONObject("Pool Deck Upper Level").getString("Combat outro Pool Deck Upper level");
                     scenes.add(pduli1);
                     break;

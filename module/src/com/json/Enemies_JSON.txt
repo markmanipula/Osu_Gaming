@@ -8,63 +8,63 @@
 	"Max Health": 25,
 	"Attack": 5
 		},
-"Pool Shark": {
+"pool shark": {
      "Max Health": 25,
      "Attack": 5
     },
-"Biker": {
+"biker": {
        "Max Health": 25,
        "Attack": 5
    },
-"Pool boy": {
+"pool boy": {
        "Max Health": 25,
        "Attack": 5
    },
-"Locker Guard": {
+"locker guard": {
        "Max Health": 25,
-       "Attack": 5
+       "Attack": 5,
    },
 "dishwasher": {
        "Max Health": 25,
        "Attack": 5
    },
-"Slots guard": {
+"slots guard": {
        "Max Health": 25,
        "Attack": 5
    },
-"Pit guard": {
+"pit guard": {
        "Max Health": 25,
        "Attack": 5
    },
-"Chef": {
+"chef": {
        "Max Health": 25,
        "Attack": 5
    },
-"Elevator man": {
+"elevator man": {
        "Max Health": 25,
        "Attack": 5
    },
-"Hall Guard": {
+"hall guard": {
        "Max Health": 25,
        "Attack": 5
    },
-"Ninja": {
+"ninja": {
    "Max Health": 50,
    	"Attack": 10
 },
-"Bartender": {
+"bartender": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Life Guard": {
+"life guard": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Big Ben": {
+"big ben": {
 	"Max Health": 50,
 	"Attack": 10
 	},
-"Pit Boss": {
+"pit boss": {
 	"Max Health": 50,
 	"Attack": 10
 	},
