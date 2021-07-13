@@ -19,7 +19,7 @@
 		"Description": ["Inside you can smell the money on these folks as much as you can smell the expensive drinks that mostly seemed to make it to the floor rather than their mouths. The cities affluent and elite stumbling around in drunken stupor 'Loose lips can reveal great information, even more when alcohol did the loosening'", "room change 1", "room change 2"],
 		},
 	"Pool Room":{
-		"NPC":["Pool Player"],
+		"NPC":["pool player"],
 		"items": ["Pool Cue", "eight ball", "boots"],
 		"enemies": ["pool shark"],
 		"bosses": [""],
