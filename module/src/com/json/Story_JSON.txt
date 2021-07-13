@@ -130,7 +130,7 @@
         "Intro2":"'Good thing I aint afraid of heights' Jemad says to himself as he takes a look over the side. Just as he turns around, he barely has time to dodge a object hurtling towards his head",
         "Intro3":"As he looks up, he see's a figure cloaked all in black, eyes barely seen behind a face covering. 'Are you kidding me? A Ninja in this day and age? I always wanted to fight a ninja I guess..'",
         "Combat intro Balcony":"The ninja rushes towards Jemad ready to strike",
-        "Combat outro Balcony":"'As the ninja tumbled over the edge of the balcony unto the bottom one below. Jemad looks over the side 'I thought ninjas always landed on their fight?' he said with a smile as he continued to climb up the balcony on his way to the rooftop floor",
+        "Combat outro Balcony":"'As the ninja tumbled over the edge of the balcony unto the bottom one below. Jemad looks over the side 'I thought ninjas always landed on their feet?' he said with a smile as he continued to climb up the balcony on his way to the rooftop floor",
     },
     "Rooftop: Final Boss":{
         "Rooftop: Final Boss scene":["'At Last' Jemad thought to himself as he finally made it to the Roof top suite balcony. Inside he could see a office with a large solid wood desk and 2 figures standing near it. One figure was tall and solid, the other about waist high to Jemad. 'Must be the kid but who are they with?' Jemad walks inside to finally bring this madness to a close"],

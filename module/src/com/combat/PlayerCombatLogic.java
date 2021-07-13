@@ -73,10 +73,10 @@ public class PlayerCombatLogic {
 
     }
     //for JAR file
-    //String movesJson = "com/json/Moves_JSON.txt";
+    String movesJson = "com/json/Moves_JSON.txt";
 
     //for intellij Terminal
-    String movesJson = "module/src/com/json/Moves_JSON.txt";
+//    String movesJson = "module/src/com/json/Moves_JSON.txt";
     String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents
@@ -94,6 +94,7 @@ public class PlayerCombatLogic {
         JSONObject currentEnemy = object.getJSONObject(enemyName);
         currentEnemyHp = (int) currentEnemy.get("Max Health");
         do{
+            clearScreen();
             System.out.println("=Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemyHp + "=");
             System.out.print("=\n");
             System.out.print("=\n");
@@ -109,8 +110,7 @@ public class PlayerCombatLogic {
             enemyDmg = attacks.jemadMoves(userAttack);
             System.out.println("You used " + userAttack + "! for " + enemyDmg + " damage!");
             currentEnemyHp-= enemyDmg;
-            System.out.println("Press the enter key to continue");
-            String pressEnter = userInput.nextLine().toLowerCase();
+
             //enemy turn to attack
             // Enemies turn to attack method
             ArrayList<String> enemyTurn = enemy.enemyMoves();
@@ -118,6 +118,8 @@ public class PlayerCombatLogic {
             System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
             jemadHealth -= Integer.parseInt(enemyTurn.get(1));
             System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
+            System.out.println("Press the enter key to continue");
+            String pressEnter = userInput.nextLine().toLowerCase();
 
         if (currentEnemyHp < 1) {
             System.out.println("Enemy health has now dropped to 0");

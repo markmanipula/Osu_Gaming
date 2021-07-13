@@ -12,10 +12,9 @@ public class GameStart {
 
     public static void start(String intro) throws InterruptedException {
         PlayerCombatLogic.clearScreen();
-        System.out.println("-----------------------\n" +
-                "\n");
+        System.out.println("-----------------------\n");
         Thread.sleep(4000);
-        System.out.println("\n" + "\n"+ "\n"+ "\n");
+        System.out.println("\n");
         System.out.println(",.\n" +
                 " \\-'__\n" +
                 "/ o.__o____ \n" +
