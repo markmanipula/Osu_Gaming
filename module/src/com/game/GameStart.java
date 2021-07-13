@@ -1,6 +1,8 @@
 package com.game;
 
 import com.combat.PlayerCombatLogic;
+import org.json.JSONObject;
+import com.client.Client;
 
 import java.util.Scanner;
 
@@ -62,6 +64,7 @@ public class GameStart {
     public static void gameEnd(){
         //Clears screen for player
         PlayerCombatLogic.clearScreen();
+
         System.out.println("Thank you for playing..\n");
         System.out.println("\n" + "\n"+ "\n"+ "\n");
         System.out.println(" _________      .__       .__  __            _____    __  .__             ___________.__          __        \n" +
@@ -78,6 +81,7 @@ public class GameStart {
                 "\\____|__  (____  /\\____ |___|  /\\___  >____  >____  >  \\____/|__|    \\________|\\___  >__|_|  (____  /\\____ | \n" +
                 "        \\/     \\/      \\/    \\/     \\/     \\/     \\/                               \\/      \\/     \\/      \\/ ");
 
-        System.out.println("\n" + "\n"+ "\n"+ "\n"+ "\n"+ "\n"+ "\n");
+        System.out.println("\n" + "\n"+ "\n");
+        System.out.println("Collaboration by Daniel, Mark and Jelani");
     }
 }
