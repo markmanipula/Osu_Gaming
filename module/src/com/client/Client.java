@@ -168,8 +168,10 @@ public class Client {
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
                     Player.displayedBosses.clear();
-                    //this if statement is for talking to npc
-                }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
+
+
+                    //this if statement is for talking to one word noun npc
+                }else if(contains(verb, talkSynonym) && (contains(noun, currNPCJSArr))){
                     JSONObject npcJSObj = n.getJSONObject(noun);
                     String npcSaying1 = npcJSObj.getString("saying1");
                     String npcName = npcJSObj.getString("name");
@@ -177,8 +179,21 @@ public class Client {
                     
                     System.out.println(npcName + ": " + npcSaying1);
                     Thread.sleep(1000);
-                    //this if statement is for getting/ taking items in the room
-                }else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
+                }
+
+                //talking to npc with complete noun
+                else if(contains(verb, talkSynonym) && (contains(completeNoun, currNPCJSArr))){
+                    JSONObject npcJSObj = n.getJSONObject(noun);
+                    String npcSaying1 = npcJSObj.getString("saying1");
+                    String npcName = npcJSObj.getString("name");
+                    //add logic for if user's item causes new interaction with npc, then second voice line
+
+                    System.out.println(npcName + ": " + npcSaying1);
+                    Thread.sleep(1000);
+                }
+
+                //this if statement is for getting/ taking items in the room
+                else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
                     System.out.println(noun + " taken");
                     player.addItem(noun);
                     Thread.sleep(1000);
