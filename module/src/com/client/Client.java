@@ -21,6 +21,7 @@ public class Client {
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
 
+
         //for jar file
 //        String roomJson = "com/json/Rooms_JSON.txt";
 //        String enemiesJson = "com/json/Enemies_JSON.txt";
@@ -85,6 +86,9 @@ public class Client {
             boolean running = true;
             while(running){
                 divider();
+                //testing
+                //Player.defeatedBosses.add("Don Fury");
+                System.out.println(Player.defeatedBosses.toString());
             //Create If statements. Starts false, then after you visit once it is true for the rest of the game.
 
                 //for the input direction, compare that to direc
@@ -169,8 +173,10 @@ public class Client {
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
                     Player.displayedBosses.clear();
-                    //this if statement is for talking to npc
-                }else if(contains(verb, talkSynonym) && (contains(noun, listOfNPCs))){
+
+
+                    //this if statement is for talking to one word noun npc
+                }else if(contains(verb, talkSynonym) && (contains(noun, currNPCJSArr))){
                     JSONObject npcJSObj = n.getJSONObject(noun);
                     String npcSaying1 = npcJSObj.getString("saying1");
                     String npcName = npcJSObj.getString("name");
@@ -178,8 +184,21 @@ public class Client {
                     
                     System.out.println(npcName + ": " + npcSaying1);
                     Thread.sleep(1000);
-                    //this if statement is for getting/ taking items in the room
-                }else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
+                }
+
+                //talking to npc with complete noun
+                else if(contains(verb, talkSynonym) && (contains(completeNoun, currNPCJSArr))){
+                    JSONObject npcJSObj = n.getJSONObject(noun);
+                    String npcSaying1 = npcJSObj.getString("saying1");
+                    String npcName = npcJSObj.getString("name");
+                    //add logic for if user's item causes new interaction with npc, then second voice line
+
+                    System.out.println(npcName + ": " + npcSaying1);
+                    Thread.sleep(1000);
+                }
+
+                //this if statement is for getting/ taking items in the room
+                else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
                     System.out.println(noun + " taken");
                     player.addItem(noun);
                     Thread.sleep(1000);
@@ -202,11 +221,16 @@ public class Client {
                     System.out.println("Invalid input");
                 }
                 //then run room??Contents method based on room?? that input direction points to
+                if(Player.defeatedBosses.contains("Don Fury")){
+                    running = false;
+                }
             }
+
 
         }catch (IOException | JSONException | InterruptedException e){
             e.printStackTrace();
         }
+        GameStart.gameEnd();
     }
 
     //checks the json array and checks if an element is in the array
@@ -281,6 +305,9 @@ public class Client {
             }
         };
         return Player.displayedBosses;
+    }
+    public void triggerEndGame(){
+
     }
 
     public static void startingRoom() {

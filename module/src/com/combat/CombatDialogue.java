@@ -295,7 +295,9 @@ public class CombatDialogue {
 
                 case "Don Fury":
                     String ri1 = (String) story.getJSONObject("Hotel Suite").getJSONObject("Rooftop: Final Boss").getString("Combat outro Rooftop: Final Boss");
+                    String gameOutro = (String) story.getJSONObject("Hotel Suite").getJSONObject("Game Outro").getString("outro");
                     scenes.add(ri1);
+                    scenes.add(gameOutro);
                     break;
 
 
