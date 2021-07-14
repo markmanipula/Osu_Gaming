@@ -13,7 +13,7 @@ public class GameStart {
     public static void start(String intro) throws InterruptedException {
         PlayerCombatLogic.clearScreen();
         System.out.println("-----------------------\n");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         System.out.println("\n");
         System.out.println(",.\n" +
                 " \\-'__\n" +
@@ -23,7 +23,7 @@ public class GameStart {
                 "  | /\n" +
                 "  \\_\\\n" +
                 "  -''");
-        System.out.println("-----------------------");
+        System.out.println("--------Loading--------");
         Thread.sleep(2000);
         PlayerCombatLogic.clearScreen();
 
