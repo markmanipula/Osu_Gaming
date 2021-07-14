@@ -20,29 +20,8 @@ public class Client {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
-        //for jar file
-//        String roomJson = "com/json/Rooms_JSON.txt";
-//        String enemiesJson = "com/json/Enemies_JSON.txt";
-//        String movesJson = "com/json/Moves_JSON.txt";
-//        String synonymsJson = "com/json/Synonyms_JSON.txt";
-//        String storyJson = "com/json/Story_JSON.txt";
-//        String npcJson = "com/json/NPC_JSON.txt";
-
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
-//        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
-//            String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
-//            String enemyContents = new String((Files.readAllBytes(Paths.get(enemiesJson))));
-//            String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
-//            String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
-//            String storyContents = new String((Files.readAllBytes(Paths.get(storyJson))));
-//            String npcContents = new String((Files.readAllBytes(Paths.get(npcJson))));
-
             Map map = new Map();
             Player player = new Player(map);
 
@@ -70,7 +49,8 @@ public class Client {
             JSONObject sotfStory = ReadStoryContentJson.getAllStoryContentJSON();
             JSONObject sotfIntro = (JSONObject) sotfStory.get("Game Intro");
             JSONArray storyArray = (JSONArray) sotfIntro.get("Intro");
-            String storyIntro = (String) storyArray.get(0);
+            // game intro
+            String storyIntro = ReadStoryContentJson.trimGameIntro("Game Intro");
 //            JSONObject startingRoom = r.getJSONObject("Outside Bar");
 
             //json for npcContents
@@ -241,7 +221,6 @@ public class Client {
     //checks the json array and checks if an element is in the array
     public static boolean contains(String command, JSONArray arr) {
         if(arr == null || arr.size() == 0) return false;
-
         for(int i = 0; i< arr.size(); i++){
             if(arr.get(i).equals(command)){
                 return true;
@@ -256,13 +235,12 @@ public class Client {
 
     public static String[] commandChecker(String input){
 
-        if(input == null) return new String[]{""};
+        if(input == null || input.length() == 0) return new String[]{""};
 
         String[] array = input.split(" ");
         //handles the empty input
-        if(array.length == 0) return new String[] {""};
+        if(array == null || array.length < 2) return new String[] {""};
         //puts words in the array. to access, get first and last index
-        StringBuilder stringBuilder = new StringBuilder("");
         for(String i : array){
             i.toLowerCase();
         }
