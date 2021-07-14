@@ -20,7 +20,6 @@ public class PlayerCombatLogic {
     private int jemadHealth = 100;
     private int enemyDmg = 0;
     private int jemadDmg = 0;
-
     //obj to take user input for attacks
      Scanner userInput = new Scanner(System.in);
 
@@ -73,10 +72,10 @@ public class PlayerCombatLogic {
 
     }
     //for JAR file
-    String movesJson = "com/json/Moves_JSON.txt";
+    //String movesJson = "com/json/Moves_JSON.txt";
 
     //for intellij Terminal
-//    String movesJson = "module/src/com/json/Moves_JSON.txt";
+    String movesJson = "module/src/com/json/Moves_JSON.txt";
     String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents
