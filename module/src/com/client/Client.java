@@ -97,8 +97,11 @@ public class Client {
                 //Description
                 JSONObject currRoomJSObj = (JSONObject) r.get(currentRoom);
 
-                JSONArray des1 = (JSONArray) currRoomJSObj.get("Description");
-                String des2 = (String) des1.get(0);
+                // Jun: This data is only being used in these two lines
+                // JSONArray des1 = (JSONArray) currRoomJSObj.get("Description");
+                // String des2 = (String) des1.get(0);
+                String des2 = ReadRoomContentJson.trimRoomDescription(currentRoom);
+
                 //Enemies
                 JSONArray currEnemiesJSArr = (JSONArray) currRoomJSObj.get("enemies");
 
