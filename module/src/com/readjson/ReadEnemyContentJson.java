@@ -30,4 +30,9 @@ public class ReadEnemyContentJson {
         JSONObject enemyObj = (JSONObject) allEnemyObj.get(enemyName);
         return enemyObj;
     }
+
+//    public static void main(String[] args) {
+//        JSONObject allEnemyObj = ReadEnemyContentJson.getAllEnemyContentJSON();
+//        System.out.println(allEnemyObj.containsKey("bouncer"))
+//    }
 }

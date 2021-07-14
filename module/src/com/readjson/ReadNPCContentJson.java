@@ -1,6 +1,5 @@
 package com.readjson;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -10,26 +9,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class ReadSynonymsContentJson {
+public class ReadNPCContentJson {
     private static JSONParser parser = null;
 
-    public static JSONObject getAllSynonymContentJSON() {
+    public static JSONObject getAllNPCContentJSON() {
         parser = new JSONParser();
-        InputStream synonymsJSON = ReadSynonymsContentJson.class.getResourceAsStream("/Synonyms_JSON.json");
+        InputStream synonymsJSON = ReadStoryContentJson.class.getResourceAsStream("/NPC_JSON.json");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(synonymsJSON))) {
-            JSONObject synonym = (JSONObject) parser.parse(reader);
-            return synonym;
+            JSONObject npcObject = (JSONObject) parser.parse(reader);
+            return npcObject;
         } catch (IOException | ParseException ioException) {
             ioException.printStackTrace();
             return null;
         }
     }
-
-    // method to get each commands
-    public static JSONArray getActionSynonym(String action) {
-        JSONObject synonym= getAllSynonymContentJSON();
-        JSONArray synonymArray = (JSONArray) synonym.get(action);
-        return synonymArray;
-    }
-
 }
