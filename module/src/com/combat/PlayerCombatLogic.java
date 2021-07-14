@@ -1,10 +1,13 @@
 package com.combat;
 import com.game.GameStart;
 import com.game.Player;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.client.Client;
+import com.readjson.ReadMoveContentJson;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
+// import com.client.Client;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,6 +23,7 @@ public class PlayerCombatLogic {
     private int jemadHealth = 100;
     private int enemyDmg = 0;
     private int jemadDmg = 0;
+
     //obj to take user input for attacks
      Scanner userInput = new Scanner(System.in);
 
@@ -35,31 +39,13 @@ public class PlayerCombatLogic {
     //Combat dialogue objects
     GameStart endGame = new GameStart();
 
-    public PlayerCombatLogic() throws IOException, JSONException {
+    public PlayerCombatLogic() throws IOException {
     }
 
     //method to clear screen
     public final static void clearScreen(){
-//        try
-//        {
-//            final String os = System.getProperty("os.name");
-//
-//            if (os.contains("Windows"))
-//            {
-//                Runtime.getRuntime().exec("cls");
-//            }
-//            else
-//            {
-//                Runtime.getRuntime().exec("clear");
-//            }
-//        }
-//        catch (final Exception e)
-//        {
-//            //  Handle any exceptions.
-//        }
         System.out.print("\033[H\033[2J");
         System.out.flush();
-
     }
 
     // Method to determine subtraction to enemy health
@@ -72,26 +58,25 @@ public class PlayerCombatLogic {
 
     }
     //for JAR file
-    //String movesJson = "com/json/Moves_JSON.txt";
+    // String movesJson = "com/json/Moves_JSON.txt";
 
     //for intellij Terminal
-    String movesJson = "module/src/com/json/Moves_JSON.txt";
-    String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
+//    String movesJson = "module/src/com/json/Moves_JSON.txt";
+//    String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents
-    JSONObject j = new JSONObject(moveContents);
-    JSONArray jemadMovesList = j.getJSONArray("Jemad Attacks");
+    JSONObject j = ReadMoveContentJson.getAllUserFightContentJSON();
+    JSONArray jemadMovesList = (JSONArray) j.get("Jemad Attacks");
 
 
 
-    public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException, JSONException {
+    public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException {
         clearScreen();
         CombatDialogue.printStoryIntro(story, enemyName);
         printFight();
         Thread.sleep(700);
-
-        JSONObject currentEnemy = object.getJSONObject(enemyName);
-        currentEnemyHp = (int) currentEnemy.get("Max Health");
+        JSONObject currentEnemy = (JSONObject) object.get(enemyName);
+        currentEnemyHp = Integer.parseInt(String.valueOf(currentEnemy.get("Max Health")));
         do{
             clearScreen();
             System.out.println("=Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemyHp + "=");
