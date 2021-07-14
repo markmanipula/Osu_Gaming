@@ -1,5 +1,6 @@
 package com.readjson;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -23,4 +24,24 @@ public class ReadStoryContentJson {
             return null;
         }
     }
+
+    public static JSONObject getSpecificGameStory(String gameLocation) {
+        JSONObject allStoryObject = ReadStoryContentJson.getAllStoryContentJSON();
+        JSONObject storyObject = (JSONObject) allStoryObject.get(gameLocation);
+        return storyObject;
+    }
+
+    public static String trimGameIntro(String gameLocation) {
+        StringBuilder strBuilder = new StringBuilder();
+        JSONObject storyData = getSpecificGameStory(gameLocation);
+        JSONArray introArray = (JSONArray) storyData.get("Intro");
+        String longDescriptionData = String.valueOf(introArray.get(0));
+        String shortDescriptionArr[] = longDescriptionData.split("  ");
+        for (int i = 0; i < shortDescriptionArr.length; i++) {
+            strBuilder.append(shortDescriptionArr[i] + "\n");
+            // System.out.println(shortDescriptionArr[i]);
+        }
+        return strBuilder.toString();
+    }
+
 }
