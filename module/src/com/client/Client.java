@@ -20,19 +20,19 @@ public class Client {
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
         //for jar file
-        String roomJson = "com/json/Rooms_JSON.txt";
-        String enemiesJson = "com/json/Enemies_JSON.txt";
-        String movesJson = "com/json/Moves_JSON.txt";
-        String synonymsJson = "com/json/Synonyms_JSON.txt";
-        String storyJson = "com/json/Story_JSON.txt";
-        String npcJson = "com/json/NPC_JSON.txt";
+//        String roomJson = "com/json/Rooms_JSON.txt";
+//        String enemiesJson = "com/json/Enemies_JSON.txt";
+//        String movesJson = "com/json/Moves_JSON.txt";
+//        String synonymsJson = "com/json/Synonyms_JSON.txt";
+//        String storyJson = "com/json/Story_JSON.txt";
+//        String npcJson = "com/json/NPC_JSON.txt";
 
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
-//        String npcJson = "module/src/com/json/NPC_JSON.txt";
+        String roomJson = "module/src/com/json/Rooms_JSON.txt";
+        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
+        String movesJson = "module/src/com/json/Moves_JSON.txt";
+        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
+        String storyJson = "module/src/com/json/Story_JSON.txt";
+        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
             String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
