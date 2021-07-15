@@ -1,6 +1,7 @@
 package com.client;
 
 import com.combat.PlayerCombatLogic;
+import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
@@ -208,6 +209,8 @@ public class Client {
                 }else{
 
                     System.out.println("Invalid input");
+                    Thread.sleep(1000);
+                    Window.clearScreen();
                 }
                 //then run room??Contents method based on room?? that input direction points to
                 if(Player.defeatedBosses.contains("Don Fury")){
