@@ -82,11 +82,16 @@ public class ReadRoomContentJson {
         return currentRoomItems;
     }
 
-    // main method for testing
-//    public static void main(String[] args) {
-//        String startingRoom = "Outside Bar";
-//        ReadRoomContentJson.printCurrentRoomDescription(startingRoom);
-//        JSONArray enemyData = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(startingRoom);
-//        System.out.println(enemyData);
-//    }
+    public static String trimRoomDescription(String currentRoom) {
+        StringBuilder strBuilder = new StringBuilder();
+        JSONObject roomData = getCurrentRoomContentJSON(currentRoom);
+        JSONArray roomArray = (JSONArray) roomData.get("Description");
+        String longDescriptionData = String.valueOf(roomArray.get(0));
+        String shortDescriptionArr[] = longDescriptionData.split("  ");
+        for (int i = 0; i < shortDescriptionArr.length; i++) {
+            strBuilder.append(shortDescriptionArr[i] + "\n");
+            // System.out.println(shortDescriptionArr[i]);
+        }
+        return strBuilder.toString();
+    }
 }
