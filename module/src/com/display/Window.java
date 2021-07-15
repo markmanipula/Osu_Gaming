@@ -8,7 +8,7 @@ public class Window {
             Example code
             https://www.delftstack.com/howto/java/java-clear-console/
          */
-        Thread.sleep(1500);
+        Thread.sleep(1000);
 
         try{
             String operatingSystem = System.getProperty("os.name"); //Check the current operating system
