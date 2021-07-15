@@ -494,7 +494,7 @@ public class CombatDialogue {
 
 
     }
-    public void gameOver(){
+    public void gameOver() throws InterruptedException {
         GameStart thisIsTheEnd = new GameStart();
         thisIsTheEnd.gameEnd();
     }

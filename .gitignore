@@ -5,7 +5,8 @@
 Osu_Gaming.iml
 
 #Ignore out folder
-out/
+out/production
+out/test
 
 
 # Compiled class file

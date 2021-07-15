@@ -1,6 +1,7 @@
 package com.client;
 
 import com.combat.PlayerCombatLogic;
+import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
@@ -12,11 +13,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Client {
     //this is a test main
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
@@ -152,7 +155,9 @@ public class Client {
 
                     System.out.println("Enemies in this room: " + Player.displayedEnemies);
                     System.out.println("Bosses in this room: " + Player.displayedBosses);
-                    System.out.println("Items in this room: " + currItemsJSArr);
+                    // System.out.println("Items in this room: " + currItemsJSArr);
+                    System.out.println("Items in this room: " + displayRemainedItemList(currItemsJSArr, player));
+
                     System.out.println("People in this room: " + currNPCJSArr);
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
@@ -204,6 +209,8 @@ public class Client {
                 }else{
 
                     System.out.println("Invalid input");
+                    Thread.sleep(1000);
+                    Window.clearScreen();
                 }
                 //then run room??Contents method based on room?? that input direction points to
                 if(Player.defeatedBosses.contains("Don Fury")){
@@ -289,6 +296,30 @@ public class Client {
         };
         return Player.displayedBosses;
     }
+
+    // method to check the item
+    // The new Team 1 added
+    public static List<String> displayRemainedItemList(JSONArray currItemsJSArr, Player player) {
+        if (currItemsJSArr == null | currItemsJSArr.size() == 0) {
+            return new ArrayList<>();
+        }
+        Set<String> playerItem = player.getPlayerItems();
+        ArrayList<String> itemExistInRoom = new ArrayList<>();
+        // put all item into itemExistInRoom from json
+        for (int i = 0; i < currItemsJSArr.size(); i++) {
+            itemExistInRoom.add(String.valueOf(currItemsJSArr.get(i)));
+        }
+        ArrayList<String> playerItemArrayList = new ArrayList<>(playerItem);
+        // remove item
+        for (int i = 0; i < playerItemArrayList.size(); i++) {
+            if (itemExistInRoom.contains(playerItemArrayList.get(i))) {
+                itemExistInRoom.remove(playerItemArrayList.get(i));
+            }
+        }
+        System.out.println(itemExistInRoom);
+        return itemExistInRoom;
+    }
+
     public void triggerEndGame(){
 
     }
