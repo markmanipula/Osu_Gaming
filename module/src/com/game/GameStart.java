@@ -1,7 +1,7 @@
 package com.game;
 
 import com.combat.PlayerCombatLogic;
-import org.json.JSONObject;
+//import org.json.JSONObject;
 import com.client.Client;
 
 import java.util.Scanner;
@@ -49,7 +49,7 @@ public class GameStart {
         PlayerCombatLogic.clearScreen();
 
         System.out.println(intro);
-        System.out.println("\n" + "\n"+ "\n"+ "\n"+ "\n"+ "\n"+ "\n");
+        System.out.println("\n");
         System.out.println("----------------------Press Enter----------------------");
         Scanner scanner2 = new Scanner(System.in);
         String startInput2 = scanner.nextLine();
@@ -57,7 +57,7 @@ public class GameStart {
         //Display Legend
         Player.legend();
         System.out.println("you step out of your cab, in front of the entrance to a bar at the casino... ");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
     //Runs when player finishes game
     public static void gameEnd(){
