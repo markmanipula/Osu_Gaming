@@ -18,7 +18,7 @@ import java.util.Set;
 
 public class Client {
     //this is a test main
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
