@@ -1,6 +1,7 @@
 package com.client;
 
 import com.combat.PlayerCombatLogic;
+import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
@@ -11,38 +12,17 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Client {
+    private static Deque<String> instructionSet = new LinkedList<>();
     //this is a test main
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
-        //for jar file
-//        String roomJson = "com/json/Rooms_JSON.txt";
-//        String enemiesJson = "com/json/Enemies_JSON.txt";
-//        String movesJson = "com/json/Moves_JSON.txt";
-//        String synonymsJson = "com/json/Synonyms_JSON.txt";
-//        String storyJson = "com/json/Story_JSON.txt";
-//        String npcJson = "com/json/NPC_JSON.txt";
-
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
-//        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
-//            String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
-//            String enemyContents = new String((Files.readAllBytes(Paths.get(enemiesJson))));
-//            String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
-//            String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
-//            String storyContents = new String((Files.readAllBytes(Paths.get(storyJson))));
-//            String npcContents = new String((Files.readAllBytes(Paths.get(npcJson))));
-
             Map map = new Map();
             Player player = new Player(map);
 
@@ -70,7 +50,8 @@ public class Client {
             JSONObject sotfStory = ReadStoryContentJson.getAllStoryContentJSON();
             JSONObject sotfIntro = (JSONObject) sotfStory.get("Game Intro");
             JSONArray storyArray = (JSONArray) sotfIntro.get("Intro");
-            String storyIntro = (String) storyArray.get(0);
+            // game intro
+            String storyIntro = ReadStoryContentJson.trimGameIntro("Game Intro");
 //            JSONObject startingRoom = r.getJSONObject("Outside Bar");
 
             //json for npcContents
@@ -93,12 +74,18 @@ public class Client {
                 //for the input direction, compare that to direc
                 // tions in current room
 
+                // last command
+                System.out.println("Last user instruction: " + getLastValidInstruction());
+
                 //Current Variables
                 //Description
                 JSONObject currRoomJSObj = (JSONObject) r.get(currentRoom);
 
-                JSONArray des1 = (JSONArray) currRoomJSObj.get("Description");
-                String des2 = (String) des1.get(0);
+                // Jun: This data is only being used in these two lines
+                // JSONArray des1 = (JSONArray) currRoomJSObj.get("Description");
+                // String des2 = (String) des1.get(0);
+                String des2 = ReadRoomContentJson.trimRoomDescription(currentRoom);
+
                 //Enemies
                 JSONArray currEnemiesJSArr = (JSONArray) currRoomJSObj.get("enemies");
 
@@ -126,8 +113,8 @@ public class Client {
 
                 String verb = command[0].toLowerCase();
                 String noun = command[command.length -1].toLowerCase();
-                System.out.println("Verb: " + verb);
-                System.out.println("Noun: " + noun);
+//                System.out.println("Verb: " + verb);
+//                System.out.println("Noun: " + noun);
                 String completeNoun = completeNoun(command);
 
                 //If Statements using methods to validate correct synonyms
@@ -139,25 +126,30 @@ public class Client {
                         PlayerCombatLogic.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
+                        instructionSet.add(verb + " " + noun);
                     }
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
                     combat.combatMethod(e, sotfStory, completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting enemies for one word noun
                 } else if (contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
                     combat.combatMethod(e, sotfStory, noun);
+                    instructionSet.add(verb + " " + noun);
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
                     combat.combatMethod(e, sotfStory, completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting boss for one word noun
                 }else if ((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr)))){
                     combat.combatMethod(e, sotfStory, noun);
+                    instructionSet.add(verb + " " + noun);
                 }
 
                 //this if statement is for looking around gathering for info. look, inspect
@@ -169,12 +161,14 @@ public class Client {
 
                     System.out.println("Enemies in this room: " + Player.displayedEnemies);
                     System.out.println("Bosses in this room: " + Player.displayedBosses);
-                    System.out.println("Items in this room: " + currItemsJSArr);
+                    // System.out.println("Items in this room: " + currItemsJSArr);
+                    System.out.println("Items in this room: " + displayRemainedItemList(currItemsJSArr, player));
+
                     System.out.println("People in this room: " + currNPCJSArr);
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
                     Player.displayedBosses.clear();
-
+                    instructionSet.add(verb + " room");
 
                     //this if statement is for talking to one word noun npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, currNPCJSArr))){
@@ -184,6 +178,7 @@ public class Client {
                     //add logic for if user's item causes new interaction with npc, then second voice line
                     
                     System.out.println(npcName + ": " + npcSaying1);
+                    instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
                 }
 
@@ -195,6 +190,7 @@ public class Client {
                     //add logic for if user's item causes new interaction with npc, then second voice line
 
                     System.out.println(npcName + ": " + npcSaying1);
+                    instructionSet.add(verb + " " + completeNoun);
                     Thread.sleep(1000);
                 }
 
@@ -202,17 +198,19 @@ public class Client {
                 else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
                     System.out.println(noun + " taken");
                     player.addItem(noun);
+                    instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
                     //get items
                 }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
                     System.out.println(completeNoun + " taken");
                     player.addItem(completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
                     Thread.sleep(1000);
                     //Display Legend with command "legend"
                 }else if(contains(verb, legendSynonym) || contains(noun, legendSynonym)){
                     PlayerCombatLogic.clearScreen();
+                    instructionSet.add(verb + " " + noun);
                     Player.legend();
-
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
                     PlayerCombatLogic.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
@@ -221,6 +219,8 @@ public class Client {
                 }else{
 
                     System.out.println("Invalid input");
+                    Thread.sleep(1000);
+                    Window.clearScreen();
                 }
                 //then run room??Contents method based on room?? that input direction points to
                 if(Player.defeatedBosses.contains("Don Fury")){
@@ -238,7 +238,6 @@ public class Client {
     //checks the json array and checks if an element is in the array
     public static boolean contains(String command, JSONArray arr) {
         if(arr == null || arr.size() == 0) return false;
-
         for(int i = 0; i< arr.size(); i++){
             if(arr.get(i).equals(command)){
                 return true;
@@ -253,13 +252,12 @@ public class Client {
 
     public static String[] commandChecker(String input){
 
-        if(input == null) return new String[]{""};
+        if(input == null || input.length() == 0) return new String[]{""};
 
         String[] array = input.split(" ");
         //handles the empty input
-        if(array.length == 0) return new String[] {""};
+        if(array == null || array.length < 2) return new String[] {""};
         //puts words in the array. to access, get first and last index
-        StringBuilder stringBuilder = new StringBuilder("");
         for(String i : array){
             i.toLowerCase();
         }
@@ -308,6 +306,39 @@ public class Client {
         };
         return Player.displayedBosses;
     }
+
+    // method to check the item
+    // The new Team 1 added
+    public static List<String> displayRemainedItemList(JSONArray currItemsJSArr, Player player) {
+        if (currItemsJSArr == null | currItemsJSArr.size() == 0) {
+            return new ArrayList<>();
+        }
+        Set<String> playerItem = player.getPlayerItems();
+        ArrayList<String> itemExistInRoom = new ArrayList<>();
+        // put all item into itemExistInRoom from json
+        for (int i = 0; i < currItemsJSArr.size(); i++) {
+            itemExistInRoom.add(String.valueOf(currItemsJSArr.get(i)));
+        }
+        ArrayList<String> playerItemArrayList = new ArrayList<>(playerItem);
+        // remove item
+        for (int i = 0; i < playerItemArrayList.size(); i++) {
+            if (itemExistInRoom.contains(playerItemArrayList.get(i))) {
+                itemExistInRoom.remove(playerItemArrayList.get(i));
+            }
+        }
+        System.out.println(itemExistInRoom);
+        return itemExistInRoom;
+    }
+
+    // method to keep track the last valid instruction from user
+    public static String getLastValidInstruction() {
+        if (instructionSet.size() == 0) {
+            return "No instruction";
+        }
+        String lastValidInstruction = instructionSet.getLast();
+        return lastValidInstruction;
+    }
+
     public void triggerEndGame(){
 
     }
