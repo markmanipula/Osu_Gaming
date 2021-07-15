@@ -8,8 +8,7 @@ public class Window {
             Example code
             https://www.delftstack.com/howto/java/java-clear-console/
          */
-
-        Thread.sleep(1000);
+        Thread.sleep(1500);
 
         try{
             String operatingSystem = System.getProperty("os.name"); //Check the current operating system
@@ -29,5 +28,7 @@ public class Window {
             System.out.println(e);
         }
     }
+
+    //Validated new clear screen works on Windows and Mac
 
 }
