@@ -10,7 +10,7 @@
   },
   "Inside Bar":{
     "NPC":["friendly bartender"],
-    "items": ["ool cue", "eight ball", "boots with a fur", "watch"],
+    "items": ["pool cue", "eight ball", "boots with a fur", "watch"],
     "enemies": ["security guard"],
     "bosses": [""],
     "name": ["Inside Bar"],
