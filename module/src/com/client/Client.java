@@ -1,81 +1,69 @@
 package com.client;
 
 import com.combat.PlayerCombatLogic;
+import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.readjson.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Client {
     //this is a test main
-    public static void main(String[] args) throws IOException, JSONException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         PlayerCombatLogic combat = new PlayerCombatLogic();
 
-        //for jar file
-        String roomJson = "com/json/Rooms_JSON.txt";
-        String enemiesJson = "com/json/Enemies_JSON.txt";
-        String movesJson = "com/json/Moves_JSON.txt";
-        String synonymsJson = "com/json/Synonyms_JSON.txt";
-        String storyJson = "com/json/Story_JSON.txt";
-        String npcJson = "com/json/NPC_JSON.txt";
-
-//        String roomJson = "module/src/com/json/Rooms_JSON.txt";
-//        String enemiesJson = "module/src/com/json/Enemies_JSON.txt";
-//        String movesJson = "module/src/com/json/Moves_JSON.txt";
-//        String synonymsJson = "module/src/com/json/Synonyms_JSON.txt";
-//        String storyJson = "module/src/com/json/Story_JSON.txt";
-//        String npcJson = "module/src/com/json/NPC_JSON.txt";
 
         try{
-            String roomContents = new String((Files.readAllBytes(Paths.get(roomJson))));
-            String enemyContents = new String((Files.readAllBytes(Paths.get(enemiesJson))));
-            String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
-            String synonymContents = new String((Files.readAllBytes(Paths.get(synonymsJson))));
-            String storyContents = new String((Files.readAllBytes(Paths.get(storyJson))));
-            String npcContents = new String((Files.readAllBytes(Paths.get(npcJson))));
-
             Map map = new Map();
             Player player = new Player(map);
 
             // json for roomContents
-            JSONObject r = new JSONObject(roomContents);
-            JSONObject startingRoom = r.getJSONObject("Outside Bar");
-            JSONArray currentRoomArray = startingRoom.getJSONArray("name");
+            // JSONObject r = new JSONObject(roomContents);
+            JSONObject r = (JSONObject) ReadRoomContentJson.getAllRoomContentJSON();
+            JSONObject startingRoom = (JSONObject)r.get("Outside Bar");
+            JSONArray currentRoomArray = (JSONArray) startingRoom.get("name");
             String currentRoom = (String) currentRoomArray.get(0);
 
             //json for synonymContents
-            JSONObject s = new JSONObject(synonymContents);
-            JSONArray goSynonym = s.getJSONArray("go");
-            JSONArray fightSynonym = s.getJSONArray("fight");
-            JSONArray getSynonym = s.getJSONArray("get");
-            JSONArray talkSynonym = s.getJSONArray("talk");
-            JSONArray inspectSynonym = s.getJSONArray("inspect");
-            JSONArray direction = s.getJSONArray("direction");
-            JSONArray legendSynonym = s.getJSONArray("legend");
-            JSONArray quitSynonym = s.getJSONArray("quit");
+            // JSONObject s = new JSONObject(synonymContents);
+            JSONObject s = ReadSynonymsContentJson.getAllSynonymContentJSON();
+            JSONArray goSynonym = (JSONArray) s.get("go");
+            JSONArray fightSynonym = (JSONArray) s.get("fight");
+            JSONArray getSynonym = (JSONArray) s.get("get");
+            JSONArray talkSynonym = (JSONArray) s.get("talk");
+            JSONArray inspectSynonym = (JSONArray) s.get("inspect");
+            JSONArray direction = (JSONArray) s.get("direction");
+            JSONArray legendSynonym = (JSONArray) s.get("legend");
+            JSONArray quitSynonym = (JSONArray) s.get("quit");
 
             //json for storyContents
-            JSONObject sotfStory = new JSONObject(storyContents);
-            JSONObject sotfIntro = sotfStory.getJSONObject("Game Intro");
-            JSONArray storyArray = sotfIntro.getJSONArray("Intro");
-            String storyIntro = (String) storyArray.get(0);
+            // JSONObject sotfStory = new JSONObject(storyContents);
+            JSONObject sotfStory = ReadStoryContentJson.getAllStoryContentJSON();
+            JSONObject sotfIntro = (JSONObject) sotfStory.get("Game Intro");
+            JSONArray storyArray = (JSONArray) sotfIntro.get("Intro");
+            // game intro
+            String storyIntro = ReadStoryContentJson.trimGameIntro("Game Intro");
 //            JSONObject startingRoom = r.getJSONObject("Outside Bar");
 
             //json for npcContents
-            JSONObject n = new JSONObject(npcContents);
-            JSONArray listOfNPCs = n.getJSONArray("NPCs");
+            // JSONObject n = new JSONObject(npcContents);
+            JSONObject n = ReadNPCContentJson.getAllNPCContentJSON();
+            JSONArray listOfNPCs = (JSONArray) n.get("NPCs");
 
             //json for enemies
-            JSONObject e = new JSONObject(enemyContents);
-
+            // JSONObject e = new JSONObject(enemyContents);
+            JSONObject e = ReadEnemyContentJson.getAllEnemyContentJSON();
 
             //Display story intro for user
             GameStart.start(storyIntro);
@@ -90,21 +78,24 @@ public class Client {
 
                 //Current Variables
                 //Description
-                JSONObject currRoomJSObj = r.getJSONObject(currentRoom);
+                JSONObject currRoomJSObj = (JSONObject) r.get(currentRoom);
 
-                JSONArray des1 = currRoomJSObj.getJSONArray("Description");
-                String des2 = (String) des1.get(0);
+                // Jun: This data is only being used in these two lines
+                // JSONArray des1 = (JSONArray) currRoomJSObj.get("Description");
+                // String des2 = (String) des1.get(0);
+                String des2 = ReadRoomContentJson.trimRoomDescription(currentRoom);
+
                 //Enemies
-                JSONArray currEnemiesJSArr = currRoomJSObj.getJSONArray("enemies");
+                JSONArray currEnemiesJSArr = (JSONArray) currRoomJSObj.get("enemies");
 
                 //Bosses
-                JSONArray currBossesJSArr = currRoomJSObj.getJSONArray("bosses");
+                JSONArray currBossesJSArr = (JSONArray) currRoomJSObj.get("bosses");
 
                 //NPC's in room_JSON
-                JSONArray currNPCJSArr = currRoomJSObj.getJSONArray("NPC");
+                JSONArray currNPCJSArr = (JSONArray) currRoomJSObj.get("NPC");
 
                 //Items
-                JSONArray currItemsJSArr = currRoomJSObj.getJSONArray("items");
+                JSONArray currItemsJSArr = (JSONArray) currRoomJSObj.get("items");
 
                 //Display Basic Room information
                 System.out.println(currentRoom);
@@ -121,16 +112,18 @@ public class Client {
 
                 String verb = command[0].toLowerCase();
                 String noun = command[command.length -1].toLowerCase();
+                System.out.println("Verb: " + verb);
+                System.out.println("Noun: " + noun);
                 String completeNoun = completeNoun(command);
 
                 //If Statements using methods to validate correct synonyms
                 //If Statements for movement, fight, and inspect(look around)
 
                 //this if statement is for movement. go west, east, etc
-                if(contains(verb, goSynonym) && currRoomJSObj.has(noun)){
+                if(contains(verb, goSynonym) && currRoomJSObj.containsKey(noun)){
                     if(contains(noun, direction)){
                         PlayerCombatLogic.clearScreen();
-                        currentRoomArray = currRoomJSObj.getJSONArray(noun);
+                        currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
                     }
                 }
@@ -162,7 +155,9 @@ public class Client {
 
                     System.out.println("Enemies in this room: " + Player.displayedEnemies);
                     System.out.println("Bosses in this room: " + Player.displayedBosses);
-                    System.out.println("Items in this room: " + currItemsJSArr);
+                    // System.out.println("Items in this room: " + currItemsJSArr);
+                    System.out.println("Items in this room: " + displayRemainedItemList(currItemsJSArr, player));
+
                     System.out.println("People in this room: " + currNPCJSArr);
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
@@ -171,9 +166,9 @@ public class Client {
 
                     //this if statement is for talking to one word noun npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, currNPCJSArr))){
-                    JSONObject npcJSObj = n.getJSONObject(noun);
-                    String npcSaying1 = npcJSObj.getString("saying1");
-                    String npcName = npcJSObj.getString("name");
+                    JSONObject npcJSObj = (JSONObject) n.get(noun);
+                    String npcSaying1 = String.valueOf(npcJSObj.get("saying1"));
+                    String npcName = String.valueOf(npcJSObj.get("name"));
                     //add logic for if user's item causes new interaction with npc, then second voice line
                     
                     System.out.println(npcName + ": " + npcSaying1);
@@ -182,9 +177,9 @@ public class Client {
 
                 //talking to npc with complete noun
                 else if(contains(verb, talkSynonym) && (contains(completeNoun, currNPCJSArr))){
-                    JSONObject npcJSObj = n.getJSONObject(noun);
-                    String npcSaying1 = npcJSObj.getString("saying1");
-                    String npcName = npcJSObj.getString("name");
+                    JSONObject npcJSObj = (JSONObject) n.get(noun);
+                    String npcSaying1 = String.valueOf(npcJSObj.get("saying1"));
+                    String npcName = String.valueOf(npcJSObj.get("name"));
                     //add logic for if user's item causes new interaction with npc, then second voice line
 
                     System.out.println(npcName + ": " + npcSaying1);
@@ -214,6 +209,8 @@ public class Client {
                 }else{
 
                     System.out.println("Invalid input");
+                    Thread.sleep(1000);
+                    Window.clearScreen();
                 }
                 //then run room??Contents method based on room?? that input direction points to
                 if(Player.defeatedBosses.contains("Don Fury")){
@@ -222,18 +219,17 @@ public class Client {
             }
 
 
-        }catch (IOException | JSONException | InterruptedException e){
+        }catch (InterruptedException e){
             e.printStackTrace();
         }
         GameStart.gameEnd();
     }
 
     //checks the json array and checks if an element is in the array
-    public static boolean contains(String command, JSONArray arr) throws JSONException {
-        if(arr == null || arr.length() == 0) return false;
-
-        for(int i = 0; i< arr.length(); i++){
-            if(arr.getString(i).equals(command)){
+    public static boolean contains(String command, JSONArray arr) {
+        if(arr == null || arr.size() == 0) return false;
+        for(int i = 0; i< arr.size(); i++){
+            if(arr.get(i).equals(command)){
                 return true;
             }
         }
@@ -246,13 +242,12 @@ public class Client {
 
     public static String[] commandChecker(String input){
 
-        if(input == null) return new String[]{""};
+        if(input == null || input.length() == 0) return new String[]{""};
 
         String[] array = input.split(" ");
         //handles the empty input
-        if(array.length == 0) return new String[] {""};
+        if(array == null || array.length < 2) return new String[] {""};
         //puts words in the array. to access, get first and last index
-        StringBuilder stringBuilder = new StringBuilder("");
         for(String i : array){
             i.toLowerCase();
         }
@@ -273,8 +268,8 @@ public class Client {
         return completeNoun;
     }
 
-    public static ArrayList<String> onlyDisplayUndefeatedEnemies(JSONArray enemiesJS) throws JSONException {
-        for(int i =0; i< enemiesJS.length(); i++){
+    public static ArrayList<String> onlyDisplayUndefeatedEnemies(JSONArray enemiesJS) {
+        for(int i =0; i< enemiesJS.size(); i++){
             boolean addEnemy = true;
             for(int y =0; y < Player.defeatedEnemies.toArray().length; y++){
                 if(enemiesJS.get(i).equals(Player.defeatedEnemies.get(y))){
@@ -287,8 +282,8 @@ public class Client {
         };
         return Player.displayedEnemies;
     }
-    public static ArrayList<String> onlyDisplayUndefeatedBosses(JSONArray bossesJS) throws JSONException {
-        for(int i =0; i< bossesJS.length(); i++){
+    public static ArrayList<String> onlyDisplayUndefeatedBosses(JSONArray bossesJS) {
+        for(int i =0; i< bossesJS.size(); i++){
             boolean addBoss = true;
             for(int y =0; y < Player.defeatedBosses.toArray().length; y++){
                 if(bossesJS.get(i).equals(Player.defeatedBosses.get(y))){
@@ -301,6 +296,30 @@ public class Client {
         };
         return Player.displayedBosses;
     }
+
+    // method to check the item
+    // The new Team 1 added
+    public static List<String> displayRemainedItemList(JSONArray currItemsJSArr, Player player) {
+        if (currItemsJSArr == null | currItemsJSArr.size() == 0) {
+            return new ArrayList<>();
+        }
+        Set<String> playerItem = player.getPlayerItems();
+        ArrayList<String> itemExistInRoom = new ArrayList<>();
+        // put all item into itemExistInRoom from json
+        for (int i = 0; i < currItemsJSArr.size(); i++) {
+            itemExistInRoom.add(String.valueOf(currItemsJSArr.get(i)));
+        }
+        ArrayList<String> playerItemArrayList = new ArrayList<>(playerItem);
+        // remove item
+        for (int i = 0; i < playerItemArrayList.size(); i++) {
+            if (itemExistInRoom.contains(playerItemArrayList.get(i))) {
+                itemExistInRoom.remove(playerItemArrayList.get(i));
+            }
+        }
+        System.out.println(itemExistInRoom);
+        return itemExistInRoom;
+    }
+
     public void triggerEndGame(){
 
     }
