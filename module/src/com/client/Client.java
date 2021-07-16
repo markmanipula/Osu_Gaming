@@ -122,9 +122,10 @@ public class Client {
                 //this if statement is for movement. go west, east, etc
                 if(contains(verb, goSynonym) && currRoomJSObj.containsKey(noun)){
                     if(contains(noun, direction)){
-                        PlayerCombatLogic.clearScreen();
+                        Window.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
+
                     }
                 }
 
@@ -198,11 +199,11 @@ public class Client {
                     Thread.sleep(1000);
                     //Display Legend with command "legend"
                 }else if(contains(verb, legendSynonym) || contains(noun, legendSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
                     Player.legend();
 
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
                     Thread.sleep(1000);
                     System.exit(0);
