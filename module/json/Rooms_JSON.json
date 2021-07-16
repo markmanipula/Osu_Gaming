@@ -90,6 +90,7 @@
     "name": ["Slot Machines"],
     "east": ["Poker Tables"],
     "south": ["Steak House"],
+    "north": ["Pool Deck: Upper Level"],
     "Description": ["A barrage of dings and whistles roared across the floor as hundreads if not thousands of slot machines ready to swindle the money out of people pockets.  'Big Ben said that the kid was taking here for the Pit Boss in order to be taken to the hotel suite,  I have to get the key from him in order to get to the top floor'", "room change 1", "room change 2"]
   },
   "Poker Tables":{
