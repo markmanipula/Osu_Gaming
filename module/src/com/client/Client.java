@@ -5,6 +5,7 @@ import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
+import com.map.View;
 import com.readjson.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -43,6 +44,7 @@ public class Client {
             JSONArray inspectSynonym = (JSONArray) s.get("inspect");
             JSONArray direction = (JSONArray) s.get("direction");
             JSONArray legendSynonym = (JSONArray) s.get("legend");
+            JSONArray mapSynonym = (JSONArray) s.get("map");
             JSONArray quitSynonym = (JSONArray) s.get("quit");
 
             //json for storyContents
@@ -211,6 +213,11 @@ public class Client {
                     Window.clearScreen();
                     instructionSet.add(verb + " " + noun);
                     Player.legend();
+                    //Display map with command "map"
+                }else if(contains(verb, mapSynonym) || contains(noun, mapSynonym)){
+                    Window.clearScreen();
+                    instructionSet.add(verb + " " + noun);
+                    View.possibleRoutes(currentRoom);
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
                     Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
