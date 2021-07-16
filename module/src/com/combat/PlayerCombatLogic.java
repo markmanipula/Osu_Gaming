@@ -79,29 +79,14 @@ public class PlayerCombatLogic {
         currentEnemyHp = Integer.parseInt(String.valueOf(currentEnemy.get("Max Health")));
         do{
             clearScreen();
-            System.out.println("=Current Health: " + jemadHealth + " =========================== " + enemyName + " Health: " + currentEnemyHp + "=");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("=\n");
-            System.out.print("==========================================================================================\n");
-            System.out.println(jemadMovesList);
-            String userAttack = userInput.nextLine().toLowerCase();
-            System.out.println("Your next attack:");
-            enemyDmg = attacks.jemadMoves(userAttack);
-            System.out.println("You used " + userAttack + "! for " + enemyDmg + " damage!");
-            currentEnemyHp-= enemyDmg;
-
-            //enemy turn to attack
-            // Enemies turn to attack method
             ArrayList<String> enemyTurn = enemy.enemyMoves();
-           // print out enemy attack and damage to player
-            System.out.println("The Bouncer attacks with a " + enemyTurn.get(0) + " and a damage of " + enemyTurn.get(1));
+            introCombatSummaryPrint(enemyName, currentEnemyHp);
+            System.out.print("Decide your move >");
+            String userAttack = userInput.nextLine().toLowerCase();
+            enemyDmg = attacks.jemadMoves(userAttack);
+            currentEnemyHp-= enemyDmg;
+            duringCombatSummaryPrint(enemyName, userAttack, enemyDmg, enemyTurn.get(0), enemyTurn.get(1));
             jemadHealth -= Integer.parseInt(enemyTurn.get(1));
-            System.out.println("Jemad health has dropped to " + jemadHealth + " ....");
             System.out.println("Press the enter key to continue");
             String pressEnter = userInput.nextLine().toLowerCase();
 
@@ -133,10 +118,21 @@ public class PlayerCombatLogic {
                 "     \\/                \\/       \\/            \\/");
     }
 
+    public void introCombatSummaryPrint(String enemyName, int currentEnemyHp) {
+        System.out.println("=".repeat(40)  + "=".repeat(40));
+        System.out.printf("%-20s %20s %n", "Player HP", enemyName + " HP");
+        System.out.printf("%-20s %20s %n", jemadHealth, currentEnemyHp);
+        System.out.println("Your available moves:" );
+        System.out.println(jemadMovesList);
+        System.out.println("=".repeat(40)  + "=".repeat(40));
+    }
+
+    public void duringCombatSummaryPrint(String enemyName, String userMovement, int amountOfDamageUserDeal, String enemyMovement, String amountOfDamageEnemyDeal) {
+        System.out.println("= You used " + userMovement  + "! for " + amountOfDamageUserDeal + " damage!");
+        System.out.println("= The " + enemyName + " attacks with a " + enemyMovement + " and a damage of " + amountOfDamageEnemyDeal);
+    }
+
     public void battleOutro() throws InterruptedException {
         dialogue.printCombatOutro();
     }
-
-
-
 }
