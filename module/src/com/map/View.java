@@ -5,67 +5,67 @@ public class View {
     public static void possibleRoutes(String currentRoom){
         switch (currentRoom){
             case "Outside Bar":
-                Room.outsideBar(currentRoom);
+                Room.outsideBar();
                 break;
 
             case "Inside Bar":
-                Room.insideBar(currentRoom);
+                Room.insideBar();
                 break;
 
             case "Pool Room":
-                Room.poolRoom(currentRoom);
+                Room.poolRoom();
                 break;
 
             case "Alley Behind Bar":
-                Room.alleyBehindBar(currentRoom);
+                Room.alleyBehindBar();
                 break;
 
             case "Locker Room":
-                Room.lockerRoom(currentRoom);
+                Room.lockerRoom();
                 break;
 
             case "Pool Deck":
-                Room.poolDeck(currentRoom);
+                Room.poolDeck();
                 break;
 
             case "Pool Bar":
-                Room.poolBar(currentRoom);
+                Room.poolBar();
                 break;
 
             case "Pool Deck: Upper Level":
-                Room.poolDeckUpperLevel(currentRoom);
+                Room.poolDeckUpperLevel();
                 break;
 
             case "Slot Machines":
-                Room.slotMachines(currentRoom);
+                Room.slotMachines();
                 break;
 
             case "Poker Tables":
-                Room.pokerTables(currentRoom);
+                Room.pokerTables();
                 break;
 
             case "Steak House":
-                Room.steakhouse(currentRoom);
+                Room.steakhouse();
                 break;
 
             case "VIP Room":
-                Room.vipRoom(currentRoom);
+                Room.vipRoom();
                 break;
 
             case "Elevator":
-                Room.elevator(currentRoom);
+                Room.elevator();
                 break;
 
             case "Hotel Halls":
-                Room.hotelHalls(currentRoom);
+                Room.hotelHalls();
                 break;
 
             case "Balcony":
-                Room.balcony(currentRoom);
+                Room.balcony();
                 break;
 
             default:
-                Room.rooftopFinalBoss(currentRoom);
+                Room.rooftopFinalBoss();
         }
     }
 }
