@@ -1,5 +1,6 @@
 package com.game;
 import com.combat.PlayerCombatLogic;
+import com.display.Window;
 import com.map.Map;
 
 import java.util.*;
@@ -62,8 +63,7 @@ public class Player{
         return playerItems;
     }
 
-    public static void legend(){
-        PlayerCombatLogic.clearScreen();
+    public static void legend() throws InterruptedException {
         System.out.println("--------------------------Legend--------------------------");
         System.out.println("go + north/east/south/west: move around to different rooms\n");
         System.out.println("map: display map\n");
@@ -77,7 +77,7 @@ public class Player{
         System.out.println("----------------------Enter to Close----------------------");
         Scanner scanner = new Scanner(System.in);
         String startInput1 = scanner.nextLine();
-        PlayerCombatLogic.clearScreen();
+        Window.clearScreen();
     }
 
     //add defeated enemies
