@@ -12,12 +12,10 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Client {
+    private static Deque<String> instructionSet = new LinkedList<>();
     //this is a test main
     public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -76,6 +74,9 @@ public class Client {
                 //for the input direction, compare that to direc
                 // tions in current room
 
+                // last command
+                System.out.println("Last user instruction: " + getLastValidInstruction());
+
                 //Current Variables
                 //Description
                 JSONObject currRoomJSObj = (JSONObject) r.get(currentRoom);
@@ -112,8 +113,8 @@ public class Client {
 
                 String verb = command[0].toLowerCase();
                 String noun = command[command.length -1].toLowerCase();
-                System.out.println("Verb: " + verb);
-                System.out.println("Noun: " + noun);
+//                System.out.println("Verb: " + verb);
+//                System.out.println("Noun: " + noun);
                 String completeNoun = completeNoun(command);
 
                 //If Statements using methods to validate correct synonyms
@@ -122,28 +123,33 @@ public class Client {
                 //this if statement is for movement. go west, east, etc
                 if(contains(verb, goSynonym) && currRoomJSObj.containsKey(noun)){
                     if(contains(noun, direction)){
-                        PlayerCombatLogic.clearScreen();
+                        Window.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
+                        instructionSet.add(verb + " " + noun);
                     }
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
                     combat.combatMethod(e, sotfStory, completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting enemies for one word noun
                 } else if (contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
                     combat.combatMethod(e, sotfStory, noun);
+                    instructionSet.add(verb + " " + noun);
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
                     combat.combatMethod(e, sotfStory, completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting boss for one word noun
                 }else if ((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr)))){
                     combat.combatMethod(e, sotfStory, noun);
+                    instructionSet.add(verb + " " + noun);
                 }
 
                 //this if statement is for looking around gathering for info. look, inspect
@@ -162,7 +168,7 @@ public class Client {
                     System.out.println("Items in your bag :" + player.getPlayerItems());
                     Player.displayedEnemies.clear();
                     Player.displayedBosses.clear();
-
+                    instructionSet.add(verb + " room");
 
                     //this if statement is for talking to one word noun npc
                 }else if(contains(verb, talkSynonym) && (contains(noun, currNPCJSArr))){
@@ -172,6 +178,7 @@ public class Client {
                     //add logic for if user's item causes new interaction with npc, then second voice line
                     
                     System.out.println(npcName + ": " + npcSaying1);
+                    instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
                 }
 
@@ -183,6 +190,7 @@ public class Client {
                     //add logic for if user's item causes new interaction with npc, then second voice line
 
                     System.out.println(npcName + ": " + npcSaying1);
+                    instructionSet.add(verb + " " + completeNoun);
                     Thread.sleep(1000);
                 }
 
@@ -190,19 +198,21 @@ public class Client {
                 else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
                     System.out.println(noun + " taken");
                     player.addItem(noun);
+                    instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
                     //get items
                 }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
                     System.out.println(completeNoun + " taken");
                     player.addItem(completeNoun);
+                    instructionSet.add(verb + " " + completeNoun);
                     Thread.sleep(1000);
                     //Display Legend with command "legend"
                 }else if(contains(verb, legendSynonym) || contains(noun, legendSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
+                    instructionSet.add(verb + " " + noun);
                     Player.legend();
-
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
                     Thread.sleep(1000);
                     System.exit(0);
@@ -318,6 +328,15 @@ public class Client {
         }
         System.out.println(itemExistInRoom);
         return itemExistInRoom;
+    }
+
+    // method to keep track the last valid instruction from user
+    public static String getLastValidInstruction() {
+        if (instructionSet.size() == 0) {
+            return "No instruction";
+        }
+        String lastValidInstruction = instructionSet.getLast();
+        return lastValidInstruction;
     }
 
     public void triggerEndGame(){
