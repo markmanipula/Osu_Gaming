@@ -10,7 +10,6 @@ public class Room {
                 "|                        |\n" +
                 "|                        |\n" +
                 "|________________________|\n");
-
     }
 
     public static void insideBar(){
@@ -25,7 +24,6 @@ public class Room {
                 "                                   |\n" +
                 "                                   |\n" +
                 "                               Pool Room");
-
     }
 
     public static void poolRoom(){
@@ -223,6 +221,7 @@ public class Room {
 
     }
 
+    //ASCII Art completed
 
 
 }
