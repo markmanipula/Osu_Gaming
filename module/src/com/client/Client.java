@@ -5,6 +5,7 @@ import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
+import com.map.View;
 import com.readjson.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -43,6 +44,7 @@ public class Client {
             JSONArray inspectSynonym = (JSONArray) s.get("inspect");
             JSONArray direction = (JSONArray) s.get("direction");
             JSONArray legendSynonym = (JSONArray) s.get("legend");
+            JSONArray mapSynonym = (JSONArray) s.get("map");
             JSONArray quitSynonym = (JSONArray) s.get("quit");
 
             //json for storyContents
@@ -123,7 +125,7 @@ public class Client {
                 //this if statement is for movement. go west, east, etc
                 if(contains(verb, goSynonym) && currRoomJSObj.containsKey(noun)){
                     if(contains(noun, direction)){
-                        PlayerCombatLogic.clearScreen();
+                        Window.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
                         instructionSet.add(verb + " " + noun);
@@ -208,11 +210,16 @@ public class Client {
                     Thread.sleep(1000);
                     //Display Legend with command "legend"
                 }else if(contains(verb, legendSynonym) || contains(noun, legendSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
                     instructionSet.add(verb + " " + noun);
                     Player.legend();
+                    //Display map with command "map"
+                }else if(contains(verb, mapSynonym) || contains(noun, mapSynonym)){
+                    Window.clearScreen();
+                    instructionSet.add(verb + " " + noun);
+                    View.possibleRoutes(currentRoom);
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
-                    PlayerCombatLogic.clearScreen();
+                    Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
                     Thread.sleep(1000);
                     System.exit(0);
