@@ -5,6 +5,7 @@ import com.display.Window;
 import com.game.GameStart;
 import com.game.Player;
 import com.map.Map;
+import com.map.View;
 import com.readjson.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -43,6 +44,7 @@ public class Client {
             JSONArray inspectSynonym = (JSONArray) s.get("inspect");
             JSONArray direction = (JSONArray) s.get("direction");
             JSONArray legendSynonym = (JSONArray) s.get("legend");
+            JSONArray mapSynonym = (JSONArray) s.get("map");
             JSONArray quitSynonym = (JSONArray) s.get("quit");
 
             //json for storyContents
@@ -132,22 +134,26 @@ public class Client {
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currEnemiesJSArr)))){
+                    Window.clearScreen();
                     combat.combatMethod(e, sotfStory, completeNoun);
                     instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting enemies for one word noun
                 } else if (contains(verb, fightSynonym) && (contains(noun, currEnemiesJSArr))){
+                    Window.clearScreen();
                     combat.combatMethod(e, sotfStory, noun);
                     instructionSet.add(verb + " " + noun);
                 }
 
                 //this if statement is for fighting boss for one complete noun
                 else if((contains(verb, fightSynonym) && (contains(completeNoun, currBossesJSArr)))) {
+                    Window.clearScreen();
                     combat.combatMethod(e, sotfStory, completeNoun);
                     instructionSet.add(verb + " " + completeNoun);
 
                     //this if statement is for fighting boss for one word noun
                 }else if ((contains(verb, fightSynonym) && (contains(noun, currBossesJSArr)))){
+                    Window.clearScreen();
                     combat.combatMethod(e, sotfStory, noun);
                     instructionSet.add(verb + " " + noun);
                 }
@@ -159,6 +165,7 @@ public class Client {
                     onlyDisplayUndefeatedEnemies(currEnemiesJSArr);
                     onlyDisplayUndefeatedBosses(currBossesJSArr);
 
+                    Window.clearScreen();
                     System.out.println("Enemies in this room: " + Player.displayedEnemies);
                     System.out.println("Bosses in this room: " + Player.displayedBosses);
                     // System.out.println("Items in this room: " + currItemsJSArr);
@@ -176,7 +183,8 @@ public class Client {
                     String npcSaying1 = String.valueOf(npcJSObj.get("saying1"));
                     String npcName = String.valueOf(npcJSObj.get("name"));
                     //add logic for if user's item causes new interaction with npc, then second voice line
-                    
+
+                    Window.clearScreen();
                     System.out.println(npcName + ": " + npcSaying1);
                     instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
@@ -189,6 +197,7 @@ public class Client {
                     String npcName = String.valueOf(npcJSObj.get("name"));
                     //add logic for if user's item causes new interaction with npc, then second voice line
 
+                    Window.clearScreen();
                     System.out.println(npcName + ": " + npcSaying1);
                     instructionSet.add(verb + " " + completeNoun);
                     Thread.sleep(1000);
@@ -196,12 +205,14 @@ public class Client {
 
                 //this if statement is for getting/ taking items in the room
                 else if( contains(verb, getSynonym) && contains(noun, currItemsJSArr)){
+                    Window.clearScreen();
                     System.out.println(noun + " taken");
                     player.addItem(noun);
                     instructionSet.add(verb + " " + noun);
                     Thread.sleep(1000);
                     //get items
                 }else if(contains(verb, getSynonym) && contains(completeNoun, currItemsJSArr)){
+                    Window.clearScreen();
                     System.out.println(completeNoun + " taken");
                     player.addItem(completeNoun);
                     instructionSet.add(verb + " " + completeNoun);
@@ -211,6 +222,11 @@ public class Client {
                     Window.clearScreen();
                     instructionSet.add(verb + " " + noun);
                     Player.legend();
+                    //Display map with command "map"
+                }else if(contains(verb, mapSynonym) || contains(noun, mapSynonym)){
+                    Window.clearScreen();
+                    instructionSet.add(verb + " " + noun);
+                    View.possibleRoutes(currentRoom);
                 }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
                     Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
