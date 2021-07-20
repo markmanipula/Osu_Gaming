@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.GUI.MainScreen"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
+   <children>
+      <Pane layoutY="436.0" prefHeight="364.0" prefWidth="1000.0" style="-fx-background-color: Black;">
+         <children>
+            <MenuButton alignment="CENTER" contentDisplay="RIGHT" layoutX="421.0" layoutY="44.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Map" />
+                <MenuItem mnemonicParsing="false" text="Inventory" />
+              </items>
+            </MenuButton>
+            <Button layoutX="353.0" layoutY="191.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />
+            <Button layoutX="442.0" layoutY="111.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="North" />
+            <Button layoutX="442.0" layoutY="272.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="South" />
+            <Button layoutX="531.0" layoutY="192.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="East" />
+            <Button layoutX="755.0" layoutY="45.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="222.0" style="-fx-background-color: INDIANRED;" text="Fight" />
+         </children>
+      </Pane>
+      <TextArea editable="false" layoutX="7.0" layoutY="440.0" prefHeight="352.0" prefWidth="330.0" style="-fx-background-color: DIMGREY;" text="Game text goes here. This is just to test how the word wrap will look. fddnsfjdsnfjdsbnfjlsdabnfljadsbnfkdasbnflkjadsbnfljhkdasbfjldbanslhjfnbdjshkvclndljksfnljadsknfljdksfnldjsabfdjlhsabfnljkdsafnbladjksfn dsa" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+      <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="979.0" style="-fx-background-color: white;" text="HP, Location, Damage, and Equipment go here">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+   </children>
 </AnchorPane>
