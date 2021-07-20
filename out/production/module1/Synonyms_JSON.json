@@ -6,5 +6,6 @@
   "inspect":["inspect", "look", "investigate", "glance", "examine", "explore", "inquire", "delve", "dig"],
   "direction": ["north", "south", "east", "west"],
   "legend": ["legend"],
+  "map": ["map"],
   "quit": ["quit"]
 }
