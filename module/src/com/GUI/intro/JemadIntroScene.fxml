@@ -7,6 +7,6 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.intro.JemadIntroController">
    <children>
       <TextArea fx:id="jemadIntroDialog" editable="false" layoutX="51.0" layoutY="88.0" prefHeight="253.0" prefWidth="499.0" wrapText="true" />
-      <Button fx:id="continueBtn" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" text="Continue.." />
+      <Button fx:id="continueBtn" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" onAction="#switchItIntoMainGame" text="Continue.." />
    </children>
 </AnchorPane>
