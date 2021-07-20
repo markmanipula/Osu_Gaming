@@ -10,7 +10,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
    <children>
+
       <Button layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
+      <Button fx:id="startBtn" layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="78.0" prefHeight="179.0" prefWidth="502.0" text="Spirit Of The Fist">
          <font>
             <Font size="60.0" />
