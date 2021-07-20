@@ -11,6 +11,46 @@ public class Player{
     private String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
+    // my test
+    private int hp = 100;
+    private String currentLocation = "Outside Bar";
+    private int minDamage = 7;
+    private int maxDamage = 12;
+    // just an empty constructor
+    public Player() {}
+
+    public int getMinDamage() {
+        return this.minDamage;
+    }
+
+    public int getMaxDamage() {
+        return this.maxDamage;
+    }
+
+    public void setMinDamage(int minDamage) {
+        this.minDamage = minDamage;
+    }
+
+    public void setMaxDamage(int maxDamage) {
+        this.maxDamage = maxDamage;
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public String getCurrentLocation() {
+        return this.currentLocation;
+    }
+
+    public void setCurrentLocation(String currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+    // end of my test
 
     //so only unique items will be added on the players bag
     private Set<String> playerItems = new HashSet<>();

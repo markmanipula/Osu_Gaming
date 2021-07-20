@@ -1,4 +1,5 @@
 package com.combat;
+import com.character.Enemy;
 import com.game.GameStart;
 import com.game.Player;
 import com.readjson.ReadMoveContentJson;
@@ -20,9 +21,9 @@ import java.util.Arrays;
 
 public class PlayerCombatLogic {
     private int currentEnemyHp = 10;
-    private int jemadHealth = 100;
     private int enemyDmg = 0;
     private int jemadDmg = 0;
+    private Player jemad = new Player();
 
     //obj to take user input for attacks
      Scanner userInput = new Scanner(System.in);
@@ -36,7 +37,6 @@ public class PlayerCombatLogic {
     //object for enemy combat methods
     EnemyCombat enemy = new EnemyCombat("Bouncer");
 
-    //Combat dialogue objects
     GameStart endGame = new GameStart();
 
     public PlayerCombatLogic() throws IOException {
@@ -57,12 +57,6 @@ public class PlayerCombatLogic {
         dialogue.printCombatIntro();
 
     }
-    //for JAR file
-    // String movesJson = "com/json/Moves_JSON.txt";
-
-    //for intellij Terminal
-//    String movesJson = "module/src/com/json/Moves_JSON.txt";
-//    String moveContents = new String((Files.readAllBytes(Paths.get(movesJson))));
 
     //json for moveContents
     JSONObject j = ReadMoveContentJson.getAllUserFightContentJSON();
@@ -72,21 +66,25 @@ public class PlayerCombatLogic {
 
     public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException {
         clearScreen();
+        Enemy enemyObj = new Enemy(enemyName);
+        System.out.println("Enemy from json: " + enemyObj);
         CombatDialogue.printStoryIntro(story, enemyName);
         printFight();
         Thread.sleep(700);
         JSONObject currentEnemy = (JSONObject) object.get(enemyName);
-        currentEnemyHp = Integer.parseInt(String.valueOf(currentEnemy.get("Max Health")));
+        // currentEnemyHp = Integer.parseInt(String.valueOf(currentEnemy.get("Max Health")));
+        currentEnemyHp = enemyObj.getHp();
         do{
             clearScreen();
-            ArrayList<String> enemyTurn = enemy.enemyMoves();
+            // ArrayList<String> enemyTurn = enemy.enemyMoves();
+            ArrayList<String> enemyTurn = enemyObj.enemyAttack();
             introCombatSummaryPrint(enemyName, currentEnemyHp);
             System.out.print("Decide your move >");
             String userAttack = userInput.nextLine().toLowerCase();
             enemyDmg = attacks.jemadMoves(userAttack);
             currentEnemyHp-= enemyDmg;
             duringCombatSummaryPrint(enemyName, userAttack, enemyDmg, enemyTurn.get(0), enemyTurn.get(1));
-            jemadHealth -= Integer.parseInt(enemyTurn.get(1));
+            jemad.setHp(jemad.getHp() - Integer.parseInt(enemyTurn.get(1)));
             System.out.println("Press the enter key to continue");
             String pressEnter = userInput.nextLine().toLowerCase();
 
@@ -96,7 +94,7 @@ public class PlayerCombatLogic {
             Player.addDefeatedBoss(enemyName);
             dialogue.printCombatOutro();
             CombatDialogue.printStoryOutro(story, enemyName);
-        }else if (jemadHealth < 1){
+        }else if (jemad.getHp() < 1){
             System.out.println("..damn, my skills are getting dull\n");
             System.out.println("*Jemad passes out and never heard from again...*");
             Thread.sleep(3000);
@@ -106,7 +104,7 @@ public class PlayerCombatLogic {
             System.exit(0);
         }
 
-    }while(currentEnemyHp > 1 && jemadHealth > 1 );
+    }while(currentEnemyHp > 1 && jemad.getHp() > 1 );
     }
 
     public void printFight(){
@@ -121,7 +119,7 @@ public class PlayerCombatLogic {
     public void introCombatSummaryPrint(String enemyName, int currentEnemyHp) {
         System.out.println("=".repeat(40)  + "=".repeat(40));
         System.out.printf("%-20s %20s %n", "Player HP", enemyName + " HP");
-        System.out.printf("%-20s %20s %n", jemadHealth, currentEnemyHp);
+        System.out.printf("%-20s %20s %n", jemad.getHp(), currentEnemyHp);
         System.out.println("Your available moves:" );
         System.out.println(jemadMovesList);
         System.out.println("=".repeat(40)  + "=".repeat(40));

@@ -1,75 +1,92 @@
 {
   "bouncer": {
+    "Max Health": 30,
+    "Min Attack": 5,
+    "Max Attack": 10
+  },
+  "security guard": {
+    "Max Health": 35,
+    "Min Attack": 8,
+    "Max Attack": 12
+  },
+  "pool shark": {
     "Max Health": 25,
     "Min Attack": 1,
     "Max Attack": 5
   },
-  "security guard": {
-    "Max Health": 25,
-    "Attack": 5
-  },
-  "pool shark": {
-    "Max Health": 25,
-    "Attack": 5
-  },
   "biker": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "pool boy": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "locker guard": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "dishwasher": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "slots guard": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "pit guard": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "chef": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "elevator man": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "hall guard": {
     "Max Health": 25,
-    "Attack": 5
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "ninja": {
     "Max Health": 50,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "bartender": {
     "Max Health": 50,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "life guard": {
     "Max Health": 50,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "big ben": {
     "Max Health": 50,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "pit boss": {
     "Max Health": 50,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   },
   "Don Fury": {
     "Max Health": 75,
-    "Attack": 10
+    "Min Attack": 1,
+    "Max Attack": 5
   }
 }
