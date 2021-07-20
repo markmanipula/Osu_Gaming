@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Client {
-    private static Deque<String> instructionSet = new LinkedList<>();
+    public static Deque<String> instructionSet = new LinkedList<>();
     //this is a test main
     public static void main(String[] args) throws IOException, InterruptedException {
 
