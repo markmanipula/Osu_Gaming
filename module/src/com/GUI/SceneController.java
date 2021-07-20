@@ -16,24 +16,22 @@ public class SceneController {
     private static Stage stage;
 
     // handles only menuitems
-//    public static void switchSceneBaseOnMenuItemClick(ActionEvent event) throws IOException {
-//        MenuItem menuItemId = (MenuItem) event.getSource();
-//        String id = menuItemId.getId();
-//        System.out.println(id);
-//
-//        MenuItem menuItemTarget = (MenuItem) event.getTarget();
-//        ContextMenu cm = menuItemTarget.getParentPopup();
-//        System.out.println("Get Parent " + cm);
-//        stage = (Stage) cm.getScene().getWindow();
-//        System.out.println("Got the stage in " + stage);
-//        switch (id) {
-//            case "viewMapBtn":
-//                System.out.println("goBackBtn Clicked");
-//                MapSceneBuilder mapSceneBuilder = new MapSceneBuilder();
-//                mapSceneBuilder.buildMapScene(stage);
-//                break;
-//        }
-//    }
+    public static void switchSceneBaseOnMenuItemClick(ActionEvent event, Stage stage) throws IOException {
+        MenuItem menuItemId = (MenuItem) event.getSource();
+        String id = menuItemId.getId();
+        System.out.println(id);
+
+        MenuItem menuItemTarget = (MenuItem) event.getTarget();
+        System.out.println(id);
+        System.out.println("Got the stage in " + stage);
+        switch (id) {
+            case "displayMapMenuItem":
+                System.out.println("goBackBtn Clicked");
+                MapSceneBuilder mapSceneBuilder = new MapSceneBuilder();
+                mapSceneBuilder.buildMapScene(stage);
+                break;
+        }
+    }
 
     // handles only actual buttons
     public static void switchScenesBaseOnBtnClick(ActionEvent event) throws IOException {
