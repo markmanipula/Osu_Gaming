@@ -13,7 +13,7 @@
    <children>
       <Pane layoutY="436.0" prefHeight="364.0" prefWidth="1000.0" style="-fx-background-color: Black;">
          <children>
-            <MenuButton alignment="CENTER" contentDisplay="RIGHT" layoutX="421.0" layoutY="44.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
+            <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="421.0" layoutY="44.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
               <items>
                 <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
                 <MenuItem mnemonicParsing="false" text="Inventory" />

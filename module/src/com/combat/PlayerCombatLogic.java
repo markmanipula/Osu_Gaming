@@ -34,9 +34,6 @@ public class PlayerCombatLogic {
     //object for Jemad combat methods
     JemadCombat attacks = new JemadCombat("Jemad");
 
-    //object for enemy combat methods
-    EnemyCombat enemy = new EnemyCombat("Bouncer");
-
     GameStart endGame = new GameStart();
 
     public PlayerCombatLogic() throws IOException {
@@ -67,7 +64,6 @@ public class PlayerCombatLogic {
     public void combatMethod(JSONObject object, JSONObject story, String enemyName) throws InterruptedException {
         clearScreen();
         Enemy enemyObj = new Enemy(enemyName);
-        System.out.println("Enemy from json: " + enemyObj);
         CombatDialogue.printStoryIntro(story, enemyName);
         printFight();
         Thread.sleep(700);
@@ -76,7 +72,6 @@ public class PlayerCombatLogic {
         currentEnemyHp = enemyObj.getHp();
         do{
             clearScreen();
-            // ArrayList<String> enemyTurn = enemy.enemyMoves();
             ArrayList<String> enemyTurn = enemyObj.enemyAttack();
             introCombatSummaryPrint(enemyName, currentEnemyHp);
             System.out.print("Decide your move >");
