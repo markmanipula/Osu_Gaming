@@ -42,7 +42,30 @@ public class EnemyTest {
         assertEquals(expected, actual);
     }
 
-   
+    @Test
+    public void validateEnemyRandomDamagePowerWhenAttacking(){
+        Enemy bouncer = new Enemy("bouncer");
+        ArrayList<String> enemyAttackList = bouncer.enemyAttack();
+        int randomDamage =  Integer.parseInt(enemyAttackList.get(1));
+        boolean expected = true;
+        boolean actual = randomDamage > 4 && randomDamage < 11;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void validateEnemyAttackMove(){
+        Enemy bouncer = new Enemy("bouncer");
+        ArrayList<String> enemyAttackList = bouncer.enemyAttack();
+        String randomAttack =  enemyAttackList.get(0);
+        boolean expected = true;
+        boolean actual = randomAttack == "Punch" || randomAttack == "Kick";
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
 
 
 }
