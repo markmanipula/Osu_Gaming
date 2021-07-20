@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 
@@ -22,10 +24,14 @@ public class SOTF extends Application {
         stage.setTitle("Spirit Of The Fist");
         stage.show();
 
+
       } catch (Exception e) {
           e.printStackTrace();
       }
     }
+
+
+
     public static String stringCombatIntro(){
         String printFight1 = ("___________.___  ________  ___ ______________._.\n" +
                 "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +

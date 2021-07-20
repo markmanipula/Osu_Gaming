@@ -21,5 +21,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

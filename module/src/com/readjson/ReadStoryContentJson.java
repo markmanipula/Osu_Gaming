@@ -55,6 +55,7 @@ public class ReadStoryContentJson {
             String shortDescriptionArr[] = longDescriptionData.split("  ");
             for (int i = 0; i < shortDescriptionArr.length; i++) {
                 strBuilder.append(shortDescriptionArr[i] + "\n");
+                // strBuilder.append(shortDescriptionArr[i]);
                 // System.out.println(shortDescriptionArr[i]);
             }
             return strBuilder.toString();
