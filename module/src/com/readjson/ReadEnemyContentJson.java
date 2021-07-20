@@ -31,8 +31,39 @@ public class ReadEnemyContentJson {
         return enemyObj;
     }
 
-//    public static void main(String[] args) {
-//        JSONObject allEnemyObj = ReadEnemyContentJson.getAllEnemyContentJSON();
-//        System.out.println(allEnemyObj.containsKey("bouncer"))
-//    }
+    // method to get enemy minimum attack damage
+    // returns -1 if not valid
+    public static int getEnemyMinimumDamageJson(String enemyName) {
+        JSONObject selectedEnemy = ReadEnemyContentJson.getSelectedEnemyJSON(enemyName);
+        if (selectedEnemy == null) {
+            return -1;
+        }
+        String minDamageString = String.valueOf(selectedEnemy.get("Min Attack"));
+        int minDamage = Integer.parseInt(minDamageString);
+        return minDamage;
+    }
+
+    // method to get enemy maximum attack damage
+    // returns -1 if not valid
+    public static int getEnemyMaximumDamageJson(String enemyName) {
+        JSONObject selectedEnemy = ReadEnemyContentJson.getSelectedEnemyJSON(enemyName);
+        if (selectedEnemy == null) {
+            return -1;
+        }
+        String maxDamageString = String.valueOf(selectedEnemy.get("Max Attack"));
+        int maxDamage = Integer.parseInt(maxDamageString);
+        return maxDamage;
+    }
+
+    // method to get enemy health
+    // returns -1 if not valid
+    public static int getSelectedEnemyHeathJson(String enemyName) {
+        JSONObject selectedEnemy = ReadEnemyContentJson.getSelectedEnemyJSON(enemyName);
+        if (selectedEnemy == null) {
+            return -1;
+        }
+        String enemyHealthString = String.valueOf(selectedEnemy.get("Max Health"));
+        int enemyMaxHealth = Integer.valueOf(enemyHealthString);
+        return enemyMaxHealth;
+    }
 }
