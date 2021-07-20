@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.maingame.MainScreenController">
    <children>
       <Pane layoutY="436.0" prefHeight="364.0" prefWidth="1000.0" style="-fx-background-color: Black;">
          <children>
             <MenuButton alignment="CENTER" contentDisplay="RIGHT" layoutX="421.0" layoutY="44.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
               <items>
-                <MenuItem mnemonicParsing="false" text="Map" />
+                <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
                 <MenuItem mnemonicParsing="false" text="Inventory" />
               </items>
             </MenuButton>
@@ -24,6 +24,7 @@
             <Button layoutX="442.0" layoutY="272.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="South" />
             <Button layoutX="531.0" layoutY="192.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="East" />
             <Button layoutX="755.0" layoutY="45.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="222.0" style="-fx-background-color: INDIANRED;" text="Fight" />
+            <Button fx:id="viewMapBtn" layoutX="755.0" layoutY="126.0" mnemonicParsing="false" onAction="#switchItIntoMap" prefHeight="42.0" prefWidth="222.0" text="View Map" />
          </children>
       </Pane>
       <TextArea editable="false" layoutX="7.0" layoutY="440.0" prefHeight="352.0" prefWidth="330.0" style="-fx-background-color: DIMGREY;" text="Game text goes here. This is just to test how the word wrap will look. fddnsfjdsnfjdsbnfjlsdabnfljadsbnfkdasbnflkjadsbnfljhkdasbfjldbanslhjfnbdjshkvclndljksfnljadsknfljdksfnldjsabfdjlhsabfnljkdsafnbladjksfn dsa" wrapText="true">
