@@ -34,5 +34,15 @@ public class EnemyTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void validateEnemyMaxDamage(){
+        Enemy bouncer = new Enemy("bouncer");
+        int expected = 10;
+        int actual = bouncer.getMaxDamage();
+        assertEquals(expected, actual);
+    }
+
+   
+
 
 }
