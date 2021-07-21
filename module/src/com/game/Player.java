@@ -8,9 +8,53 @@ import java.util.*;
 public class Player{
 
     //can't be changed so there's no setter
-    private String name = "Jemad";
+    private static String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
+    // my test
+    private static int hp = 100;
+    private static String currentLocation = "Outside Bar";
+    private static int minDamage = 7;
+    private static int maxDamage = 12;
+    // just an empty constructor
+    public Player() {}
+
+    public int getFullHp() {
+        return 100;
+    }
+
+    public int getMinDamage() {
+        return this.minDamage;
+    }
+
+    public int getMaxDamage() {
+        return this.maxDamage;
+    }
+
+    public void setMinDamage(int minDamage) {
+        this.minDamage = minDamage;
+    }
+
+    public void setMaxDamage(int maxDamage) {
+        this.maxDamage = maxDamage;
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public String getCurrentLocation() {
+        return this.currentLocation;
+    }
+
+    public void setCurrentLocation(String currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+    // end of my test
 
     //so only unique items will be added on the players bag
     private Set<String> playerItems = new HashSet<>();
