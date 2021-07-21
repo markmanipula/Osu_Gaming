@@ -19,6 +19,10 @@ public class Player{
     // just an empty constructor
     public Player() {}
 
+    public int getFullHp() {
+        return 100;
+    }
+
     public int getMinDamage() {
         return this.minDamage;
     }

@@ -33,7 +33,11 @@ public class Client {
             JSONObject startingRoom = (JSONObject)r.get("Outside Bar");
             JSONArray currentRoomArray = (JSONArray) startingRoom.get("name");
             String currentRoom = (String) currentRoomArray.get(0);
-
+            // ===================================================
+            // TEST: current location
+            player.setCurrentLocation(currentRoom);
+            // TEST: end of test
+            // ===================================================
             //json for synonymContents
             // JSONObject s = new JSONObject(synonymContents);
             JSONObject s = ReadSynonymsContentJson.getAllSynonymContentJSON();
@@ -101,7 +105,7 @@ public class Client {
                 JSONArray currItemsJSArr = (JSONArray) currRoomJSObj.get("items");
 
                 //Display Basic Room information
-                System.out.println(currentRoom);
+                System.out.println(currentRoom + " " + player.getCurrentLocation());
                 System.out.println(des2);
 
                 Scanner scanner = new Scanner(System.in);
@@ -128,6 +132,7 @@ public class Client {
                         Window.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
+                        player.setCurrentLocation(currentRoom);
                         instructionSet.add(verb + " " + noun);
                     }
                 }
