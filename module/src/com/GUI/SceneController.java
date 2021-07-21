@@ -3,6 +3,7 @@ package com.GUI;
 import com.GUI.intro.JemadIntroScene;
 import com.GUI.maingame.MainScreenSceneBuilder;
 import com.GUI.map.MapSceneBuilder;
+import com.GUI.status.PlayerStatusSceneBuilder;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -30,6 +31,11 @@ public class SceneController {
                 MapSceneBuilder mapSceneBuilder = new MapSceneBuilder();
                 mapSceneBuilder.buildMapScene(stage);
                 break;
+            case "aboutJemad":
+                System.out.println("aboutJemad menuItem clicked");
+                PlayerStatusSceneBuilder playerSceneBuilder = new PlayerStatusSceneBuilder();
+                playerSceneBuilder.buildPlayerStatusScene(stage);
+                break;
         }
     }
 
@@ -41,6 +47,7 @@ public class SceneController {
         switch (id) {
             case "continueBtn":
             case "goBackBtn":
+            case "exitPlayerStatusButton":
                 System.out.println("continueBtn Clicked");
                 System.out.println("Got the stage in " + stage);
                 MainScreenSceneBuilder mainGameScene = new MainScreenSceneBuilder();

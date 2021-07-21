@@ -10,6 +10,6 @@
       <ImageView fx:id="imageView" fitHeight="327.0" fitWidth="751.0" layoutX="26.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="277.0" layoutY="537.0" prefHeight="17.0" prefWidth="99.0" text="Current location" />
       <Button fx:id="goBackBtn" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackBtnActionEvent" prefHeight="39.0" prefWidth="99.0" text="Go back" />
-      <Label layoutX="401.0" layoutY="537.0" prefHeight="17.0" prefWidth="137.0" text="Placeholder " />
+      <Label fx:id="currentLocationLabel" layoutX="401.0" layoutY="537.0" prefHeight="17.0" prefWidth="137.0" />
    </children>
 </AnchorPane>

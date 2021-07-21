@@ -8,16 +8,20 @@ import java.util.*;
 public class Player{
 
     //can't be changed so there's no setter
-    private String name = "Jemad";
+    private static String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
     // my test
-    private int hp = 100;
-    private String currentLocation = "Outside Bar";
-    private int minDamage = 7;
-    private int maxDamage = 12;
+    private static int hp = 100;
+    private static String currentLocation = "Outside Bar";
+    private static int minDamage = 7;
+    private static int maxDamage = 12;
     // just an empty constructor
     public Player() {}
+
+    public int getFullHp() {
+        return 100;
+    }
 
     public int getMinDamage() {
         return this.minDamage;
