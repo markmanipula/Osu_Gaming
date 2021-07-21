@@ -8,7 +8,7 @@ import java.util.*;
 public class Player{
 
     //can't be changed so there's no setter
-    private String name = "Jemad";
+    private static String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
     // my test
