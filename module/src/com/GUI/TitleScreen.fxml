@@ -2,14 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
+<AnchorPane fx:id="titlePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
    <children>
+      <Label fx:id="songLabel" layoutX="2.0" layoutY="3.0" prefHeight="592.0" prefWidth="800.0" />
 
       <Button layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
       <Button fx:id="startBtn" layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
@@ -55,5 +60,21 @@
             </RadialGradient>
          </textFill>
       </Label>
+      <MenuBar layoutX="5.0" prefHeight="142.0" prefWidth="791.0" style="-fx-background-color: black;">
+        <menus>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Slider fx:id="volumeSlider" max="250.0" prefHeight="14.0" prefWidth="62.0" style="-fx-background-color: black;" value="125.0" />
+               </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Music">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#playMedia" text="Play" />
+              <MenuItem mnemonicParsing="false" onAction="#pauseMedia" text="Pause" />
+                  <MenuItem fx:id="nextMedia" mnemonicParsing="false" onAction="#nextMedia" text="Next" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
