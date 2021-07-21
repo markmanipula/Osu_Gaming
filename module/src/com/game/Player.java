@@ -11,11 +11,15 @@ public class Player{
     private static String name = "Jemad";
     private Map map = new Map();
     private Items items = new Items();
+    // another test July 21, 2021
+    private static ArrayList<Item> inventory = new ArrayList<>();
     // my test
     private static int hp = 100;
     private static String currentLocation = "Outside Bar";
     private static int minDamage = 7;
     private static int maxDamage = 12;
+    private final int DEFAULT_MIN_DAMAGE = 7;
+    private final int DEFAULT_MAX_DAMAGE = 12;
     // just an empty constructor
     public Player() {}
 
@@ -97,6 +101,57 @@ public class Player{
         if(item == null || item == "") return;
         playerItems.add(item);
     }
+
+    // my test
+    public boolean addItemJson(Item item) {
+        System.out.println("From addItemJSON: " + item);
+        // inventory = new ArrayList<>();
+        inventory.add(item);
+        System.out.println("From addItemJSON: " + inventory);
+        return true;
+    }
+
+    public boolean useItemJson(Item item) {
+        if (inventory.contains(item)) {
+            Item selectedItem = item;
+            String type = selectedItem.getItemType();
+            switch (type) {
+                case "Consumable":
+                    int healHPAmount = selectedItem.getItemAffect();
+                    if (this.getHp() >= 100) {
+                        System.out.println("Already full hp");
+                        return false;
+                    }
+                    // if it add up and then it is greater than 100 then
+                    else if (this.getHp() + healHPAmount >= 100) {
+                        this.setHp(100);
+                        // remove item
+                        inventory.remove(selectedItem);
+                        return true;
+                    } else if (this.getHp() + healHPAmount < 100) {
+                        this.setHp(this.getHp() + healHPAmount);
+                        // remove item
+                        inventory.remove(selectedItem);
+                        return true;
+                    } else {
+                        System.out.println("Consume: I do not know what happend in use item: return false");
+                        return false;
+                    }
+                case "Weapon":
+                    int increaseDamageAmount = selectedItem.getItemAffect();
+                    this.setMinDamage( DEFAULT_MIN_DAMAGE + increaseDamageAmount );
+                    this.setMaxDamage( DEFAULT_MAX_DAMAGE + increaseDamageAmount );
+                    inventory.remove(selectedItem);
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+    // end of my test
 
     public void removeItem(String item){
         if(item == null || item == "") return;
