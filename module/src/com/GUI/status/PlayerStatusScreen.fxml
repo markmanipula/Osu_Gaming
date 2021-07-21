@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.status.PlayerStatusSceneController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="399.0" fitWidth="281.0" layoutX="87.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="432.0" layoutY="80.0" prefHeight="30.0" prefWidth="82.0" text="Name: " />
+      <Label layoutX="432.0" layoutY="135.0" prefHeight="30.0" prefWidth="46.0" text="Story: " />
+      <TextArea fx:id="storyTextArea" layoutX="541.0" layoutY="139.0" prefHeight="139.0" prefWidth="208.0" />
+      <Label layoutX="429.0" layoutY="300.0" prefHeight="30.0" prefWidth="69.0" text="Current HP:" />
+      <Label layoutX="429.0" layoutY="372.0" prefHeight="30.0" prefWidth="99.0" text="Attack Damage: " />
+      <Label layoutX="430.0" layoutY="439.0" prefHeight="30.0" prefWidth="99.0" text="Current Location:" />
+      <TextField fx:id="nameTextField" layoutX="541.0" layoutY="82.0" prefHeight="26.0" prefWidth="207.0" />
+      <TextField fx:id="currentHp" layoutX="539.0" layoutY="302.0" prefHeight="26.0" prefWidth="213.0" />
+      <TextField fx:id="attackDamage" layoutX="538.0" layoutY="374.0" prefHeight="26.0" prefWidth="215.0" />
+      <TextField fx:id="currentLocation" layoutX="537.0" layoutY="443.0" prefHeight="26.0" prefWidth="218.0" />
+      <Button fx:id="exitPlayerStatusButton" layoutX="87.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchItIntoMain" prefHeight="38.0" prefWidth="82.0" text="Go Back" />
+   </children>
+</AnchorPane>

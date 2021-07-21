@@ -16,7 +16,8 @@
             <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="421.0" layoutY="44.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
               <items>
                 <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
-                <MenuItem mnemonicParsing="false" text="Inventory" />
+                <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
+                  <MenuItem mnemonicParsing="false" text="Inventory" />
               </items>
             </MenuButton>
             <Button layoutX="353.0" layoutY="191.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />

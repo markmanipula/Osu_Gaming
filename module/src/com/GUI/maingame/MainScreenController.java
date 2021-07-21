@@ -16,18 +16,17 @@ public class MainScreenController {
     private MenuButton menuButton;
     @FXML
     private MenuItem displayMapMenuItem;
-
+    @FXML
+    private MenuItem aboutJemad;
 
     public void switchItIntoMap(ActionEvent event) throws IOException {
-        if (event.getSource() == displayMapMenuItem) {
+        if (event.getSource() == displayMapMenuItem || event.getSource() == aboutJemad) {
             System.out.println("a menu item got clicked");
             MenuItem menuItemId = (MenuItem) event.getSource();
             String id = menuItemId.getId();
             System.out.println(id);
-
             // try to get the stage
             Stage stage = (Stage) menuButton.getScene().getWindow();
-
             SceneController.switchSceneBaseOnMenuItemClick(event, stage);
         } else {
             SceneController.switchScenesBaseOnBtnClick(event);
