@@ -12,10 +12,10 @@ public class Player{
     private Map map = new Map();
     private Items items = new Items();
     // my test
-    private int hp = 100;
-    private String currentLocation = "Outside Bar";
-    private int minDamage = 7;
-    private int maxDamage = 12;
+    private static int hp = 100;
+    private static String currentLocation = "Outside Bar";
+    private static int minDamage = 7;
+    private static int maxDamage = 12;
     // just an empty constructor
     public Player() {}
 
