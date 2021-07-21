@@ -7,12 +7,11 @@ import com.game.Player;
 import com.map.Map;
 import com.map.View;
 import com.readjson.*;
+import com.replay.SaveGame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Client {
@@ -33,11 +32,7 @@ public class Client {
             JSONObject startingRoom = (JSONObject)r.get("Outside Bar");
             JSONArray currentRoomArray = (JSONArray) startingRoom.get("name");
             String currentRoom = (String) currentRoomArray.get(0);
-            // ===================================================
-            // TEST: current location
-            player.setCurrentLocation(currentRoom);
-            // TEST: end of test
-            // ===================================================
+
             //json for synonymContents
             // JSONObject s = new JSONObject(synonymContents);
             JSONObject s = ReadSynonymsContentJson.getAllSynonymContentJSON();
@@ -50,6 +45,8 @@ public class Client {
             JSONArray legendSynonym = (JSONArray) s.get("legend");
             JSONArray mapSynonym = (JSONArray) s.get("map");
             JSONArray quitSynonym = (JSONArray) s.get("quit");
+            JSONArray saveSynonym = (JSONArray) s.get("save");
+            JSONArray gameSynonym = (JSONArray) s.get("game");
 
             //json for storyContents
             // JSONObject sotfStory = new JSONObject(storyContents);
@@ -75,7 +72,7 @@ public class Client {
             boolean running = true;
             while(running){
                 divider();
-            //Create If statements. Starts false, then after you visit once it is true for the rest of the game.
+                //Create If statements. Starts false, then after you visit once it is true for the rest of the game.
 
                 //for the input direction, compare that to direc
                 // tions in current room
@@ -105,7 +102,7 @@ public class Client {
                 JSONArray currItemsJSArr = (JSONArray) currRoomJSObj.get("items");
 
                 //Display Basic Room information
-                System.out.println(currentRoom + " " + player.getCurrentLocation());
+                System.out.println(currentRoom);
                 System.out.println(des2);
 
                 Scanner scanner = new Scanner(System.in);
@@ -132,7 +129,6 @@ public class Client {
                         Window.clearScreen();
                         currentRoomArray = (JSONArray) currRoomJSObj.get(noun);
                         currentRoom = (String) currentRoomArray.get(0);
-                        player.setCurrentLocation(currentRoom);
                         instructionSet.add(verb + " " + noun);
                     }
                 }
@@ -232,11 +228,21 @@ public class Client {
                     Window.clearScreen();
                     instructionSet.add(verb + " " + noun);
                     View.possibleRoutes(currentRoom);
-                }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)){
+                    // Save game method
+                }else if(contains(verb, saveSynonym) || contains(noun, gameSynonym)){
+                    Window.clearScreen();
+                    player.getCurrentLocation();
+                    SaveGame.save(player);
+                    System.out.println("Saving Game");
+                    Thread.sleep(1000);
+                    System.exit(0);
+                    // Quit game
+                }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)) {
                     Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
                     Thread.sleep(1000);
                     System.exit(0);
+
                 }else{
 
                     System.out.println("Invalid input");
@@ -367,4 +373,6 @@ public class Client {
     public static void startingRoom() {
 
     }
+
+
 }
