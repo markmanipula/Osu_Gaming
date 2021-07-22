@@ -45,6 +45,10 @@ public class SceneController {
         String id = btn.getId();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         switch (id) {
+            case "north":
+            case "south":
+            case "east":
+            case "west":
             case "continueBtn":
             case "goBackBtn":
             case "exitPlayerStatusButton":
