@@ -231,7 +231,7 @@ public class Client {
                     // Save game method
                 }else if(contains(verb, saveSynonym) || contains(noun, gameSynonym)){
                     Window.clearScreen();
-                    player.getCurrentLocation();
+                    player.setCurrentLocation(currentRoom); //updates location for player
                     SaveGame.save(player);
                     System.out.println("Saving Game");
                     Thread.sleep(1000);

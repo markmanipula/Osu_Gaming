@@ -2,6 +2,7 @@ package com.replay;
 
 import com.game.Player;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.util.Set;
 
@@ -15,28 +16,41 @@ public class SaveGame {
         int maxDamage = player.getMaxDamage();
         Set<String> playerItems = player.getPlayerItems();
 
+        //Will create new savedGame file if it does not exists.
+        //Else it will overwrite previous save and then write to file
 
         try {
-            BufferedWriter saveTest = new BufferedWriter(new FileWriter("saveTest.txt"));
-            saveTest.write("" + hp);
-            saveTest.newLine();
-            saveTest.write(currentLocation);
-            saveTest.newLine();
-            saveTest.write("" + minDamage);
-            saveTest.newLine();;
-            saveTest.write("" + maxDamage);
-            saveTest.newLine();
+            File saveFile = new File("savedGame.txt");
+            if (saveFile.createNewFile()) {
+                System.out.println("File created: " + saveFile.getName());
+            } else {
+                File oldSave = new File("savedGame.txt");
+                oldSave.delete();
+                saveFile = new File("savedGame.txt");
+                saveFile.createNewFile();
+                System.out.println("File created: " + saveFile.getName());
+            }
+            BufferedWriter savedGame = new BufferedWriter(new FileWriter("savedGame.txt"));
+            savedGame.write("" + hp);
+            savedGame.newLine();
+            savedGame.write(currentLocation);
+            savedGame.newLine();
+            savedGame.write("" + minDamage);
+            savedGame.newLine();;
+            savedGame.write("" + maxDamage);
+            savedGame.newLine();
 
             for (String items: playerItems){
-                saveTest.write(items);
-                saveTest.newLine();
+                savedGame.write(items);
+                savedGame.newLine();
             }
 
-            saveTest.close();
+            savedGame.close();
 
         }
         catch (Exception e){
             System.out.println("Can't save file");
         }
     }
+
 }
