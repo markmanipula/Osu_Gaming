@@ -26,8 +26,8 @@ public class ReadRoomContentJson {
         }
     }
 
-    // private helper method to retrieve particular room current
-    private static JSONObject getCurrentRoomContentJSON(String currentRoom) {
+    // public helper method to retrieve particular room current
+    public static JSONObject getCurrentRoomContentJSON(String currentRoom) {
         parser = new JSONParser();
         InputStream roomContent = ReadRoomContentJson.class.getResourceAsStream("/Rooms_JSON.json");
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(roomContent))) {
