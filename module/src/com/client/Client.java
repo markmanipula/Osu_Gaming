@@ -7,6 +7,7 @@ import com.game.Player;
 import com.map.Map;
 import com.map.View;
 import com.readjson.*;
+import com.replay.LoadGame;
 import com.replay.SaveGame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -46,6 +47,7 @@ public class Client {
             JSONArray mapSynonym = (JSONArray) s.get("map");
             JSONArray quitSynonym = (JSONArray) s.get("quit");
             JSONArray saveSynonym = (JSONArray) s.get("save");
+            JSONArray loadSynonym = (JSONArray) s.get("load");
             JSONArray gameSynonym = (JSONArray) s.get("game");
 
             //json for storyContents
@@ -229,15 +231,43 @@ public class Client {
                     instructionSet.add(verb + " " + noun);
                     View.possibleRoutes(currentRoom);
                     // Save game method
-                }else if(contains(verb, saveSynonym) || contains(noun, gameSynonym)){
+                }else if(contains(verb, saveSynonym) && contains(noun, gameSynonym)){
                     Window.clearScreen();
-                    player.getCurrentLocation();
+                    player.setCurrentLocation(currentRoom); //updates location for player
                     SaveGame.save(player);
                     System.out.println("Saving Game");
                     Thread.sleep(1000);
                     System.exit(0);
-                    // Quit game
-                }else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)) {
+                    // Load game
+                }else if(contains(verb, loadSynonym) && contains(noun, gameSynonym)) {
+                    Window.clearScreen();
+                    instructionSet.add(verb + " " + noun);
+                    map = new Map();
+                    player = new Player(map);
+
+                    //Reading Attributes from save file
+                    ArrayList<Object> savedGameArray = LoadGame.loadAttributesFromSaveGameFile();
+                    int savedGameArraySize = savedGameArray.size();
+                    int numOfItems = savedGameArraySize - 4;
+                    player.setHp((Integer) savedGameArray.get(0));
+                    String startingLocation = (String) savedGameArray.get(1);
+                    player.setMinDamage((Integer) savedGameArray.get(2));
+                    player.setMaxDamage((Integer) savedGameArray.get(3));
+                    int itemIndex = 4;
+                    while (numOfItems > 0){
+                        player.addItem((String) savedGameArray.get(itemIndex));
+                        itemIndex += 1;
+                        numOfItems -= 1;
+                    }
+
+                    //Put player in room they left off from
+
+                    startingRoom = (JSONObject)r.get(startingLocation);
+                    currentRoomArray = (JSONArray) startingRoom.get("name");
+                    currentRoom = (String) currentRoomArray.get(0);
+                    player.setCurrentLocation(currentRoom);
+                    //Quit game
+                } else if(contains(verb, quitSynonym) || contains(noun, quitSynonym)) {
                     Window.clearScreen();
                     System.out.println("Thanks for playing Spirit of the Fist: Madness of Jemad");
                     Thread.sleep(1000);
