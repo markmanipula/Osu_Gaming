@@ -108,14 +108,14 @@ public class Player{
         // inventory = new ArrayList<>();
         if (inventory.contains(item)) {
             System.out.println("Item already exist");
-            return true;
+            return false;
         }
         inventory.add(item);
         System.out.println("From addItemJSON: " + inventory);
         return true;
     }
 
-    public boolean useItemJson(Item item) {
+    public String useItemJson(Item item) {
         if (inventory.contains(item)) {
             Item selectedItem = item;
             String type = selectedItem.getItemType();
@@ -123,33 +123,32 @@ public class Player{
                 case "Consumable":
                     int healHPAmount = selectedItem.getItemAffect();
                     if (this.getHp() >= 100) {
-                        System.out.println("Already full hp");
-                        return false;
+                        return "Your hp is full already";
                     }
                     // if it add up and then it is greater than 100 then
                     else if (this.getHp() + healHPAmount >= 100) {
                         this.setHp(100);
                         // remove item
                         inventory.remove(selectedItem);
-                        return true;
+                        return "Restore your hp";
                     } else if (this.getHp() + healHPAmount < 100) {
                         this.setHp(this.getHp() + healHPAmount);
                         // remove item
                         inventory.remove(selectedItem);
-                        return true;
+                        return "Restore your hp";
                     } else {
-                        System.out.println("Consume: I do not know what happend in use item: return false");
-                        return false;
+                        System.out.println("Consume: I do not know what happened in use item: return false");
+                        return "Consume: I do not know what happened in use item: return false";
                     }
                 case "Weapon":
                     int increaseDamageAmount = selectedItem.getItemAffect();
                     this.setMinDamage( DEFAULT_MIN_DAMAGE + increaseDamageAmount );
                     this.setMaxDamage( DEFAULT_MAX_DAMAGE + increaseDamageAmount );
                     inventory.remove(selectedItem);
-                    return true;
+                    return "Your damage increased by " + increaseDamageAmount;
             }
         }
-        return false;
+        return "";
     }
 
     public ArrayList<Item> getInventory() {
