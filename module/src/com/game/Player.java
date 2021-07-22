@@ -106,6 +106,10 @@ public class Player{
     public boolean addItemJson(Item item) {
         System.out.println("From addItemJSON: " + item);
         // inventory = new ArrayList<>();
+        if (inventory.contains(item)) {
+            System.out.println("Item already exist");
+            return true;
+        }
         inventory.add(item);
         System.out.println("From addItemJSON: " + inventory);
         return true;
