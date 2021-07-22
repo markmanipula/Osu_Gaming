@@ -9,5 +9,6 @@
   "map": ["map"],
   "quit": ["quit"],
   "save": ["save"],
+  "load": ["load"],
   "game": ["game"]
 }
