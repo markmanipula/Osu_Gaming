@@ -112,6 +112,9 @@ public class MainScreenController {
     private void generatePossibleItemsInCurrentRoom() {
         JSONArray itemList = ReadItemContentJson.getItemBasedOnLocation(jemad.getCurrentLocation());
         getItemMenuButton.getItems().removeAll();
+        if (itemList == null || itemList.size() == 0) {
+            return;
+        }
         if (itemList != null || itemList.size() > 0) {
             for (Object eachItem: itemList) {
                 JSONObject eachItemObj = (JSONObject) eachItem;
