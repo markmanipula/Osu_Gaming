@@ -4,12 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.map.MapSceneController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="327.0" fitWidth="751.0" layoutX="26.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="382.0" fitWidth="734.0" layoutX="26.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="277.0" layoutY="537.0" prefHeight="17.0" prefWidth="99.0" text="Current location" />
       <Button fx:id="goBackBtn" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackBtnActionEvent" prefHeight="39.0" prefWidth="99.0" text="Go back" />
       <Label fx:id="currentLocationLabel" layoutX="401.0" layoutY="537.0" prefHeight="17.0" prefWidth="137.0" />
+      <Circle fx:id="currentUserIndicator" fill="#ff3b1f" layoutX="75.0" layoutY="143.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
