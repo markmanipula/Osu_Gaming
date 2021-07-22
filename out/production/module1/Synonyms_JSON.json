@@ -7,5 +7,7 @@
   "direction": ["north", "south", "east", "west"],
   "legend": ["legend"],
   "map": ["map"],
-  "quit": ["quit"]
+  "quit": ["quit"],
+  "save": ["save"],
+  "game": ["game"]
 }
