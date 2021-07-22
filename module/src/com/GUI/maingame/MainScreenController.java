@@ -34,6 +34,17 @@ public class MainScreenController {
     private Button userItemButton;
     @FXML
     private Label itemUserActionInfo;
+    // movement buttons
+    @FXML
+    private Button south;
+    @FXML
+    private Button north;
+    @FXML
+    private Button east;
+    @FXML
+    private Button west;
+    @FXML
+    private Label currentLocationLabel;
     // player obj to retrieve the current location
     private Player jemad = new Player();
 
@@ -45,6 +56,55 @@ public class MainScreenController {
         displayInventory();
         // button for item utilize
         userItemButton.setOnAction(e -> useItemButtonHandler());
+        // button for movements
+        south.setOnAction(e -> {
+            try {
+                movementRoomHandler(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        north.setOnAction(e -> {
+            try {
+                movementRoomHandler(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        east.setOnAction(e -> {
+            try {
+                movementRoomHandler(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        west.setOnAction(e -> {
+            try {
+                movementRoomHandler(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        currentLocationLabel.setText(jemad.getCurrentLocation());
+    }
+
+    // movement
+    private void movementRoomHandler(ActionEvent e) throws IOException {
+        String currentPlayerLocation = jemad.getCurrentLocation();
+        // retrieve entire room based on current player location
+        JSONObject roomObj = ReadRoomContentJson.getCurrentRoomContentJSON(currentPlayerLocation);
+        Button btn =  (Button) e.getSource();
+        String fxId = btn.getId();
+        System.out.println(fxId);
+        JSONArray nextRoomBasedOnButton = (JSONArray) roomObj.get(fxId);
+        if (nextRoomBasedOnButton == null || nextRoomBasedOnButton.size() == 0) {
+            return;
+        }
+        // if the movement for next direction is valid
+        String movedLocation = String.valueOf(nextRoomBasedOnButton.get(0));
+        // set Jemad's location to movedLocation
+        jemad.setCurrentLocation(movedLocation);
+        SceneController.switchScenesBaseOnBtnClick(e);
     }
 
     // private method to generate all possible item based on
@@ -67,17 +127,6 @@ public class MainScreenController {
             itemDoesNotExist.setText("There is no item in this room");
             getItemMenuButton.getItems().add(itemDoesNotExist);
         }
-    }
-
-    // method to display info alert for items
-    private void displayItemInfo(String headerText, String contextText) {
-        // display message such as "you found weapon spirit of fist
-        // increase your damage by x
-        Alert info = new Alert(Alert.AlertType.INFORMATION);
-        info.setTitle("Info");
-        info.setHeaderText(headerText);
-        info.setContentText(contextText);
-        info.showAndWait();
     }
 
     // private method for click event to put clicked item into the inventory GUI
@@ -137,7 +186,7 @@ public class MainScreenController {
 
     private void generateDescriptionBasedOnLocation() {
         // changed the location to inside bar to test
-        jemad.setCurrentLocation("Outside Bar");
+        // jemad.setCurrentLocation("Outside Bar");
         String currentDescription = ReadRoomContentJson.trimRoomDescription(jemad.getCurrentLocation());
         gameDescription.setEditable(false);
         gameDescription.setWrapText(true);
