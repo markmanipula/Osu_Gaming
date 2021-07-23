@@ -64,7 +64,7 @@
         <menus>
           <Menu mnemonicParsing="false">
                <graphic>
-                  <Slider fx:id="volumeSlider" max="250.0" prefHeight="14.0" prefWidth="62.0" style="-fx-background-color: black;" value="125.0" />
+                  <Slider fx:id="volumeSlider" blockIncrement="1.0" majorTickUnit="5.0" min="1.0" minorTickCount="1" prefHeight="14.0" prefWidth="62.0" style="-fx-background-color: black;" value="20.0" />
                </graphic>
           </Menu>
           <Menu mnemonicParsing="false" text="Music">
