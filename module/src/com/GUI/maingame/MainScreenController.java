@@ -1,14 +1,21 @@
 package com.GUI.maingame;
 
 import com.GUI.SceneController;
+import com.character.Enemy;
+import com.combat.JemadCombat;
 import com.game.Item;
 import com.game.Player;
 import com.readjson.ReadItemContentJson;
+import com.readjson.ReadMoveContentJson;
 import com.readjson.ReadRoomContentJson;
+import com.story.StoryGenerator;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -45,6 +52,26 @@ public class MainScreenController {
     private Button west;
     @FXML
     private Label currentLocationLabel;
+    // Fight
+    @FXML
+    private Pane gamePane;
+    @FXML
+    private MenuButton fightButton;
+    @FXML
+    private TextArea playerFightTextArea;
+    @FXML
+    private ImageView jemadFacingRightImageView;
+    private Image jemadFightImage;
+    @FXML
+    private TextArea enemyFightTextArea;
+    @FXML
+    private ImageView enemyFacingImageView;
+    private Image enemyFightImage;
+    @FXML
+    private MenuButton jemadCombatMovementMenuButton;
+    @FXML
+    private TextArea fightCombatDialog;
+
     // player obj to retrieve the current location
     private Player jemad = new Player();
 
@@ -53,6 +80,8 @@ public class MainScreenController {
         System.out.println("is this print? from initializer");
         generateDescriptionBasedOnLocation();
         generatePossibleItemsInCurrentRoom();
+        // get possible enemy located in player's current room
+        generatePossibleEnemyInCurrentRoom();
         displayInventory();
         // button for item utilize
         userItemButton.setOnAction(e -> useItemButtonHandler());
@@ -86,6 +115,109 @@ public class MainScreenController {
             }
         });
         currentLocationLabel.setText(jemad.getCurrentLocation());
+    }
+
+    // fight menu items
+    private void generatePossibleEnemyInCurrentRoom() {
+        JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
+        if (enemyList == null || enemyList.size() == 0) {
+            return;
+        }
+        // loop to create possible options for all enemies in current room
+        for (Object eachEnemy: enemyList) {
+            MenuItem enemyItem = new MenuItem();
+            enemyItem.setId(String.valueOf(eachEnemy));
+            enemyItem.setText(String.valueOf(eachEnemy));
+            // put event on each enemy
+            enemyItem.setOnAction(e -> enemyFightSceneHandler(e, String.valueOf(eachEnemy)));
+            fightButton.getItems().add(enemyItem);
+        }
+    }
+
+    private void enemyFightSceneHandler(ActionEvent e, String fxId) {
+        Enemy selectedEnemy = new Enemy(fxId);
+
+        // must disable all buttons (such as menu, getItem)
+        fightCombatDialog(fxId);
+        // set up enemy
+        getEnemyInfo(selectedEnemy);
+        // set up player
+        getPlayerJemadInfo(selectedEnemy);
+    }
+
+    // set the dialog
+    private void fightCombatDialog(String fxId) {
+        // use the enemy name to retrieve the fighting story
+        String storyLines = StoryGenerator.printStoryIntro(fxId);
+        fightCombatDialog.setEditable(false);
+        fightCombatDialog.setStyle("-fx-font-size: 3em;");
+        fightCombatDialog.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
+        fightCombatDialog.setText(storyLines);
+    }
+
+    // private method to retrieve current enemy info for fight
+    private void getEnemyInfo(Enemy selectedEnemy) {
+        String selectedEnemyName = selectedEnemy.getName();
+        int selectedEnemyHp = selectedEnemy.getHp();
+        int selectedEnemyMinDamage = selectedEnemy.getMinDamage();
+        int selectedEnemyMaxDamage = selectedEnemy.getMaxDamage();
+        enemyFightTextArea.setEditable(false);
+        enemyFightTextArea.setStyle("-fx-font-size: 4em;");
+        enemyFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
+        enemyFightTextArea.setText(selectedEnemyName + "\n\nHp: " + selectedEnemyHp + "\n\nDamage: " + selectedEnemyMinDamage + " ~ " + selectedEnemyMaxDamage);
+        // set up the enemy facing image
+        enemyFightImage = new Image(this.getClass().getResourceAsStream("/images/enemyImage.jpeg"));
+        enemyFacingImageView.setImage(enemyFightImage);
+    }
+
+    // private method to retrieve current Jemad's info for fight
+    private void getPlayerJemadInfo(Enemy selectedEnemy) {
+        String playerName = jemad.getName();
+        int playerHp = jemad.getHp();
+        int playerMinDamage = jemad.getMinDamage();
+        int playerMaxDamage = jemad.getMaxDamage();
+        playerFightTextArea.setEditable(false);
+        playerFightTextArea.setStyle("-fx-font-size: 4em;");
+        playerFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
+        playerFightTextArea.setText(playerName + "\n\nHp: " + playerHp + "\n\nDamage: " + playerMinDamage + " ~ " + playerMaxDamage);
+        // set up the jemad facing image
+        jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/jemadFightImage.jpeg"));
+        jemadFacingRightImageView.setImage(jemadFightImage);
+        // set up the possible movements
+        JSONArray jemadAttackMoves = ReadMoveContentJson.getAllPossibleAttackMoves();
+        if (jemadAttackMoves == null || jemadAttackMoves.size() == 0) {
+            return;
+        }
+        for (Object jemadAttack: jemadAttackMoves) {
+            MenuItem eachAttack = new MenuItem();
+            // jemadCombatMovementMenuButton
+            // set it into lower case
+            eachAttack.setId(String.valueOf(jemadAttack).toLowerCase());
+            eachAttack.setText(String.valueOf(jemadAttack));
+            // set an action about fight logic for each menu item
+            eachAttack.setOnAction(e -> fightingCombatLogic(e, String.valueOf(jemadAttack).toLowerCase(), selectedEnemy));
+            // loop until someone die
+            jemadCombatMovementMenuButton.getItems().add(eachAttack);
+        }
+    }
+
+    private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        JemadCombat jemadCombatMove = new JemadCombat();
+
+        int jemadHp = jemad.getHp();
+        int enemyHp = currentEnemy.getHp();
+        // random either 0 or 1
+        int firstMove = 0 + (int)(Math.random() * ((1 - 0) + 1));
+        if (firstMove == 0) {
+            // jemad goes first
+
+        } else {
+            // enemy goes first
+        }
+
+
+        // after A attack B check health
+        // after B attack A check health
     }
 
     // movement

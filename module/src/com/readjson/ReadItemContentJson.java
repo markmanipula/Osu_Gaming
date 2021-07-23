@@ -27,7 +27,7 @@ public class ReadItemContentJson {
         }
     }
 
-    // helper method to trieve all items existing in the current location
+    // helper method to retrieve all items existing in the current location
     public static JSONArray getItemBasedOnLocation(String currentLocation) {
         JSONObject allItem = ReadItemContentJson.getAllItemContentJSON();
         JSONObject itemJSON = (JSONObject) allItem.get(currentLocation);
