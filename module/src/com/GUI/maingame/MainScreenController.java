@@ -23,6 +23,8 @@ public class MainScreenController {
     private MenuItem displayMapMenuItem;
     @FXML
     private MenuItem aboutJemad;
+    @FXML
+    private MenuItem saveGame;
     // script data
     @FXML
     private TextArea gameDescription;
@@ -197,7 +199,7 @@ public class MainScreenController {
     }
 
     public void switchItIntoMap(ActionEvent event) throws IOException {
-        if (event.getSource() == displayMapMenuItem || event.getSource() == aboutJemad) {
+        if (event.getSource() == displayMapMenuItem || event.getSource() == aboutJemad ||  event.getSource() == saveGame) {
             System.out.println("a menu item got clicked");
             MenuItem menuItemId = (MenuItem) event.getSource();
             String id = menuItemId.getId();
@@ -210,4 +212,5 @@ public class MainScreenController {
          }
 
     }
+
 }

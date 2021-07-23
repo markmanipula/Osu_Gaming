@@ -3,11 +3,11 @@ package com.GUI;
 import com.GUI.intro.JemadIntroScene;
 import com.GUI.maingame.MainScreenSceneBuilder;
 import com.GUI.map.MapSceneBuilder;
+import com.GUI.savegame.SaveGameScene;
 import com.GUI.status.PlayerStatusSceneBuilder;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
@@ -36,6 +36,11 @@ public class SceneController {
                 PlayerStatusSceneBuilder playerSceneBuilder = new PlayerStatusSceneBuilder();
                 playerSceneBuilder.buildPlayerStatusScene(stage);
                 break;
+            case "saveGame":
+                System.out.println("saveGame menuItem clicked");
+                SaveGameScene saveGameScene = new SaveGameScene();
+                saveGameScene.buildSaveGameScene(stage);
+                break;
         }
     }
 
@@ -51,6 +56,7 @@ public class SceneController {
             case "west":
             case "continueBtn":
             case "goBackBtn":
+            case "doNotSaveGameBtn":
             case "exitPlayerStatusButton":
                 System.out.println("continueBtn Clicked");
                 System.out.println("Got the stage in " + stage);
@@ -68,6 +74,8 @@ public class SceneController {
                 MapSceneBuilder mapSceneBuilder = new MapSceneBuilder();
                 mapSceneBuilder.buildMapScene(stage);
                 break;
+            case "saveGameBtn":
+                stage.close();
         }
     }
 }
