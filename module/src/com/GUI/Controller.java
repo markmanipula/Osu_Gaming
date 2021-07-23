@@ -8,6 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -26,34 +28,27 @@ public class Controller implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
     @Override
+
     public void initialize(URL arg0, ResourceBundle arg1) {
-        media = new Media(Controller.class.getResource("/1Paris.wav").toString());
+        songs = new ArrayList<File>();
+        directory = new File("module/json/Music");
+        files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                songs.add(file);
+                System.out.println(file);
+            }
+        }
+        media = new Media(songs.get(songNumber).toURI().toString());
         System.out.println(media);
         mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
-        mediaPlayer.setAutoPlay(true);
-        mediaPlayer.play();
-        // my add
-//        mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
-//        mediaPlayer.setAutoPlay(true);
-//        mediaPlayer.play();
-//        songs = new ArrayList<File>();
-//        directory = new File("module/src/Music");
-//        files = directory.listFiles();
-//
-//        if (files != null) {
-//            for (File file : files) {
-//                songs.add(file);
-//                System.out.println(file);
-//            }
-//        }
-//
-//        media = new Media(songs.get(songNumber).toURI().toString());
-        //    mediaPlayer = new MediaPlayer(media);
+        playMedia();
+
+
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                mediaPlayer.setVolume(volumeSlider.getValue() *0.01);
+                mediaPlayer.setVolume(volumeSlider.getValue() *.01);
             }
 
         });
@@ -62,29 +57,35 @@ public class Controller implements Initializable {
     public void playMedia(){
         mediaPlayer.play();
         System.out.println("Playing music");
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Works");
+                nextMedia();
+;            }
+        });
     }
     public void pauseMedia(){
         mediaPlayer.pause();
     }
-    public void nextMedia(){
-//        if (songNumber < songs.size() - 1){
-//            songNumber++;
-//            mediaPlayer.stop();
-//            media = new Media(songs.get(songNumber).toURI().toString());
-//            mediaPlayer = new MediaPlayer(media);
-//            playMedia();
-//        } else {
-//            songNumber = 0;
-//            mediaPlayer.stop();
-//            media = new Media(songs.get(songNumber).toURI().toString());
-//            mediaPlayer = new MediaPlayer(media);
-//            playMedia();
-//        }
-    }
+    public void nextMedia() {
+        if (songNumber < 1) {
+            songNumber++;
+            mediaPlayer.stop();
+            System.out.println("Stopped");
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            playMedia();
+        } else {
+            songNumber = 0;
+            mediaPlayer.stop();
+            System.out.println("Music stop");
+            media = new Media(songs.get(songNumber).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            playMedia();
+        }
+        }
 
-    public void autoMedia() {
-        mediaPlayer.setAutoPlay(true);
-    }
 
 
     //    public void switchToMainScreen(ActionEvent event) throws IOException {
