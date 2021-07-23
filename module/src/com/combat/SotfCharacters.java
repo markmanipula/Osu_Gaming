@@ -10,6 +10,11 @@ public abstract class SotfCharacters {
     public String name;
     public int characterMaxHP, characterCurrentHp;
 
+    // default constructor
+    public SotfCharacters() {
+        // empty constructor
+    }
+
     // Constructor for Jemad and enemies
     public SotfCharacters(String name, int maxHP, int currentHp){
         this.name = name;
