@@ -1,6 +1,7 @@
 package com.GUI.maingame;
 
 import com.GUI.SceneController;
+import com.GUI.lose.LoseSceneBuilder;
 import com.character.Enemy;
 import com.combat.JemadCombat;
 import com.game.Item;
@@ -9,14 +10,17 @@ import com.readjson.ReadItemContentJson;
 import com.readjson.ReadMoveContentJson;
 import com.readjson.ReadRoomContentJson;
 import com.story.StoryGenerator;
+import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -24,6 +28,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainScreenController {
+    // test
+    @FXML
+    private AnchorPane pane;
+    // end of test
     @FXML
     private MenuButton menuButton;
     @FXML
@@ -161,6 +169,13 @@ public class MainScreenController {
 
     // private method to retrieve current enemy info for fight
     private void getEnemyInfo(Enemy selectedEnemy) {
+        getEnemyInfoHelper(selectedEnemy);
+        enemyFightImage = new Image(this.getClass().getResourceAsStream("/images/enemyImage.jpeg"));
+        enemyFacingImageView.setImage(enemyFightImage);
+    }
+
+    // private method just to retrieve enemy textarea data
+    private void getEnemyInfoHelper(Enemy selectedEnemy) {
         String selectedEnemyName = selectedEnemy.getName();
         int selectedEnemyHp = selectedEnemy.getHp();
         int selectedEnemyMinDamage = selectedEnemy.getMinDamage();
@@ -169,21 +184,11 @@ public class MainScreenController {
         enemyFightTextArea.setStyle("-fx-font-size: 4em;");
         enemyFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
         enemyFightTextArea.setText(selectedEnemyName + "\n\nHp: " + selectedEnemyHp + "\n\nDamage: " + selectedEnemyMinDamage + " ~ " + selectedEnemyMaxDamage);
-        // set up the enemy facing image
-        enemyFightImage = new Image(this.getClass().getResourceAsStream("/images/enemyImage.jpeg"));
-        enemyFacingImageView.setImage(enemyFightImage);
     }
 
     // private method to retrieve current Jemad's info for fight
     private void getPlayerJemadInfo(Enemy selectedEnemy) {
-        String playerName = jemad.getName();
-        int playerHp = jemad.getHp();
-        int playerMinDamage = jemad.getMinDamage();
-        int playerMaxDamage = jemad.getMaxDamage();
-        playerFightTextArea.setEditable(false);
-        playerFightTextArea.setStyle("-fx-font-size: 4em;");
-        playerFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
-        playerFightTextArea.setText(playerName + "\n\nHp: " + playerHp + "\n\nDamage: " + playerMinDamage + " ~ " + playerMaxDamage);
+        getPlayerJemadInfoHelper();
         // set up the jemad facing image
         jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/jemadFightImage.jpeg"));
         jemadFacingRightImageView.setImage(jemadFightImage);
@@ -205,23 +210,130 @@ public class MainScreenController {
         }
     }
 
-    private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
-        JemadCombat jemadCombatMove = new JemadCombat();
+    // private method just to retrieve current player info for textarea
+    private void getPlayerJemadInfoHelper() {
+        String playerName = jemad.getName();
+        int playerHp = jemad.getHp();
+        int playerMinDamage = jemad.getMinDamage();
+        int playerMaxDamage = jemad.getMaxDamage();
+        playerFightTextArea.setEditable(false);
+        playerFightTextArea.setStyle("-fx-font-size: 4em;");
+        playerFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
+        playerFightTextArea.setText(playerName + "\n\nHp: " + playerHp + "\n\nDamage: " + playerMinDamage + " ~ " + playerMaxDamage);
+    }
 
+    // private method to move into lose scene
+    private void moveToLoseScene() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(1000));
+
+        fadeTransition.setNode(pane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+
+        fadeTransition.setOnFinished((ActionEvent event) -> {
+            Stage stage = (Stage) menuButton.getScene().getWindow();
+            LoseSceneBuilder loseSceneBuilder = new LoseSceneBuilder();
+            loseSceneBuilder.buildLoseScene(stage);
+        });
+        fadeTransition.play();
+    }
+
+    private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        boolean isDefeated = false;
+        JemadCombat jemadCombatMove = new JemadCombat();
+        System.out.println("got it into fight");
         int jemadHp = jemad.getHp();
         int enemyHp = currentEnemy.getHp();
         // random either 0 or 1
+        int actualDamage = 0;
+        int actualEnemyDamage = 0;
+        ArrayList<String> enemyAttack = currentEnemy.enemyAttack();
         int firstMove = 0 + (int)(Math.random() * ((1 - 0) + 1));
+
+        if (isDefeated || jemad.getHp() == 0) {
+            fightCombatDialog.setText(StoryGenerator.printLoseBattleStatement());
+            // transitionIntoLoseScene(e);
+            return;
+        }
+        // player attack first
         if (firstMove == 0) {
             // jemad goes first
-
+            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            enemyHp -= actualDamage;
+            currentEnemy.setHp(enemyHp);
+            // reset enemy hp area
+            getEnemyInfoHelper(currentEnemy);
+            System.out.println("got it in here");
+            if (enemyHp <= 0) {
+                // player won
+                // need to print out the combat outro from JSON
+                String combatOutro1PlayerWin = StoryGenerator.printStoryOutro(currentEnemy.getName());
+                fightCombatDialog.setText(combatOutro1PlayerWin);
+                // just set enemy health into 0
+                currentEnemy.setHp(0);
+                // display textarea of enemy with reset hp value
+                getEnemyInfoHelper(currentEnemy);
+                return;
+            }
+            actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
+            // reset player hp area
+            jemad.setHp(jemad.getHp() - actualEnemyDamage);
+            getPlayerJemadInfoHelper();
+            if (jemad.getHp() <= 0) {
+                // enemy won
+                fightCombatDialog.setText(StoryGenerator.printLoseBattleStatement());
+                // reset jemad hp to 0
+                jemad.setHp(0);
+                getPlayerJemadInfoHelper();
+                // replace the player image
+                jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/defeated.jpeg"));
+                jemadFacingRightImageView.setImage(jemadFightImage);
+                // bouncer 5, 10
+                isDefeated = true;
+                moveToLoseScene();
+                // transitionIntoLoseScene(e);
+                return;
+            }
         } else {
             // enemy goes first
+            actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
+            jemad.setHp(jemad.getHp() - actualEnemyDamage);
+            getPlayerJemadInfoHelper();
+            if (jemad.getHp() <= 0) {
+                // enemy won
+                fightCombatDialog.setText(StoryGenerator.printLoseBattleStatement());
+                // set Jemad hp into 0
+                jemad.setHp(0);
+                getPlayerJemadInfoHelper();
+                // replace jemad image
+                jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/defeated.jpeg"));
+                jemadFacingRightImageView.setImage(jemadFightImage);
+                isDefeated = true;
+                // transitionIntoLoseScene(e);
+                moveToLoseScene();
+                return;
+            }
+            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            currentEnemy.setHp(currentEnemy.getHp() - actualDamage);
+            getEnemyInfoHelper(currentEnemy);
+            if (currentEnemy.getHp() <= 0) {
+                // player won
+                // player won
+                // need to print out the combat outro from JSON
+                String combatOutro1PlayerWin = StoryGenerator.printStoryOutro(currentEnemy.getName());
+                fightCombatDialog.setText(combatOutro1PlayerWin);
+                // just set enemy health into 0
+                currentEnemy.setHp(0);
+                // display textarea of enemy with reset hp value
+                getEnemyInfoHelper(currentEnemy);
+                return;
+            }
         }
-
-
-        // after A attack B check health
-        // after B attack A check health
+        // print fighting summary
+        String inCombatSummary = StoryGenerator
+                .duringCombatSummaryPrint(firstMove, currentEnemy.getName(), jemadAttackMove, actualDamage, enemyAttack.get(0), enemyAttack.get(1));
+        fightCombatDialog.setText(inCombatSummary);
     }
 
     // movement

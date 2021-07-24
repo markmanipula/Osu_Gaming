@@ -490,11 +490,6 @@ public class CombatDialogue {
             String nextLine = userInput.nextLine().toLowerCase();
         }
         scenes.clear();
-
-
-
-
-
     }
     public void gameOver() throws InterruptedException {
         GameStart thisIsTheEnd = new GameStart();

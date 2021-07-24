@@ -72,6 +72,7 @@ public class SceneController {
                 mainGameScene.buildMainGameScene(stage);
                 break;
             case "startBtn":
+            case "restartButton":
                 System.out.println("startBtn Clicked");
                 JemadIntroScene jemadIntroScene = new JemadIntroScene();
                 jemadIntroScene.buildIntroScene(stage);

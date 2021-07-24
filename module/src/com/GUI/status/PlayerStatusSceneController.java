@@ -41,7 +41,7 @@ public class PlayerStatusSceneController {
 
     // set up image
     private void displayImage() {
-        fbiImage = new Image(PlayerStatusSceneController.class.getResourceAsStream("/images/fbiPlayer.jpg"));
+        fbiImage = new Image(PlayerStatusSceneController.class.getResourceAsStream("/images/jemadFightImage.jpeg"));
         System.out.println("read image");
         imageView.setImage(fbiImage);
     }
