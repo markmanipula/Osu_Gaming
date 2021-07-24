@@ -21,6 +21,7 @@
                 <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
                   <MenuItem mnemonicParsing="false" text="Inventory" />
                   <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Save Game" />
+                  <MenuItem fx:id="loadGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Load Game" />
               </items>
             </MenuButton>
             <Button fx:id="west" layoutX="482.0" layoutY="299.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />

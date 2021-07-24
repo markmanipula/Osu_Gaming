@@ -1,6 +1,7 @@
 package com.GUI;
 
 import com.GUI.intro.JemadIntroScene;
+import com.GUI.loadgame.LoadGameScene;
 import com.GUI.maingame.MainScreenSceneBuilder;
 import com.GUI.map.MapSceneBuilder;
 import com.GUI.savegame.SaveGameScene;
@@ -41,6 +42,11 @@ public class SceneController {
                 SaveGameScene saveGameScene = new SaveGameScene();
                 saveGameScene.buildSaveGameScene(stage);
                 break;
+            case "loadGame":
+                System.out.println("loadGame menuItem clicked");
+                LoadGameScene loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoadGameScene(stage);
+                break;
         }
     }
 
@@ -57,6 +63,8 @@ public class SceneController {
             case "continueBtn":
             case "goBackBtn":
             case "doNotSaveGameBtn":
+            case "doNotLoadBtn":
+            case "loadBtn":
             case "exitPlayerStatusButton":
                 System.out.println("continueBtn Clicked");
                 System.out.println("Got the stage in " + stage);
