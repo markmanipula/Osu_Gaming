@@ -68,6 +68,10 @@ public class Enemy {
         this.hp = ReadEnemyContentJson.getSelectedEnemyHeathJson(this.getName());
     }
 
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
     public int getMinDamage() {
         return minDamage;
     }
