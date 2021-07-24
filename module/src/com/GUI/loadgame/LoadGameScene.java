@@ -10,6 +10,7 @@ import java.io.IOException;
 public class LoadGameScene {
 
     private Scene loadGameScene = null;
+    private Scene loadGameWaitScene = null;
     private Parent root = null;
 
     public void buildLoadGameScene(Stage stage) {
@@ -17,6 +18,17 @@ public class LoadGameScene {
             root = FXMLLoader.load(this.getClass().getResource("LoadGameScreen.fxml"));
             loadGameScene = new Scene(root, 800, 600);
             stage.setScene(loadGameScene);
+            stage.show();
+        }  catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public void buildLoadGameWaitScene(Stage stage) {
+        try {
+            root = FXMLLoader.load(this.getClass().getResource("LoadGameWaitScreen.fxml"));
+            loadGameWaitScene = new Scene(root, 800, 600);
+            stage.setScene(loadGameWaitScene);
             stage.show();
         }  catch (IOException ioException) {
             ioException.printStackTrace();

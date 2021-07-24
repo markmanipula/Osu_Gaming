@@ -64,7 +64,7 @@ public class SceneController {
             case "goBackBtn":
             case "doNotSaveGameBtn":
             case "doNotLoadBtn":
-            case "loadBtn":
+            case "loadBtnOk":
             case "exitPlayerStatusButton":
                 System.out.println("continueBtn Clicked");
                 System.out.println("Got the stage in " + stage);
@@ -83,7 +83,17 @@ public class SceneController {
                 mapSceneBuilder.buildMapScene(stage);
                 break;
             case "saveGameBtn":
+                System.out.println("saveGameBtnYes Clicked");
+                SaveGameScene saveGameScene = new SaveGameScene();
+                saveGameScene.buildSaveGameSuccessScene(stage);
+                break;
+            case "saveGameBtnOk":
                 stage.close();
+                break;
+            case "loadBtn":
+                LoadGameScene loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoadGameWaitScene(stage);
+                break;
         }
     }
 }

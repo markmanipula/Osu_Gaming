@@ -99,5 +99,11 @@ public class LoadGameSceneController {
 
     }
 
+    @FXML
+    public void loadGameBtnOkActionEvent(ActionEvent event) throws IOException {
+        // scene controller
+        SceneController.switchScenesBaseOnBtnClick(event);
+    }
+
 
 }

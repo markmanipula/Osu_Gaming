@@ -75,4 +75,10 @@ public class SaveGameSceneController {
         SceneController.switchScenesBaseOnBtnClick(event);
     }
 
+    @FXML
+    public void saveGameBtnSuccessActionEvent(ActionEvent event) throws IOException {
+        // scene controller
+        SceneController.switchScenesBaseOnBtnClick(event);
+    }
+
 }
