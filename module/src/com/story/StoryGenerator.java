@@ -301,13 +301,14 @@ public class StoryGenerator {
         String testString = "";
         for(String line: scenes){
             // sceneBuilder.append(line + "\n");
-            testString += line;
+            // testString += line;
+            sceneBuilder.append(line);
             // System.out.println("From sysout" + line);
 //            System.out.println("Enter to continue: ");
 //            String nextLine = userInput.nextLine().toLowerCase();
         }
         // scenes.clear();
-        // return sceneBuilder.toString();
-        return testString;
+        return sceneBuilder.toString();
+        // return testString;
     }
 }

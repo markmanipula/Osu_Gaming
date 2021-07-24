@@ -7,58 +7,74 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.maingame.MainScreenController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.maingame.MainScreenController">
    <children>
-      <Pane layoutY="436.0" prefHeight="529.0" prefWidth="1199.0" style="-fx-background-color: Black;">
+      <Pane layoutY="409.0" prefHeight="403.0" prefWidth="1200.0" style="-fx-background-color: Black;">
          <children>
-            <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="551.0" layoutY="144.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
+            <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="484.0" layoutY="22.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
               <items>
                 <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
                 <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
-                  <MenuItem mnemonicParsing="false" text="Inventory" />
-                  <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Save Game" />
-                  <MenuItem fx:id="loadGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Load Game" />
+                <MenuItem mnemonicParsing="false" text="Inventory" />
+                <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Save Game" />
+                <MenuItem fx:id="loadGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Load Game" />
               </items>
             </MenuButton>
-            <Button fx:id="west" layoutX="482.0" layoutY="299.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />
-            <Button fx:id="north" layoutX="571.0" layoutY="219.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="North" />
-            <Button fx:id="south" layoutX="571.0" layoutY="380.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="South" />
-            <Button fx:id="east" layoutX="660.0" layoutY="300.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="East" />
-            <Button layoutX="947.0" layoutY="40.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="222.0" style="-fx-background-color: INDIANRED;" text="Fight" />
-            <MenuButton fx:id="getItemMenuButton" layoutX="949.0" layoutY="121.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="222.0" text="Get Items" />
-            <ListView fx:id="inventoryListView" layoutX="811.0" layoutY="240.0" prefHeight="224.0" prefWidth="370.0" />
-            <Button fx:id="userItemButton" layoutX="811.0" layoutY="479.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="370.0" text="Use Selected Item" />
-            <Label layoutX="811.0" layoutY="194.0" prefHeight="37.0" prefWidth="124.0" text="Inventory" textFill="WHITE">
+            <Button fx:id="west" layoutX="498.0" layoutY="212.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />
+            <Button fx:id="north" layoutX="595.0" layoutY="119.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="North" />
+            <Button fx:id="south" layoutX="595.0" layoutY="212.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="South" />
+            <Button fx:id="east" layoutX="691.0" layoutY="212.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="East" />
+            <MenuButton fx:id="getItemMenuButton" layoutX="805.0" layoutY="64.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="222.0" text="Get Items" />
+            <ListView fx:id="inventoryListView" layoutX="805.0" layoutY="158.0" prefHeight="188.0" prefWidth="370.0" />
+            <Button fx:id="userItemButton" layoutX="805.0" layoutY="354.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="370.0" text="Use Selected Item" />
+            <Label layoutX="805.0" layoutY="114.0" prefHeight="37.0" prefWidth="124.0" text="Inventory" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label fx:id="itemUserActionInfo" layoutX="947.0" layoutY="200.0" prefHeight="26.0" prefWidth="222.0" textFill="WHITE" />
-            <Label layoutX="498.0" layoutY="485.0" prefHeight="26.0" prefWidth="102.0" text="Current Location" textFill="WHITE">
+            <Label fx:id="itemUserActionInfo" layoutX="940.0" layoutY="119.0" prefHeight="26.0" prefWidth="222.0" textFill="WHITE" />
+            <Label layoutX="529.0" layoutY="328.0" prefHeight="26.0" prefWidth="102.0" text="Current Location" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="currentLocationLabel" layoutX="617.0" layoutY="485.0" prefHeight="26.0" prefWidth="102.0" text="label" textFill="WHITE">
+            <Label fx:id="currentLocationLabel" layoutX="648.0" layoutY="328.0" prefHeight="26.0" prefWidth="102.0" text="label" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <TextArea fx:id="gameDescription" editable="false" layoutX="14.0" layoutY="18.0" prefHeight="365.0" prefWidth="460.0" style="-fx-background-color: DIMGREY;" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+            <MenuButton fx:id="fightButton" layoutX="805.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="222.0" text="Fight" />
          </children>
       </Pane>
-      <TextArea fx:id="gameDescription" editable="false" layoutX="7.0" layoutY="440.0" prefHeight="514.0" prefWidth="460.0" style="-fx-background-color: DIMGREY;" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextArea>
-      <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="979.0" style="-fx-background-color: white;" text="HP, Location, Damage, and Equipment go here">
+      <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="1174.0" style="-fx-background-color: white;" text="Basic menu area (such as music)">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
+      <Pane fx:id="gamePane" layoutX="14.0" layoutY="69.0" prefHeight="332.0" prefWidth="1174.0" style="-fx-background-color: white;">
+         <children>
+            <TextArea fx:id="playerFightTextArea" editable="false" layoutX="111.0" layoutY="14.0" prefHeight="102.0" prefWidth="200.0" />
+            <ImageView fx:id="jemadFacingRightImageView" fitHeight="171.0" fitWidth="138.0" layoutX="173.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
+            <MenuButton fx:id="jemadCombatMovementMenuButton" layoutX="31.0" layoutY="154.0" mnemonicParsing="false" text="Movements" />
+            <TextArea fx:id="enemyFightTextArea" editable="false" layoutX="513.0" layoutY="196.0" prefHeight="121.0" prefWidth="200.0" />
+            <ImageView fx:id="enemyFacingImageView" fitHeight="150.0" fitWidth="131.0" layoutX="513.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="754.0" layoutY="15.0" prefHeight="25.0" prefWidth="102.0" text="Combat Dialog">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="fightCombatDialog" editable="false" layoutX="754.0" layoutY="44.0" prefHeight="270.0" prefWidth="410.0" wrapText="true" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
