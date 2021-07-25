@@ -99,6 +99,9 @@ public class MainScreenController {
         generatePossibleItemsInCurrentRoom();
         // get possible enemy located in player's current room
         generatePossibleEnemyInCurrentRoom();
+        // hide all combat
+        hideAllCombatInfo();
+
         displayInventory();
         // button for item utilize
         userItemButton.setOnAction(e -> useItemButtonHandler());
@@ -174,6 +177,36 @@ public class MainScreenController {
         }
     }
 
+    // hide all combatInfo for init stage
+    private void hideAllCombatInfo() {
+        // hide all elements related to fight
+        playerFightTextArea.setVisible(false);
+        jemadCombatMovementMenuButton.setVisible(false);
+        jemadFacingRightImageView.setVisible(false);
+        enemyFacingImageView.setVisible(false);
+        enemyFightTextArea.setVisible(false);
+    }
+
+    // display all hidencombat info
+    private void showAllCombatInfo() {
+        playerFightTextArea.setVisible(true);
+        jemadCombatMovementMenuButton.setVisible(true);
+        jemadFacingRightImageView.setVisible(true);
+        enemyFacingImageView.setVisible(true);
+        enemyFightTextArea.setVisible(true);
+    }
+
+    // display win after combat
+    private void showWinStatement() {
+        enemyFightImage = new Image(this.getClass().getResourceAsStream("/images/defeated.jpeg"));
+        enemyFacingImageView.setImage(enemyFightImage);
+        enemyFightTextArea.setText("You are stronger than I thought...\nYou won the fight");
+        if (!jemad.getCurrentLocation().equals("Rooftop: Final Boss")) {
+            playerFightTextArea.setText("You are no match to me.\n" +
+                    "I will move to the next stage to fight and reach my goal.");
+        }
+    }
+
     // private method to disable buttons during fight scene
     private void duringFightDisableButtons() {
         // disable the buttons and menuItemButtons
@@ -226,7 +259,8 @@ public class MainScreenController {
     private void enemyFightSceneHandler(ActionEvent e, String fxId) {
         // disable unused button during fight/combat
         duringFightDisableButtons();
-
+        // display jemad and enemy fight info
+        showAllCombatInfo();
         Enemy selectedEnemy = new Enemy(fxId);
 
         // must disable all buttons (such as menu, getItem)
@@ -361,6 +395,8 @@ public class MainScreenController {
                 DEFEATED_ENEMYLIST.put(jemad.getCurrentLocation(), currentEnemy);
                 // Update possible enemy?
                 generatePossibleEnemyInCurrentRoom();
+                // display you won
+                showWinStatement();
                 return;
             }
             actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
@@ -419,6 +455,8 @@ public class MainScreenController {
                 DEFEATED_ENEMYLIST.put(jemad.getCurrentLocation(), currentEnemy);
                 // update possible enemy
                 generatePossibleEnemyInCurrentRoom();
+                // display you won
+                showWinStatement();
                 return;
             }
         }
