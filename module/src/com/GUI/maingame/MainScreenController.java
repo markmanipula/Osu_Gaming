@@ -26,11 +26,14 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainScreenController {
     // test
     @FXML
     private AnchorPane pane;
+    @FXML
+    private Label incombatMessage;
     // end of test
     @FXML
     private MenuButton menuButton;
@@ -86,6 +89,8 @@ public class MainScreenController {
 
     // player obj to retrieve the current location
     private Player jemad = new Player();
+    // an hashmap to store the location and the enemy name
+    private static HashMap<String, Enemy> DEFEATED_ENEMYLIST = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -130,23 +135,98 @@ public class MainScreenController {
     }
 
     // fight menu items
-    private void generatePossibleEnemyInCurrentRoom() {
+    public void generatePossibleEnemyInCurrentRoom() {
+        System.out.println("fight button had been  cliekced!!");
+
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
         if (enemyList == null || enemyList.size() == 0) {
             return;
         }
+        System.out.println("Enemy: " + DEFEATED_ENEMYLIST);
+        if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
+            // if enemy got defeated in current user's location
+            if (DEFEATED_ENEMYLIST.containsKey(jemad.getCurrentLocation())) {
+                String defeatedEnemy = DEFEATED_ENEMYLIST.get(jemad.getCurrentLocation()).getName();
+                if (enemyList.contains(defeatedEnemy)) {
+                    enemyList.remove(defeatedEnemy);
+                }
+            }
+        }
         // loop to create possible options for all enemies in current room
+        fightButton.getItems().clear();
+        System.out.println("After defeat enemy: " + enemyList);
+        // if the enemy list is empty
+        if (enemyList.isEmpty()) {
+            MenuItem emptyItem = new MenuItem();
+            emptyItem.setText("No enemy exist");
+            fightButton.getItems().add(emptyItem);
+        }
+
         for (Object eachEnemy: enemyList) {
+            System.out.println("making menuitems");
             MenuItem enemyItem = new MenuItem();
             enemyItem.setId(String.valueOf(eachEnemy));
             enemyItem.setText(String.valueOf(eachEnemy));
             // put event on each enemy
             enemyItem.setOnAction(e -> enemyFightSceneHandler(e, String.valueOf(eachEnemy)));
             fightButton.getItems().add(enemyItem);
+            System.out.println("end of for loop");
         }
     }
 
+    // private method to disable buttons during fight scene
+    private void duringFightDisableButtons() {
+        // disable the buttons and menuItemButtons
+        // disable movement btns
+        incombatMessage.setText("In Combat");
+        north.setManaged(false);
+        north.setVisible(false);
+        south.setManaged(false);
+        south.setVisible(false);
+        east.setManaged(false);
+        east.setVisible(false);
+        west.setManaged(false);
+        west.setVisible(false);
+        // disable menuButton
+        menuButton.setManaged(false);
+        menuButton.setVisible(false);
+        // fight button
+        fightButton.setManaged(false);
+        fightButton.setVisible(false);
+        // get item buttons
+        getItemMenuButton.setManaged(false);
+        getItemMenuButton.setVisible(false);
+    }
+
+    // private method to bring buttons back after fight scene
+    private void afterFightAbleButtons() {
+        incombatMessage.setText("Not in combat");
+        // able the buttons and menuItemButtons
+        // able movement btns
+        north.setManaged(true);
+        north.setVisible(true);
+        south.setManaged(true);
+        south.setVisible(true);
+        east.setManaged(true);
+        east.setVisible(true);
+        west.setManaged(true);
+        west.setVisible(true);
+        // able menuButton
+        menuButton.setManaged(true);
+        menuButton.setVisible(true);
+        // fight button
+        fightButton.setManaged(true);
+        fightButton.setVisible(true);
+        // get item buttons
+        getItemMenuButton.setManaged(true);
+        getItemMenuButton.setVisible(true);
+        System.out.println("set back to things");
+    }
+
     private void enemyFightSceneHandler(ActionEvent e, String fxId) {
+        // disable unused button during fight/combat
+        duringFightDisableButtons();
+
         Enemy selectedEnemy = new Enemy(fxId);
 
         // must disable all buttons (such as menu, getItem)
@@ -274,6 +354,13 @@ public class MainScreenController {
                 currentEnemy.setHp(0);
                 // display textarea of enemy with reset hp value
                 getEnemyInfoHelper(currentEnemy);
+                // able the disabled buttons
+                afterFightAbleButtons();
+
+                // add enemy name on the defeated list
+                DEFEATED_ENEMYLIST.put(jemad.getCurrentLocation(), currentEnemy);
+                // Update possible enemy?
+                generatePossibleEnemyInCurrentRoom();
                 return;
             }
             actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
@@ -319,7 +406,6 @@ public class MainScreenController {
             getEnemyInfoHelper(currentEnemy);
             if (currentEnemy.getHp() <= 0) {
                 // player won
-                // player won
                 // need to print out the combat outro from JSON
                 String combatOutro1PlayerWin = StoryGenerator.printStoryOutro(currentEnemy.getName());
                 fightCombatDialog.setText(combatOutro1PlayerWin);
@@ -327,6 +413,12 @@ public class MainScreenController {
                 currentEnemy.setHp(0);
                 // display textarea of enemy with reset hp value
                 getEnemyInfoHelper(currentEnemy);
+                // able the disabled buttons
+                afterFightAbleButtons();
+                // add enemy name on the defeated list
+                DEFEATED_ENEMYLIST.put(jemad.getCurrentLocation(), currentEnemy);
+                // update possible enemy
+                generatePossibleEnemyInCurrentRoom();
                 return;
             }
         }
