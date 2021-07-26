@@ -5,14 +5,41 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.map.MapSceneController">
+<!--fx:controller="com.GUI.map.MapSceneController"-->
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.map.MapSceneController">
    <children>
-      <ImageView fx:id="imageView" fitHeight="382.0" fitWidth="734.0" layoutX="26.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="277.0" layoutY="537.0" prefHeight="17.0" prefWidth="99.0" text="Current location" />
+      <ImageView fx:id="imageView" fitHeight="337.0" fitWidth="759.0" layoutX="22.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="290.0" layoutY="519.0" prefHeight="23.0" prefWidth="134.0" text="Current location" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <Button fx:id="goBackBtn" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBackBtnActionEvent" prefHeight="39.0" prefWidth="99.0" text="Go back" />
-      <Label fx:id="currentLocationLabel" layoutX="401.0" layoutY="537.0" prefHeight="17.0" prefWidth="137.0" />
-      <Circle fx:id="currentUserIndicator" fill="#ff3b1f" layoutX="75.0" layoutY="143.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="#ff1f1f" layoutX="259.0" layoutY="546.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="currentLocationLabel" layoutX="448.0" layoutY="523.0" prefHeight="17.0" prefWidth="137.0" textFill="#f7f7f7" />
+      <Circle fx:id="currentUserIndicator" fill="#ff3b1f" layoutX="66.0" layoutY="187.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f1f" layoutX="266.0" layoutY="532.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="hideInsideBar" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="114.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hidePoolRoom" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="114.0" layoutY="215.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hidePoolDeck" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="371.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideAlley" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="195.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideVIPRoom" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="459.0" layoutY="383.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideLockerRoom" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="287.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideSlotMachine" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="373.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hidePoolDeckUpper" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="373.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hidePoolBar" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="286.0" layoutY="279.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideHotelHalls" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="616.0" layoutY="383.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideElevator" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="538.0" layoutY="382.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideSteakHouse" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="372.0" layoutY="386.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hidePokerTable" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="458.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideFinalBoss" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="694.0" layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Rectangle fx:id="hideBalcony" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="44.0" layoutX="616.0" layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+      <Label layoutX="30.0" layoutY="95.0" prefHeight="44.0" prefWidth="89.0" text="Map" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
