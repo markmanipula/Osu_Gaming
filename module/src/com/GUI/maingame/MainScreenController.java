@@ -91,6 +91,7 @@ public class MainScreenController {
     private Player jemad = new Player();
     // an hashmap to store the location and the enemy name
     private static HashMap<String, Enemy> DEFEATED_ENEMYLIST = new HashMap<>();
+    private static ArrayList<String> OBTAINED_ITEMS = new ArrayList<>();
 
     @FXML
     public void initialize() {
@@ -493,20 +494,30 @@ public class MainScreenController {
         if (itemList == null || itemList.size() == 0) {
             return;
         }
-        if (itemList != null || itemList.size() > 0) {
+
+        System.out.println("Newly updated possible item " + itemList);
+        if (itemList != null && itemList.size() > 0) {
+            // clear out the previous item inventory
+            getItemMenuButton.getItems().clear();
             for (Object eachItem: itemList) {
                 JSONObject eachItemObj = (JSONObject) eachItem;
+                if (OBTAINED_ITEMS != null && OBTAINED_ITEMS.size() > 0) {
+                    boolean isAlreadyObtained = OBTAINED_ITEMS.contains(String.valueOf(eachItemObj.get("name")));
+                    if (isAlreadyObtained) {
+                        continue;
+                    }
+                }
                 MenuItem eachItemNameMenuItem = new MenuItem();
                 eachItemNameMenuItem.setId(String.valueOf(eachItemObj.get("name")));
                 eachItemNameMenuItem.setText(String.valueOf(eachItemObj.get("name")));
                 eachItemNameMenuItem.setOnAction(e -> addItemInInventoryGUI(eachItemNameMenuItem.getText()));
                 getItemMenuButton.getItems().add(eachItemNameMenuItem);
+
             }
         } else {
-            MenuItem itemDoesNotExist = new MenuItem();
-            itemDoesNotExist.setId("none");
-            itemDoesNotExist.setText("There is no item in this room");
-            getItemMenuButton.getItems().add(itemDoesNotExist);
+            MenuItem emptyItem = new MenuItem();
+            emptyItem.setText("No items exist");
+            getItemMenuButton.getItems().add(emptyItem);
         }
     }
 
@@ -515,16 +526,19 @@ public class MainScreenController {
         inventoryListView.getItems().clear();
         // created an item
         Item obtainedItem = new Item(itemId);
-        System.out.println("Item Obtained: " + obtainedItem);
         boolean isAdded = jemad.addItemJson(obtainedItem);
         ArrayList<Item> jemadItems = jemad.getInventory();
         for (Item eachItem: jemadItems) {
             inventoryListView.getItems().add(eachItem.getItemName());
         }
         if (isAdded) {
+            // just add item name (not considering scalability)
+            OBTAINED_ITEMS.add(obtainedItem.getItemName());
             String infoHeaderText = "Found an item ( " + obtainedItem.getItemName() + ")";
             itemUserActionInfo.setText(infoHeaderText);
         }
+        getItemMenuButton.getItems().clear();
+        generatePossibleItemsInCurrentRoom();
     }
 
     private void displayInventory() {

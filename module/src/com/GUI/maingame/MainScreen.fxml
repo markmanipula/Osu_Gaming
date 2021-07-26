@@ -68,7 +68,7 @@
       </TextField>
       <Pane fx:id="gamePane" layoutX="14.0" layoutY="69.0" prefHeight="332.0" prefWidth="1174.0" style="-fx-background-color: white;">
          <children>
-            <TextArea fx:id="playerFightTextArea" editable="false" layoutX="111.0" layoutY="14.0" prefHeight="102.0" prefWidth="200.0" />
+            <TextArea fx:id="playerFightTextArea" editable="false" layoutX="111.0" layoutY="14.0" prefHeight="102.0" prefWidth="200.0" wrapText="true" />
             <ImageView fx:id="jemadFacingRightImageView" fitHeight="171.0" fitWidth="138.0" layoutX="173.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
             <MenuButton fx:id="jemadCombatMovementMenuButton" layoutX="31.0" layoutY="154.0" mnemonicParsing="false" text="Movements" />
             <TextArea fx:id="enemyFightTextArea" editable="false" layoutX="513.0" layoutY="196.0" prefHeight="121.0" prefWidth="200.0" />
