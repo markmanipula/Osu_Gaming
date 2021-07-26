@@ -372,15 +372,15 @@ public class StoryGenerator {
 
                 // JSONObject gameOutroObj = (JSONObject) donFury.get("Game Outro");
                 String gameOutro = ReadStoryContentJson
-                        .trimGameScenePrintHelper("Hotel Suite", "Rooftop: Final Boss", "Game Outro", "outro");
+                        .trimGameScenePrintHelper("Hotel Suite", "Game Outro", "outro");
 
                 // String ri1 = (String) story.getJSONObject("Hotel Suite").getJSONObject("Rooftop: Final Boss").getString("Combat outro Rooftop: Final Boss");
                 // String gameOutro = (String) story.getJSONObject("Hotel Suite").getJSONObject("Game Outro").getString("outro");
+                System.out.println("Testing: " + ri1);
+                System.out.println("Testing: " + gameOutro);
                 scenes.add(ri1);
                 scenes.add(gameOutro);
                 break;
-
-
         }
         StringBuilder sceneBuilderOutro = new StringBuilder();
         for(String line: scenes){

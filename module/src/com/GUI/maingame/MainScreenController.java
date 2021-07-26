@@ -2,6 +2,7 @@ package com.GUI.maingame;
 
 import com.GUI.SceneController;
 import com.GUI.lose.LoseSceneBuilder;
+import com.GUI.win.WinSceneBuilder;
 import com.character.Enemy;
 import com.combat.JemadCombat;
 import com.game.Item;
@@ -346,6 +347,27 @@ public class MainScreenController {
         fadeTransition.play();
     }
 
+    // move to winning ending scene
+    private void moveToVictoryScene() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(1000));
+
+        fadeTransition.setNode(pane);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+
+        fadeTransition.setOnFinished((ActionEvent event) -> {
+            Stage stage = (Stage) menuButton.getScene().getWindow();
+            WinSceneBuilder winSceneBuilder = new WinSceneBuilder();
+            try {
+                winSceneBuilder.buildWinScene(stage);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+        fadeTransition.play();
+    }
+
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
         boolean isDefeated = false;
         JemadCombat jemadCombatMove = new JemadCombat();
@@ -371,9 +393,13 @@ public class MainScreenController {
             // reset enemy hp area
             getEnemyInfoHelper(currentEnemy);
             if (enemyHp <= 0) {
-                // for final boss
+                // final boss
                 if (currentEnemy.getName().equals("Don Fury")) {
                     System.out.println("Final boss fight!!");
+                    currentEnemy.setHp(0);
+                    // move to ending scene
+                    moveToVictoryScene();
+                    return;
                 }
 
                 // player won
@@ -437,6 +463,12 @@ public class MainScreenController {
             currentEnemy.setHp(currentEnemy.getHp() - actualDamage);
             getEnemyInfoHelper(currentEnemy);
             if (currentEnemy.getHp() <= 0) {
+                if (currentEnemy.getName().equals("Don Fury")) {
+                    System.out.println("Final boss fight!!");
+                    // move to ending scene
+                     moveToVictoryScene();
+                     return;
+                }
                 // player won
                 // need to print out the combat outro from JSON
                 String combatOutro1PlayerWin = StoryGenerator.printStoryOutro(currentEnemy.getName());
