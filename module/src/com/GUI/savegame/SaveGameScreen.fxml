@@ -10,15 +10,15 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.savegame.SaveGameSceneController">
    <children>
-      <Button fx:id="saveGameBtn" layoutX="131.0" layoutY="267.0" mnemonicParsing="false" onAction="#saveGameBtnActionEvent" prefHeight="20.0" prefWidth="169.0" style="-fx-background-color: Orange;" text="Yes">
+      <Button fx:id="saveGameBtn" layoutX="180.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveGameBtnActionEvent" prefHeight="71.0" prefWidth="189.0" style="-fx-background-color: Orange;" text="Yes">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font></Button>
-      <Button fx:id="doNotSaveGameBtn" layoutX="332.0" layoutY="267.0" mnemonicParsing="false" onAction="#doNotSaveGameBtnActionEvent" prefHeight="45.0" prefWidth="146.0" style="-fx-background-color: Orange;" text="No">
+      <Button fx:id="doNotSaveGameBtn" layoutX="418.0" layoutY="275.0" mnemonicParsing="false" onAction="#doNotSaveGameBtnActionEvent" prefHeight="71.0" prefWidth="189.0" style="-fx-background-color: Orange;" text="No">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font></Button>
-      <Label layoutX="95.0" layoutY="46.0" prefHeight="209.0" prefWidth="444.0" text="This save file will overwrite any previous save. Are you sure you want to save game?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Label layoutX="24.0" layoutY="82.0" prefHeight="145.0" prefWidth="760.0" text="This save file will overwrite any previous save. Are you sure you want to save game?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="36.0" />
          </font>
