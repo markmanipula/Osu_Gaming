@@ -8,13 +8,19 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.savegame.SaveGameSceneController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.savegame.SaveGameSceneController">
    <children>
-      <Button fx:id="saveGameBtn" layoutX="293.0" layoutY="297.0" mnemonicParsing="false" onAction="#saveGameBtnActionEvent" prefHeight="50.0" prefWidth="99.0" style="-fx-background-color: Orange;" text="Yes" />
-      <Button fx:id="doNotSaveGameBtn" layoutX="439.0" layoutY="297.0" mnemonicParsing="false" onAction="#doNotSaveGameBtnActionEvent" prefHeight="50.0" prefWidth="99.0" style="-fx-background-color: Orange;" text="No" />
-      <Label layoutX="240.0" layoutY="65.0" prefHeight="156.0" prefWidth="356.0" text="This save file will overwrite any previous save. Are you sure you want to save game?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Button fx:id="saveGameBtn" layoutX="180.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveGameBtnActionEvent" prefHeight="71.0" prefWidth="189.0" style="-fx-background-color: Orange;" text="Yes">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
+         </font></Button>
+      <Button fx:id="doNotSaveGameBtn" layoutX="418.0" layoutY="275.0" mnemonicParsing="false" onAction="#doNotSaveGameBtnActionEvent" prefHeight="71.0" prefWidth="189.0" style="-fx-background-color: Orange;" text="No">
+         <font>
+            <Font size="36.0" />
+         </font></Button>
+      <Label layoutX="24.0" layoutY="82.0" prefHeight="145.0" prefWidth="760.0" text="This save file will overwrite any previous save. Are you sure you want to save game?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="36.0" />
          </font>
          <textFill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">

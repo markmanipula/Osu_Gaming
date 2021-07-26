@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.intro.JemadIntroController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.intro.JemadIntroController">
    <children>
-      <TextArea fx:id="jemadIntroDialog" editable="false" layoutX="51.0" layoutY="88.0" prefHeight="253.0" prefWidth="499.0" wrapText="true" />
-      <Button fx:id="continueBtn" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" onAction="#switchItIntoMainGame" text="Continue.." />
+      <TextArea fx:id="jemadIntroDialog" editable="false" layoutX="206.0" layoutY="213.0" prefHeight="448.0" prefWidth="788.0" wrapText="true">
+         <font>
+            <Font size="30.0" />
+         </font></TextArea>
+      <Button fx:id="continueBtn" layoutX="484.0" layoutY="693.0" mnemonicParsing="false" onAction="#switchItIntoMainGame" prefHeight="49.0" prefWidth="235.0" text="Continue..">
+         <font>
+            <Font size="26.0" />
+         </font></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="35.0" prefHeight="112.0" prefWidth="502.0" text="Spirit Of The Fist">
+         <font>
+            <Font size="60.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8421052694320679" green="0.5808966755867004" blue="0.05847953259944916" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="397.0" layoutY="110.0" prefHeight="93.0" prefWidth="409.0" text="Madness Of Jemad">
+         <font>
+            <Font size="47.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8421052694320679" green="0.5808966755867004" blue="0.05847953259944916" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>

@@ -8,11 +8,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.loadgame.LoadGameSceneController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.loadgame.LoadGameSceneController">
    <children>
-      <Label alignment="CENTER" layoutX="128.0" layoutY="52.0" prefHeight="147.0" prefWidth="344.0" text="Game Loaded Successfully!" textAlignment="CENTER" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="24.0" layoutY="82.0" prefHeight="145.0" prefWidth="760.0" text="Game Loaded Successfully!" textAlignment="CENTER" textOverrun="CLIP">
          <font>
-            <Font size="24.0" />
+            <Font size="48.0" />
          </font>
          <textFill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -31,6 +31,9 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Button fx:id="loadBtnOk" alignment="CENTER" layoutX="245.0" layoutY="199.0" mnemonicParsing="false" onAction="#loadGameBtnOkActionEvent" prefHeight="59.0" prefWidth="95.0" style="-fx-background-color: Orange;" text="Ok" />
+      <Button fx:id="loadBtnOk" alignment="CENTER" layoutX="315.0" layoutY="275.0" mnemonicParsing="false" onAction="#loadGameBtnOkActionEvent" prefHeight="71.0" prefWidth="189.0" style="-fx-background-color: Orange;" text="OK">
+         <font>
+            <Font size="36.0" />
+         </font></Button>
    </children>
 </AnchorPane>
