@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1200.0" style="-fx-background-color: DARKSLATEGREY;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.maingame.MainScreenController">
+   <children>
+      <Pane layoutY="436.0" prefHeight="529.0" prefWidth="1199.0" style="-fx-background-color: Black;">
+         <children>
+            <MenuButton fx:id="menuButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="551.0" layoutY="144.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: INDIANRED;" text="Menu">
+              <items>
+                <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
+                <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
+                  <MenuItem mnemonicParsing="false" text="Inventory" />
+              </items>
+            </MenuButton>
+            <Button fx:id="west" layoutX="482.0" layoutY="299.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="West" />
+            <Button fx:id="north" layoutX="571.0" layoutY="219.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="North" />
+            <Button fx:id="south" layoutX="571.0" layoutY="380.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="South" />
+            <Button fx:id="east" layoutX="660.0" layoutY="300.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="89.0" style="-fx-background-color: INDIANRED;" text="East" />
+            <Button layoutX="947.0" layoutY="40.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="222.0" style="-fx-background-color: INDIANRED;" text="Fight" />
+            <MenuButton fx:id="getItemMenuButton" layoutX="949.0" layoutY="121.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="222.0" text="Get Items" />
+            <ListView fx:id="inventoryListView" layoutX="811.0" layoutY="240.0" prefHeight="224.0" prefWidth="370.0" />
+            <Button fx:id="userItemButton" layoutX="811.0" layoutY="479.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="370.0" text="Use Selected Item" />
+            <Label layoutX="811.0" layoutY="194.0" prefHeight="37.0" prefWidth="124.0" text="Inventory" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="itemUserActionInfo" layoutX="947.0" layoutY="200.0" prefHeight="26.0" prefWidth="222.0" textFill="WHITE" />
+            <Label layoutX="498.0" layoutY="485.0" prefHeight="26.0" prefWidth="102.0" text="Current Location" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentLocationLabel" layoutX="617.0" layoutY="485.0" prefHeight="26.0" prefWidth="102.0" text="label" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextArea fx:id="gameDescription" editable="false" layoutX="7.0" layoutY="440.0" prefHeight="514.0" prefWidth="460.0" style="-fx-background-color: DIMGREY;" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+      <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="979.0" style="-fx-background-color: white;" text="HP, Location, Damage, and Equipment go here">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
