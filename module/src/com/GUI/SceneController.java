@@ -1,13 +1,14 @@
 package com.GUI;
 
 import com.GUI.intro.JemadIntroScene;
+import com.GUI.loadgame.LoadGameScene;
 import com.GUI.maingame.MainScreenSceneBuilder;
 import com.GUI.map.MapSceneBuilder;
+import com.GUI.savegame.SaveGameScene;
 import com.GUI.status.PlayerStatusSceneBuilder;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
@@ -36,6 +37,16 @@ public class SceneController {
                 PlayerStatusSceneBuilder playerSceneBuilder = new PlayerStatusSceneBuilder();
                 playerSceneBuilder.buildPlayerStatusScene(stage);
                 break;
+            case "saveGame":
+                System.out.println("saveGame menuItem clicked");
+                SaveGameScene saveGameScene = new SaveGameScene();
+                saveGameScene.buildSaveGameScene(stage);
+                break;
+            case "loadGame":
+                System.out.println("loadGame menuItem clicked");
+                LoadGameScene loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoadGameScene(stage);
+                break;
         }
     }
 
@@ -51,6 +62,9 @@ public class SceneController {
             case "west":
             case "continueBtn":
             case "goBackBtn":
+            case "doNotSaveGameBtn":
+            case "doNotLoadBtn":
+            case "loadBtnOk":
             case "exitPlayerStatusButton":
                 System.out.println("continueBtn Clicked");
                 System.out.println("Got the stage in " + stage);
@@ -58,6 +72,7 @@ public class SceneController {
                 mainGameScene.buildMainGameScene(stage);
                 break;
             case "startBtn":
+            case "restartButton":
                 System.out.println("startBtn Clicked");
                 JemadIntroScene jemadIntroScene = new JemadIntroScene();
                 jemadIntroScene.buildIntroScene(stage);
@@ -67,6 +82,18 @@ public class SceneController {
                 System.out.println("goBackBtn Clicked");
                 MapSceneBuilder mapSceneBuilder = new MapSceneBuilder();
                 mapSceneBuilder.buildMapScene(stage);
+                break;
+            case "saveGameBtn":
+                System.out.println("saveGameBtnYes Clicked");
+                SaveGameScene saveGameScene = new SaveGameScene();
+                saveGameScene.buildSaveGameSuccessScene(stage);
+                break;
+            case "saveGameBtnOk":
+                stage.close();
+                break;
+            case "loadBtn":
+                LoadGameScene loadGameScene = new LoadGameScene();
+                loadGameScene.buildLoadGameWaitScene(stage);
                 break;
         }
     }
