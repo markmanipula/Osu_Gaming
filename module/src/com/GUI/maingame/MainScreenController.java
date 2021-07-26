@@ -428,9 +428,13 @@ public class MainScreenController {
     }
 
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        Controller.getInstance().getMediaPlayer().pause();
         Media punch;
         MediaPlayer punchPlayer;
-        punch = new Media(new File("module/json/punch.wav").toURI().toString());
+        // test
+        punch  = new Media(Controller.class.getResource("/punch.wav").toString());
+        // end of test
+        // punch = new Media(new File("module/json/punch.wav").toURI().toString());
         System.out.println(punch);
         punchPlayer = new MediaPlayer(punch);
         punchPlayer.play();
@@ -465,6 +469,7 @@ public class MainScreenController {
                     currentEnemy.setHp(0);
                     // move to ending scene
                     moveToVictoryScene();
+                    // boss stage music must be tested!!!!
                     return;
                 }
 
@@ -485,6 +490,7 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
             actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
@@ -532,8 +538,8 @@ public class MainScreenController {
                 if (currentEnemy.getName().equals("Don Fury")) {
                     System.out.println("Final boss fight!!");
                     // move to ending scene
-                     moveToVictoryScene();
-                     return;
+                    moveToVictoryScene();
+                    return;
                 }
                 // player won
                 // need to print out the combat outro from JSON
@@ -551,6 +557,8 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                // test
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
         }
@@ -684,6 +692,6 @@ public class MainScreenController {
             SceneController.switchSceneBaseOnMenuItemClick(event, stage);
         } else {
             SceneController.switchScenesBaseOnBtnClick(event);
-         }
+        }
     }
 }
