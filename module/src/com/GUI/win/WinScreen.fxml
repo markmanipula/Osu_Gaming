@@ -32,7 +32,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="416.0" layoutY="154.0" prefHeight="102.0" prefWidth="390.0" text="Congratulation">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="416.0" layoutY="154.0" prefHeight="102.0" prefWidth="404.0" text="Congratulation">
          <font>
             <Font size="60.0" />
          </font>
