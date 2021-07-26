@@ -1,5 +1,6 @@
 package com.GUI.maingame;
 
+import com.GUI.Controller;
 import com.GUI.SceneController;
 import com.GUI.lose.LoseSceneBuilder;
 import com.GUI.win.WinSceneBuilder;
@@ -93,13 +94,6 @@ public class MainScreenController {
     @FXML
     private TextArea fightCombatDialog;
     @FXML private Slider volumeSlider;
-    private File directory;
-    private File[] files;
-    private ArrayList<File> songs;
-    private int songNumber;
-    private boolean running;
-    private Media media;
-    private MediaPlayer mediaPlayer;
 
     // player obj to retrieve the current location
     private Player jemad = new Player();
@@ -109,6 +103,7 @@ public class MainScreenController {
 
     @FXML
     public void initialize() {
+
         generateDescriptionBasedOnLocation();
         generatePossibleItemsInCurrentRoom();
         // get possible enemy located in player's current room
@@ -150,61 +145,30 @@ public class MainScreenController {
         });
         currentLocationLabel.setText(jemad.getCurrentLocation());
 
-        songs = new ArrayList<File>();
-        directory = new File("module/json/Music");
-        files = directory.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                songs.add(file);
-                System.out.println(file);
-            }
-        }
-        media = new Media(songs.get(songNumber).toURI().toString());
-        System.out.println(media);
-        mediaPlayer = new MediaPlayer(media);
-        playMedia();
+
+    }
+    public void mediaPlayer(){
+        Controller.getmediaPlayer();
+    }
 
 
-        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                mediaPlayer.setVolume(volumeSlider.getValue() *.01);
-            }
-
-        });
+    @FXML
+    public void volume(){
 
     }
 
+    @FXML
     public void playMedia(){
-        mediaPlayer.play();
-        System.out.println("Playing music");
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Works");
-                nextMedia();
-                ;            }
-        });
+        Controller.getInstance().playMedia();
     }
+    @FXML
     public void pauseMedia(){
-        mediaPlayer.pause();
+        Controller.getInstance().pauseMedia();
     }
+    @FXML
     public void nextMedia() {
-        if (songNumber < 1) {
-            songNumber++;
-            mediaPlayer.stop();
-            System.out.println("Stopped");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        } else {
-            songNumber = 0;
-            mediaPlayer.stop();
-            System.out.println("Music stop");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        }
+        Controller.getInstance().nextMedia();
+
     }
 
 
