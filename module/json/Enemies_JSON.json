@@ -2,7 +2,7 @@
   "bouncer": {
     "Max Health": 30,
     "Min Attack": 50,
-    "Max Attack": 60
+    "Max Attack": 70
   },
   "security guard": {
     "Max Health": 35,
