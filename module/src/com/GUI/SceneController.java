@@ -6,8 +6,12 @@ import com.GUI.maingame.MainScreenSceneBuilder;
 import com.GUI.map.MapSceneBuilder;
 import com.GUI.savegame.SaveGameScene;
 import com.GUI.status.PlayerStatusSceneBuilder;
+import com.GUI.tutorial.TutorialSceneBuilder;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
@@ -73,6 +77,7 @@ public class SceneController {
                 break;
             case "startBtn":
             case "restartButton":
+            case "tutorialToMainBtn":
                 System.out.println("startBtn Clicked");
                 JemadIntroScene jemadIntroScene = new JemadIntroScene();
                 jemadIntroScene.buildIntroScene(stage);
@@ -94,6 +99,10 @@ public class SceneController {
             case "loadBtn":
                 LoadGameScene loadGameScene = new LoadGameScene();
                 loadGameScene.buildLoadGameWaitScene(stage);
+                break;
+            case "tutorialBtn":
+                TutorialSceneBuilder tutorialScene = new TutorialSceneBuilder();
+                tutorialScene.buildWinScene(stage);
                 break;
         }
     }
