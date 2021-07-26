@@ -101,6 +101,7 @@ public class Controller implements Initializable {
 //        System.out.println(event.getSource());
 //        jemadIntroScene = new JemadIntroScene();
 //        jemadIntroScene.buildIntroScene(stage);
+        mediaPlayer.pause();
         SceneController.switchScenesBaseOnBtnClick(event);
     }
 
