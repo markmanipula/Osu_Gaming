@@ -77,7 +77,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button layoutX="496.0" layoutY="531.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="238.0" text="Tutorial">
+      <Button fx:id="tutorialBtn" layoutX="496.0" layoutY="531.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="68.0" prefWidth="238.0" text="Tutorial">
          <font>
             <Font size="36.0" />
          </font>

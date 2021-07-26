@@ -33,19 +33,4 @@ public class SOTF extends Application {
           e.printStackTrace();
       }
     }
-
-
-//
-//
-//    public static String stringCombatIntro(){
-//        String printFight1 = ("___________.___  ________  ___ ______________._.\n" +
-//                "\\_   _____/|   |/  _____/ /   |   \\__    ___/| |\n" +
-//                " |    __)  |   /   \\  ___/    ~    \\|    |   | |\n" +
-//                " |     \\   |   \\    \\_\\  \\    Y    /|    |    \\|\n" +
-//                " \\___  /   |___|\\______  /\\___|_  / |____|    __\n" +
-//                "     \\/                \\/       \\/            \\/");
-//        StringBuilder printFightBuilder = new StringBuilder();
-//        printFightBuilder.append("\n"+ printFight1);
-//        return printFightBuilder.toString();
-//    }
 }
