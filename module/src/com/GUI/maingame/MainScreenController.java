@@ -163,16 +163,21 @@ public class MainScreenController {
             }
         });
         currentLocationLabel.setText(jemad.getCurrentLocation());
-
-
-    }
-    @FXML
-    public void volume(){
     }
 
     public static boolean getPlayerVisitedPlaces(String location) {
         System.out.println("Static method getPlayervisitedPlaces " + IS_NOT_VISITED.get(location));
         return IS_NOT_VISITED.get(location);
+    }
+
+    public void volume() {
+        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                Controller.getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                System.out.println("adjusting volume");
+            }
+        });
     }
 
     @FXML

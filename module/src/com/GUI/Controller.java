@@ -36,7 +36,7 @@ public class Controller implements Initializable {
         playMedia();
     }
 
-    public static MediaPlayer getmediaPlayer(){
+    public static MediaPlayer getMediaPlayer(){
         return mediaPlayer;
     }
 
@@ -74,6 +74,7 @@ public class Controller implements Initializable {
 
 
     public void playMedia(){
+        mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
         mediaPlayer.play();
         System.out.println("Playing music");
         mediaPlayer.setOnEndOfMedia(new Runnable() {
