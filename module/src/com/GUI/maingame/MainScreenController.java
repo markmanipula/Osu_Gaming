@@ -107,6 +107,25 @@ public class MainScreenController {
     private static HashMap<String, Enemy> DEFEATED_ENEMYLIST = new HashMap<>();
     private static ArrayList<String> OBTAINED_ITEMS = new ArrayList<>();
 
+    // static variable for keep track which map had been visited
+    private static HashMap<String, Boolean> IS_NOT_VISITED = new HashMap<>(){{
+        put("Inside Bar", true);
+        put("Pool Room", true);
+        put("Alley Behind Bar", true);
+        put("Locker Room", true);
+        put("Pool Deck", true);
+        put("Pool Bar", true);
+        put("Pool Deck: Upper Level", true);
+        put("Slot Machines", true);
+        put("Poker Tables", true);
+        put("Steak House", true);
+        put("VIP Room", true);
+        put("Elevator", true);
+        put("Hotel Halls", true);
+        put("Balcony", true);
+        put("Rooftop: Final Boss", true);
+    }};
+
     @FXML
     public void initialize() {
         generateDescriptionBasedOnLocation();
@@ -173,6 +192,11 @@ public class MainScreenController {
 
         });
 
+    }
+
+    public static boolean getPlayerVisitedPlaces(String location) {
+        System.out.println("Static method getPlayervisitedPlaces " + IS_NOT_VISITED.get(location));
+        return IS_NOT_VISITED.get(location);
     }
 
     public void playMedia(){
@@ -580,6 +604,8 @@ public class MainScreenController {
         String movedLocation = String.valueOf(nextRoomBasedOnButton.get(0));
         // set Jemad's location to movedLocation
         jemad.setCurrentLocation(movedLocation);
+        IS_NOT_VISITED.put(movedLocation, false);
+        System.out.println("MOVEMENT hoho: " + IS_NOT_VISITED);
         SceneController.switchScenesBaseOnBtnClick(e);
     }
 
