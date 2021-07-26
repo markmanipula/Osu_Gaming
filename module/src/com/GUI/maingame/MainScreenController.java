@@ -95,7 +95,6 @@ public class MainScreenController {
 
     @FXML
     public void initialize() {
-        System.out.println("is this print? from initializer");
         generateDescriptionBasedOnLocation();
         generatePossibleItemsInCurrentRoom();
         // get possible enemy located in player's current room
@@ -140,13 +139,10 @@ public class MainScreenController {
 
     // fight menu items
     public void generatePossibleEnemyInCurrentRoom() {
-        System.out.println("fight button had been  cliekced!!");
-
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
         if (enemyList == null || enemyList.size() == 0) {
             return;
         }
-        System.out.println("Enemy: " + DEFEATED_ENEMYLIST);
         if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
             // if enemy got defeated in current user's location
             if (DEFEATED_ENEMYLIST.containsKey(jemad.getCurrentLocation())) {
@@ -158,7 +154,6 @@ public class MainScreenController {
         }
         // loop to create possible options for all enemies in current room
         fightButton.getItems().clear();
-        System.out.println("After defeat enemy: " + enemyList);
         // if the enemy list is empty
         if (enemyList.isEmpty()) {
             MenuItem emptyItem = new MenuItem();
@@ -167,14 +162,12 @@ public class MainScreenController {
         }
 
         for (Object eachEnemy: enemyList) {
-            System.out.println("making menuitems");
             MenuItem enemyItem = new MenuItem();
             enemyItem.setId(String.valueOf(eachEnemy));
             enemyItem.setText(String.valueOf(eachEnemy));
             // put event on each enemy
             enemyItem.setOnAction(e -> enemyFightSceneHandler(e, String.valueOf(eachEnemy)));
             fightButton.getItems().add(enemyItem);
-            System.out.println("end of for loop");
         }
     }
 
@@ -254,7 +247,6 @@ public class MainScreenController {
         // get item buttons
         getItemMenuButton.setManaged(true);
         getItemMenuButton.setVisible(true);
-        System.out.println("set back to things");
     }
 
     private void enemyFightSceneHandler(ActionEvent e, String fxId) {
@@ -357,7 +349,6 @@ public class MainScreenController {
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
         boolean isDefeated = false;
         JemadCombat jemadCombatMove = new JemadCombat();
-        System.out.println("got it into fight");
         int jemadHp = jemad.getHp();
         int enemyHp = currentEnemy.getHp();
         // random either 0 or 1
@@ -379,7 +370,6 @@ public class MainScreenController {
             currentEnemy.setHp(enemyHp);
             // reset enemy hp area
             getEnemyInfoHelper(currentEnemy);
-            System.out.println("got it in here");
             if (enemyHp <= 0) {
                 // player won
                 // need to print out the combat outro from JSON
@@ -474,7 +464,6 @@ public class MainScreenController {
         JSONObject roomObj = ReadRoomContentJson.getCurrentRoomContentJSON(currentPlayerLocation);
         Button btn =  (Button) e.getSource();
         String fxId = btn.getId();
-        System.out.println(fxId);
         JSONArray nextRoomBasedOnButton = (JSONArray) roomObj.get(fxId);
         if (nextRoomBasedOnButton == null || nextRoomBasedOnButton.size() == 0) {
             return;
@@ -494,8 +483,6 @@ public class MainScreenController {
         if (itemList == null || itemList.size() == 0) {
             return;
         }
-
-        System.out.println("Newly updated possible item " + itemList);
         if (itemList != null && itemList.size() > 0) {
             // clear out the previous item inventory
             getItemMenuButton.getItems().clear();
@@ -543,14 +530,11 @@ public class MainScreenController {
 
     private void displayInventory() {
         ArrayList<Item> itemDataFromInventory = jemad.getInventory();
-        System.out.println(itemDataFromInventory);
         if (itemDataFromInventory == null) {
             return;
         }
         inventoryListView.getItems().removeAll();
-        System.out.println("From displayInventory: " + itemDataFromInventory);
         for (Item eachItem : itemDataFromInventory) {
-            System.out.println(eachItem.getItemName());
             inventoryListView.getItems().add(eachItem.getItemName());
         }
     }
@@ -559,10 +543,8 @@ public class MainScreenController {
     private void useItemButtonHandler() {
         ObservableList<String> selectedItem;
         selectedItem = inventoryListView.getSelectionModel().getSelectedItems();
-        System.out.println(selectedItem);
         // if the item had been selected
         if (selectedItem == null || selectedItem.size() <= 0) {
-            System.out.println("hello world haha");
             // alert user to select an item
             return;
         }
@@ -577,11 +559,11 @@ public class MainScreenController {
         for (Item eachItem: jemadItems) {
             inventoryListView.getItems().add(eachItem.getItemName());
         }
+        // update textarea
+        getPlayerJemadInfoHelper();
     }
 
     private void generateDescriptionBasedOnLocation() {
-        // changed the location to inside bar to test
-        // jemad.setCurrentLocation("Outside Bar");
         String currentDescription = ReadRoomContentJson.trimRoomDescription(jemad.getCurrentLocation());
         gameDescription.setEditable(false);
         gameDescription.setWrapText(true);
@@ -590,17 +572,13 @@ public class MainScreenController {
 
     public void switchItIntoMap(ActionEvent event) throws IOException {
         if (event.getSource() == displayMapMenuItem || event.getSource() == aboutJemad ||  event.getSource() == saveGame ||  event.getSource() == loadGame) {
-            System.out.println("a menu item got clicked");
             MenuItem menuItemId = (MenuItem) event.getSource();
             String id = menuItemId.getId();
-            System.out.println(id);
             // try to get the stage
             Stage stage = (Stage) menuButton.getScene().getWindow();
             SceneController.switchSceneBaseOnMenuItemClick(event, stage);
         } else {
             SceneController.switchScenesBaseOnBtnClick(event);
          }
-
     }
-
 }
