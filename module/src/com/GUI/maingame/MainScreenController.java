@@ -440,6 +440,13 @@ public class MainScreenController {
     }
 
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        Media punch;
+        MediaPlayer punchPlayer;
+        punch = new Media(new File("module/json/punch.wav").toURI().toString());
+        System.out.println(punch);
+        punchPlayer = new MediaPlayer(punch);
+        punchPlayer.play();
+
         boolean isDefeated = false;
         JemadCombat jemadCombatMove = new JemadCombat();
         int jemadHp = jemad.getHp();
