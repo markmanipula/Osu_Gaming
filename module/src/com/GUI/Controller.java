@@ -19,6 +19,10 @@ public class Controller implements Initializable {
     @FXML private Label songLabel;
     @FXML private Button playButton;
     @FXML private Slider volumeSlider;
+    // test
+    @FXML
+    private Button tutorialBtn;
+    // end of test
     private File directory;
     private File[] files;
     private ArrayList<File> songs;
