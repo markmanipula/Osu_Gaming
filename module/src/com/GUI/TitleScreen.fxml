@@ -12,13 +12,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="titlePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
+<AnchorPane fx:id="titlePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: Black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.GUI.Controller">
    <children>
-      <Label fx:id="songLabel" layoutX="2.0" layoutY="3.0" prefHeight="592.0" prefWidth="800.0" />
-
-      <Button layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
-      <Button fx:id="startBtn" layoutX="333.0" layoutY="517.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: Orange;" text="Start" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="78.0" prefHeight="179.0" prefWidth="502.0" text="Spirit Of The Fist">
+      <Label fx:id="songLabel" layoutX="2.0" layoutY="3.0" prefHeight="800.0" prefWidth="1200.0" />
+      <Button fx:id="startBtn" layoutX="496.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="68.0" prefWidth="238.0" style="-fx-background-color: Orange;" text="Start">
+         <font>
+            <Font size="36.0" />
+         </font></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="152.0" prefHeight="179.0" prefWidth="502.0" text="Spirit Of The Fist">
          <font>
             <Font size="60.0" />
          </font>
@@ -39,7 +40,7 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label alignment="CENTER" layoutX="196.0" layoutY="211.0" prefHeight="93.0" prefWidth="409.0" text="Madness Of Jemad">
+      <Label alignment="CENTER" layoutX="410.0" layoutY="285.0" prefHeight="93.0" prefWidth="409.0" text="Madness Of Jemad">
          <font>
             <Font size="47.0" />
          </font>
@@ -76,5 +77,15 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button layoutX="496.0" layoutY="531.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="238.0" text="Tutorial">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="496.0" layoutY="638.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="238.0" text="Load Game">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
