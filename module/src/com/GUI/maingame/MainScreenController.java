@@ -371,6 +371,11 @@ public class MainScreenController {
             // reset enemy hp area
             getEnemyInfoHelper(currentEnemy);
             if (enemyHp <= 0) {
+                // for final boss
+                if (currentEnemy.getName().equals("Don Fury")) {
+                    System.out.println("Final boss fight!!");
+                }
+
                 // player won
                 // need to print out the combat outro from JSON
                 String combatOutro1PlayerWin = StoryGenerator.printStoryOutro(currentEnemy.getName());
