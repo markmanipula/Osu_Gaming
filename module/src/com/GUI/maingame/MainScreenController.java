@@ -1,5 +1,6 @@
 package com.GUI.maingame;
 
+import com.GUI.Controller;
 import com.GUI.SceneController;
 import com.GUI.lose.LoseSceneBuilder;
 import com.GUI.win.WinSceneBuilder;
@@ -93,13 +94,6 @@ public class MainScreenController {
     @FXML
     private TextArea fightCombatDialog;
     @FXML private Slider volumeSlider;
-    private File directory;
-    private File[] files;
-    private ArrayList<File> songs;
-    private int songNumber;
-    private boolean running;
-    private Media media;
-    private MediaPlayer mediaPlayer;
 
     // player obj to retrieve the current location
     private Player jemad = new Player();
@@ -107,8 +101,28 @@ public class MainScreenController {
     private static HashMap<String, Enemy> DEFEATED_ENEMYLIST = new HashMap<>();
     private static ArrayList<String> OBTAINED_ITEMS = new ArrayList<>();
 
+    // static variable for keep track which map had been visited
+    private static HashMap<String, Boolean> IS_NOT_VISITED = new HashMap<>(){{
+        put("Inside Bar", true);
+        put("Pool Room", true);
+        put("Alley Behind Bar", true);
+        put("Locker Room", true);
+        put("Pool Deck", true);
+        put("Pool Bar", true);
+        put("Pool Deck: Upper Level", true);
+        put("Slot Machines", true);
+        put("Poker Tables", true);
+        put("Steak House", true);
+        put("VIP Room", true);
+        put("Elevator", true);
+        put("Hotel Halls", true);
+        put("Balcony", true);
+        put("Rooftop: Final Boss", true);
+    }};
+
     @FXML
     public void initialize() {
+
         generateDescriptionBasedOnLocation();
         generatePossibleItemsInCurrentRoom();
         // get possible enemy located in player's current room
@@ -149,62 +163,36 @@ public class MainScreenController {
             }
         });
         currentLocationLabel.setText(jemad.getCurrentLocation());
+    }
 
-        songs = new ArrayList<File>();
-        directory = new File("module/json/Music");
-        files = directory.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                songs.add(file);
-                System.out.println(file);
-            }
-        }
-        media = new Media(songs.get(songNumber).toURI().toString());
-        System.out.println(media);
-        mediaPlayer = new MediaPlayer(media);
-        playMedia();
+    public static boolean getPlayerVisitedPlaces(String location) {
+        System.out.println("Static method getPlayervisitedPlaces " + IS_NOT_VISITED.get(location));
+        return IS_NOT_VISITED.get(location);
+    }
 
-
+    public void volume() {
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                mediaPlayer.setVolume(volumeSlider.getValue() *.01);
+                Controller.getInstance().getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                //Controller.getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                System.out.println("adjusting volume");
             }
-
         });
-
     }
 
+    @FXML
     public void playMedia(){
-        mediaPlayer.play();
-        System.out.println("Playing music");
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Works");
-                nextMedia();
-                ;            }
-        });
+        Controller.getInstance().playMedia();
     }
+    @FXML
     public void pauseMedia(){
-        mediaPlayer.pause();
+        Controller.getInstance().pauseMedia();
     }
+    @FXML
     public void nextMedia() {
-        if (songNumber < 1) {
-            songNumber++;
-            mediaPlayer.stop();
-            System.out.println("Stopped");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        } else {
-            songNumber = 0;
-            mediaPlayer.stop();
-            System.out.println("Music stop");
-            media = new Media(songs.get(songNumber).toURI().toString());
-            mediaPlayer = new MediaPlayer(media);
-            playMedia();
-        }
+        Controller.getInstance().nextMedia();
+
     }
 
 
@@ -440,9 +428,13 @@ public class MainScreenController {
     }
 
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
+        Controller.getInstance().getMediaPlayer().pause();
         Media punch;
         MediaPlayer punchPlayer;
-        punch = new Media(new File("module/json/punch.wav").toURI().toString());
+        // test
+        punch  = new Media(Controller.class.getResource("/punch.wav").toString());
+        // end of test
+        // punch = new Media(new File("module/json/punch.wav").toURI().toString());
         System.out.println(punch);
         punchPlayer = new MediaPlayer(punch);
         punchPlayer.play();
@@ -477,6 +469,7 @@ public class MainScreenController {
                     currentEnemy.setHp(0);
                     // move to ending scene
                     moveToVictoryScene();
+                    // boss stage music must be tested!!!!
                     return;
                 }
 
@@ -497,6 +490,7 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
             actualEnemyDamage = Integer.parseInt(enemyAttack.get(1));
@@ -544,8 +538,8 @@ public class MainScreenController {
                 if (currentEnemy.getName().equals("Don Fury")) {
                     System.out.println("Final boss fight!!");
                     // move to ending scene
-                     moveToVictoryScene();
-                     return;
+                    moveToVictoryScene();
+                    return;
                 }
                 // player won
                 // need to print out the combat outro from JSON
@@ -563,6 +557,8 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                // test
+                Controller.getInstance().getMediaPlayer().play();
                 return;
             }
         }
@@ -587,6 +583,8 @@ public class MainScreenController {
         String movedLocation = String.valueOf(nextRoomBasedOnButton.get(0));
         // set Jemad's location to movedLocation
         jemad.setCurrentLocation(movedLocation);
+        IS_NOT_VISITED.put(movedLocation, false);
+        System.out.println("MOVEMENT hoho: " + IS_NOT_VISITED);
         SceneController.switchScenesBaseOnBtnClick(e);
     }
 
@@ -694,6 +692,6 @@ public class MainScreenController {
             SceneController.switchSceneBaseOnMenuItemClick(event, stage);
         } else {
             SceneController.switchScenesBaseOnBtnClick(event);
-         }
+        }
     }
 }

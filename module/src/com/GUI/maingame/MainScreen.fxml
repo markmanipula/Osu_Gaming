@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -26,7 +27,6 @@
               <items>
                 <MenuItem fx:id="displayMapMenuItem" mnemonicParsing="false" onAction="#switchItIntoMap" text="Map" />
                 <MenuItem fx:id="aboutJemad" mnemonicParsing="false" onAction="#switchItIntoMap" text="About Jemad" />
-                <MenuItem mnemonicParsing="false" text="Inventory" />
                 <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Save Game" />
                 <MenuItem fx:id="loadGame" mnemonicParsing="false" onAction="#switchItIntoMap" text="Load Game" />
               </items>
@@ -175,9 +175,8 @@
         <menus>
           <Menu mnemonicParsing="false">
                <graphic>
-                  <Slider fx:id="volumeSlider" blockIncrement="1.0" majorTickUnit="5.0" min="1.0" minorTickCount="1" prefHeight="14.0" prefWidth="62.0" style="-fx-background-color: white;" value="20.0" />
-               </graphic>
-          </Menu>
+                  <Slider fx:id="volumeSlider" blockIncrement="1.0" onDragDetected="#volume" prefHeight="15.0" prefWidth="68.0" value="25.0" />
+               </graphic></Menu>
           <Menu mnemonicParsing="false" text="Music">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#playMedia" text="Play" />
@@ -187,5 +186,6 @@
           </Menu>
         </menus>
       </MenuBar>
+      <ToggleButton layoutX="186.0" layoutY="-43.0" mnemonicParsing="false" text="ToggleButton" />
    </children>
 </AnchorPane>
