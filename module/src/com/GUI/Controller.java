@@ -26,10 +26,21 @@ public class Controller implements Initializable {
     private int songNumber;
     private boolean running;
     private Media media;
-    private MediaPlayer mediaPlayer;
-    @Override
+    private static MediaPlayer mediaPlayer;
+    private static Controller instance;
 
+
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        media();
+        playMedia();
+    }
+
+    public static MediaPlayer getmediaPlayer(){
+        return mediaPlayer;
+    }
+
+    public void media(){
         songs = new ArrayList<File>();
         directory = new File("module/json/Music");
         files = directory.listFiles();
@@ -42,17 +53,25 @@ public class Controller implements Initializable {
         media = new Media(songs.get(songNumber).toURI().toString());
         System.out.println(media);
         mediaPlayer = new MediaPlayer(media);
-        playMedia();
+    }
 
-
+    public void volume() {
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 mediaPlayer.setVolume(volumeSlider.getValue() *.01);
+                System.out.println("adjusting volume");
             }
-
         });
     }
+
+    public Controller() {
+        instance = this;
+    }
+    public static Controller getInstance() {
+        return instance;
+    }
+
 
     public void playMedia(){
         mediaPlayer.play();
@@ -101,8 +120,8 @@ public class Controller implements Initializable {
 //        System.out.println(event.getSource());
 //        jemadIntroScene = new JemadIntroScene();
 //        jemadIntroScene.buildIntroScene(stage);
-        mediaPlayer.pause();
         SceneController.switchScenesBaseOnBtnClick(event);
+        mediaPlayer.pause();
     }
 
 //    @FXML
