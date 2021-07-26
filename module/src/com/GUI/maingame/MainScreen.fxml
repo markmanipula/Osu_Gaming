@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -184,5 +185,6 @@
         </menus>
       </MenuBar>
       <ToggleButton layoutX="186.0" layoutY="-43.0" mnemonicParsing="false" text="ToggleButton" />
+      <Slider fx:id="volumeSlider" layoutX="149.0" layoutY="28.0" onDragDetected="#volume" />
    </children>
 </AnchorPane>
