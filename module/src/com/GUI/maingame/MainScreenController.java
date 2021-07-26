@@ -174,7 +174,8 @@ public class MainScreenController {
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                Controller.getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                Controller.getInstance().getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
+                //Controller.getMediaPlayer().setVolume(volumeSlider.getValue() *.01);
                 System.out.println("adjusting volume");
             }
         });

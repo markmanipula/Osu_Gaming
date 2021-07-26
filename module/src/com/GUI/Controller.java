@@ -36,7 +36,7 @@ public class Controller implements Initializable {
         playMedia();
     }
 
-    public static MediaPlayer getMediaPlayer(){
+    public MediaPlayer getMediaPlayer(){
         return mediaPlayer;
     }
 
@@ -122,7 +122,6 @@ public class Controller implements Initializable {
 //        jemadIntroScene = new JemadIntroScene();
 //        jemadIntroScene.buildIntroScene(stage);
         SceneController.switchScenesBaseOnBtnClick(event);
-        mediaPlayer.pause();
     }
 
 //    @FXML

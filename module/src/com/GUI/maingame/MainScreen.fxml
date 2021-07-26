@@ -174,7 +174,10 @@
       </Pane>
       <MenuBar layoutX="16.0" layoutY="14.0" style="-fx-background-color: white;">
         <menus>
-          <Menu mnemonicParsing="false" />
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Slider fx:id="volumeSlider" blockIncrement="1.0" onDragDetected="#volume" prefHeight="15.0" prefWidth="68.0" value="25.0" />
+               </graphic></Menu>
           <Menu mnemonicParsing="false" text="Music">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#playMedia" text="Play" />
@@ -185,6 +188,5 @@
         </menus>
       </MenuBar>
       <ToggleButton layoutX="186.0" layoutY="-43.0" mnemonicParsing="false" text="ToggleButton" />
-      <Slider fx:id="volumeSlider" layoutX="149.0" layoutY="28.0" onDragDetected="#volume" />
    </children>
 </AnchorPane>
