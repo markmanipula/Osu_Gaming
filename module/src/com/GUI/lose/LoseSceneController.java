@@ -1,5 +1,6 @@
 package com.GUI.lose;
 
+import com.GUI.Controller;
 import com.GUI.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,8 +34,21 @@ public class LoseSceneController {
                 ioException.printStackTrace();
             }
         });
+        loseSong();
         exitButton.setOnAction(e -> terminateApplication());
         setUpDefeatImage();
+    }
+
+    public void loseSong(){
+        Controller.getInstance().getMediaPlayer().pause();
+        Media lose;
+        MediaPlayer loserPlayer;
+        // test
+        lose  = new Media(Controller.class.getResource("/defeatedMusic.wav").toString());
+        // end of test
+        System.out.println(lose);
+        loserPlayer = new MediaPlayer(lose);
+        loserPlayer.play();
     }
 
     private void setUpDefeatImage() {
