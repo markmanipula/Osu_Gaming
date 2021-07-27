@@ -16,6 +16,12 @@ public class JemadCombat extends SotfCharacters{
         // empty
     }
 
+    // method overloading
+    public int jemadMoves() {
+        int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());
+        return randomDamage;
+    }
+
     public int jemadMoves (String moves) {
 
         int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());
