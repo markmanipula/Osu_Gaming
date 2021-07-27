@@ -28,7 +28,12 @@ public class ReadWeaponMovementContent {
     // method to get possibleMovement based on weapon name
     public static JSONArray getSpecificWeaponMovementJSON(String weaponName) {
         JSONObject specificWeaponMovement = ReadWeaponMovementContent.getAllWeaponMovementsJSON();
-        JSONObject weaponObj = (JSONObject) specificWeaponMovement.get(weaponName);
-        return (JSONArray) weaponObj.get("movements");
+        try {
+            JSONObject weaponObj = (JSONObject) specificWeaponMovement.get(weaponName);
+            return (JSONArray) weaponObj.get("movements");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
