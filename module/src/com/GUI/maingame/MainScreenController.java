@@ -316,6 +316,14 @@ public class MainScreenController {
         showAllCombatInfo();
         Enemy selectedEnemy = new Enemy(fxId);
 
+        // final boss background music
+        // null check
+        if (selectedEnemy.getName() != null) {
+            if (selectedEnemy.getName().equals("Don Fury")) {
+                Controller.getInstance().playFinalBossMusic();
+            }
+        }
+
         // must disable all buttons (such as menu, getItem)
         fightCombatDialog(fxId);
         // set up enemy
@@ -428,7 +436,11 @@ public class MainScreenController {
     }
 
     private void fightingCombatLogic(ActionEvent e, String jemadAttackMove, Enemy currentEnemy) {
-        Controller.getInstance().getMediaPlayer().pause();
+        if (currentEnemy != null) {
+            if (!currentEnemy.getName().equals("Don Fury")) {
+                Controller.getInstance().getMediaPlayer().pause();
+            }
+        }
         Media punch;
         MediaPlayer punchPlayer;
         // test

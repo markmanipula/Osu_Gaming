@@ -114,6 +114,13 @@ public class Controller implements Initializable {
                 ;            }
         });
     }
+
+    public void playFinalBossMusic() {
+        media = new Media(Controller.class.getResource("/finalBossFight.wav").toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
     public void pauseMedia(){
         mediaPlayer.pause();
     }
