@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -39,7 +38,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         media();
-        playMedia();
+        // playMedia();
     }
 
     public MediaPlayer getMediaPlayer(){
@@ -65,23 +64,7 @@ public class Controller implements Initializable {
         media = new Media(Controller.class.getResource("/Music/1Paris.wav").toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
-        // end of testing for jar
-
-//        songs = new ArrayList<File>();
-//        directory = new File("module/json/Music");
-//        files = directory.listFiles();
-//        System.out.println("hello files: 789: " + files);
-//        if (files != null) {
-//            for (File file : files) {
-//                songs.add(file);
-//                System.out.println(file);
-//            }
-//        }
-//        System.out.println("SONG TESTING 123: " + songs);
-//        System.out.println("SONT TESTING 456: " + fileNames);
-//        media = new Media(songs.get(songNumber).toURI().toString());
-//        System.out.println(media);
-//        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
     }
 
     public void volume() {
@@ -114,6 +97,14 @@ public class Controller implements Initializable {
                 ;            }
         });
     }
+
+    public void playFinalBossMusic() {
+        mediaPlayer.stop();
+        media = new Media(Controller.class.getResource("/finalBossFight.wav").toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
     public void pauseMedia(){
         mediaPlayer.pause();
     }
@@ -129,7 +120,9 @@ public class Controller implements Initializable {
 
             // media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            playMedia();
+            mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+            mediaPlayer.play();
+            // playMedia();
         } else {
             songNumber = 0;
             mediaPlayer.stop();
@@ -140,7 +133,9 @@ public class Controller implements Initializable {
 
             // media = new Media(songs.get(songNumber).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
-            playMedia();
+            mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
+            mediaPlayer.play();
+            // playMedia();
         }
     }
 
