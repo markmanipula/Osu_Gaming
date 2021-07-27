@@ -490,6 +490,7 @@ public class MainScreenController {
                 generatePossibleEnemyInCurrentRoom();
                 // display you won
                 showWinStatement();
+                generatePossibleItemsInCurrentRoom();
                 Controller.getInstance().getMediaPlayer().play();
                 return;
             }
@@ -558,6 +559,7 @@ public class MainScreenController {
                 // display you won
                 showWinStatement();
                 // test
+                generatePossibleItemsInCurrentRoom();
                 Controller.getInstance().getMediaPlayer().play();
                 return;
             }
@@ -588,6 +590,26 @@ public class MainScreenController {
         SceneController.switchScenesBaseOnBtnClick(e);
     }
 
+    // add restriction for obtaining item
+    private boolean restrictGeneratePossibleItemInCurrentRoom() {
+        JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
+        if (enemyList == null || enemyList.size() == 0) {
+            return false;
+        }
+        if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
+            // if enemy got defeated in current user's location
+            if (DEFEATED_ENEMYLIST.containsKey(jemad.getCurrentLocation())) {
+                String defeatedEnemy = DEFEATED_ENEMYLIST.get(jemad.getCurrentLocation()).getName();
+                if (enemyList.contains(defeatedEnemy)) {
+                    enemyList.remove(defeatedEnemy);
+
+                }
+            }
+        }
+        // return true if all enemies had been defeated
+        return enemyList.isEmpty();
+    }
+
     // private method to generate all possible item based on
     // current location
     private void generatePossibleItemsInCurrentRoom() {
@@ -596,7 +618,7 @@ public class MainScreenController {
         if (itemList == null || itemList.size() == 0) {
             return;
         }
-        if (itemList != null && itemList.size() > 0) {
+        if (itemList != null && itemList.size() > 0 && restrictGeneratePossibleItemInCurrentRoom()) {
             // clear out the previous item inventory
             getItemMenuButton.getItems().clear();
             for (Object eachItem: itemList) {
@@ -616,7 +638,7 @@ public class MainScreenController {
             }
         } else {
             MenuItem emptyItem = new MenuItem();
-            emptyItem.setText("No items exist");
+            emptyItem.setText("Fight the enemy to reveal");
             getItemMenuButton.getItems().add(emptyItem);
         }
     }
