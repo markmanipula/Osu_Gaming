@@ -20,6 +20,8 @@ public class Player{
     private static int maxDamage = 12;
     private final int DEFAULT_MIN_DAMAGE = 7;
     private final int DEFAULT_MAX_DAMAGE = 12;
+
+    private static String equippedWeapon;
     // just an empty constructor
     public Player() {}
 
@@ -142,6 +144,7 @@ public class Player{
                     }
                 case "Weapon":
                     int increaseDamageAmount = selectedItem.getItemAffect();
+                    setEquippedWeapon(selectedItem.getItemName());
                     this.setMinDamage( DEFAULT_MIN_DAMAGE + increaseDamageAmount );
                     this.setMaxDamage( DEFAULT_MAX_DAMAGE + increaseDamageAmount );
                     inventory.remove(selectedItem);
@@ -149,6 +152,14 @@ public class Player{
             }
         }
         return "";
+    }
+
+    public String getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(String weaponName) {
+        equippedWeapon = weaponName;
     }
 
     public ArrayList<Item> getInventory() {
