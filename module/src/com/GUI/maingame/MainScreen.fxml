@@ -162,7 +162,7 @@
             <ImageView fx:id="jemadFacingRightImageView" fitHeight="171.0" fitWidth="138.0" layoutX="173.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
             <MenuButton fx:id="jemadCombatMovementMenuButton" layoutX="31.0" layoutY="154.0" mnemonicParsing="false" text="Movements" />
             <TextArea fx:id="enemyFightTextArea" editable="false" layoutX="513.0" layoutY="196.0" prefHeight="121.0" prefWidth="200.0" />
-            <ImageView fx:id="enemyFacingImageView" fitHeight="150.0" fitWidth="131.0" layoutX="513.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="enemyFacingImageView" fitHeight="177.0" fitWidth="174.0" layoutX="513.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="754.0" layoutY="15.0" prefHeight="25.0" prefWidth="102.0" text="Combat Dialog">
                <font>
                   <Font size="16.0" />
