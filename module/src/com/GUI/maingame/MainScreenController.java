@@ -11,6 +11,7 @@ import com.game.Player;
 import com.readjson.ReadItemContentJson;
 import com.readjson.ReadMoveContentJson;
 import com.readjson.ReadRoomContentJson;
+import com.readjson.ReadWeaponMovementContent;
 import com.story.StoryGenerator;
 import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
@@ -121,6 +122,10 @@ public class MainScreenController {
     }};
 
     @FXML
+    private MenuButton weaponMovementButton;
+    private static Enemy enemyAtTheScene;
+
+    @FXML
     public void initialize() {
 
         generateDescriptionBasedOnLocation();
@@ -195,8 +200,6 @@ public class MainScreenController {
 
     }
 
-
-
     // fight menu items
     public void generatePossibleEnemyInCurrentRoom() {
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
@@ -239,6 +242,8 @@ public class MainScreenController {
         jemadFacingRightImageView.setVisible(false);
         enemyFacingImageView.setVisible(false);
         enemyFightTextArea.setVisible(false);
+
+        weaponMovementButton.setVisible(false);
     }
 
     // display all hidencombat info
@@ -248,6 +253,10 @@ public class MainScreenController {
         jemadFacingRightImageView.setVisible(true);
         enemyFacingImageView.setVisible(true);
         enemyFightTextArea.setVisible(true);
+        // if the user is currently equipped weapon
+        if (jemad.getEquippedWeapon() != null && jemad.getEquippedWeapon().length() > 0) {
+            weaponMovementButton.setVisible(true);
+        }
     }
 
     // display win after combat
@@ -314,12 +323,16 @@ public class MainScreenController {
         duringFightDisableButtons();
         // display jemad and enemy fight info
         showAllCombatInfo();
-        Enemy selectedEnemy = new Enemy(fxId);
+        // ==============================================
+        // IMPORTANT CHANGE MUST GET TESTED
+        // Enemy selectedEnemy = new Enemy(fxId);
+        enemyAtTheScene = new Enemy(fxId);
+        // eend of important TEST
 
         // final boss background music
         // null check
-        if (selectedEnemy.getName() != null) {
-            if (selectedEnemy.getName().equals("Don Fury")) {
+        if (enemyAtTheScene.getName() != null) {
+            if (enemyAtTheScene.getName().equals("Don Fury")) {
                 Controller.getInstance().playFinalBossMusic();
             }
         }
@@ -327,9 +340,9 @@ public class MainScreenController {
         // must disable all buttons (such as menu, getItem)
         fightCombatDialog(fxId);
         // set up enemy
-        getEnemyInfo(selectedEnemy);
+        getEnemyInfo(enemyAtTheScene);
         // set up player
-        getPlayerJemadInfo(selectedEnemy);
+        getPlayerJemadInfo(enemyAtTheScene);
     }
 
     // set the dialog
@@ -383,6 +396,34 @@ public class MainScreenController {
             // loop until someone die
             jemadCombatMovementMenuButton.getItems().add(eachAttack);
         }
+        // update the weapon movement
+        updateWeaponMovement(selectedEnemy);
+    }
+
+    // jemad info for weapon movement if jemad equipped a weapon
+    private void updateWeaponMovement(Enemy selectedEnemy) {
+        if (jemad.getEquippedWeapon() != null && jemad.getEquippedWeapon().length() > 0) {
+            // if Jemad equipped the weapon
+            weaponMovementButton.getItems().clear();
+
+            JSONArray weaponMovements = ReadWeaponMovementContent.getSpecificWeaponMovementJSON(jemad.getEquippedWeapon());
+            // clear out the weapon menu item
+            // weaponMovementButton.getItems().clear();
+            for (Object eachWeaponMoves: weaponMovements) {
+                MenuItem eachWeaponMoveMenu = new MenuItem();
+                eachWeaponMoveMenu.setId(String.valueOf(eachWeaponMoves).toLowerCase());
+                eachWeaponMoveMenu.setText(String.valueOf(eachWeaponMoves).toLowerCase());
+                // set an action about fighting logic for each menu item
+                eachWeaponMoveMenu.setOnAction(e -> fightingCombatLogic(e, String.valueOf(eachWeaponMoves).toLowerCase(), selectedEnemy));
+                // added it into the menuButton
+                weaponMovementButton.getItems().add(eachWeaponMoveMenu);
+            }
+            if (incombatMessage.getText().equals("In Combat")) {
+                weaponMovementButton.setVisible(true);
+            }
+        } else {
+            System.out.println("FROM UPDATE WEAPON MOVEMENT: it is null? " + jemad.getEquippedWeapon());
+        }
     }
 
     // private method just to retrieve current player info for textarea
@@ -395,6 +436,7 @@ public class MainScreenController {
         playerFightTextArea.setStyle("-fx-font-size: 4em;");
         playerFightTextArea.setStyle("-fx-focus-color: transparent; -fx-text-box-border: transparent;");
         playerFightTextArea.setText(playerName + "\n\nHp: " + playerHp + "\n\nDamage: " + playerMinDamage + " ~ " + playerMaxDamage);
+        updateWeaponMovement(enemyAtTheScene);
     }
 
     // private method to move into lose scene
@@ -469,7 +511,7 @@ public class MainScreenController {
         // player attack first
         if (firstMove == 0) {
             // jemad goes first
-            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            actualDamage = jemadCombatMove.jemadMoves();
             enemyHp -= actualDamage;
             currentEnemy.setHp(enemyHp);
             // reset enemy hp area
@@ -544,7 +586,7 @@ public class MainScreenController {
                 moveToLoseScene();
                 return;
             }
-            actualDamage = jemadCombatMove.jemadMoves(jemadAttackMove);
+            actualDamage = jemadCombatMove.jemadMoves();
             currentEnemy.setHp(currentEnemy.getHp() - actualDamage);
             getEnemyInfoHelper(currentEnemy);
             if (currentEnemy.getHp() <= 0) {
@@ -708,6 +750,7 @@ public class MainScreenController {
         }
         // update textarea
         getPlayerJemadInfoHelper();
+
     }
 
     private void generateDescriptionBasedOnLocation() {
