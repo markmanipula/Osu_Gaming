@@ -99,6 +99,7 @@ public class Controller implements Initializable {
     }
 
     public void playFinalBossMusic() {
+        mediaPlayer.stop();
         media = new Media(Controller.class.getResource("/finalBossFight.wav").toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();

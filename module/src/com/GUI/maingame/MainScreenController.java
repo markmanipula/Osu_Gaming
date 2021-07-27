@@ -197,13 +197,15 @@ public class MainScreenController {
     @FXML
     public void nextMedia() {
         Controller.getInstance().nextMedia();
-
     }
 
     // fight menu items
     public void generatePossibleEnemyInCurrentRoom() {
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
         if (enemyList == null || enemyList.size() == 0) {
+            MenuItem emptyItem = new MenuItem();
+            emptyItem.setText("No enemy exist");
+            fightButton.getItems().add(emptyItem);
             return;
         }
         if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
@@ -376,6 +378,12 @@ public class MainScreenController {
 
     // private method to retrieve current Jemad's info for fight
     private void getPlayerJemadInfo(Enemy selectedEnemy) {
+        if (selectedEnemy.getName().equals("Don Fury")) {
+            Controller.getInstance().pauseMedia();
+            System.out.println("Don Fury final boss stage");
+            Controller.getInstance().playFinalBossMusic();
+        }
+
         getPlayerJemadInfoHelper();
         // set up the jemad facing image
         jemadFightImage = new Image(this.getClass().getResourceAsStream("/images/jemadFightImage.jpeg"));
@@ -407,6 +415,11 @@ public class MainScreenController {
             weaponMovementButton.getItems().clear();
 
             JSONArray weaponMovements = ReadWeaponMovementContent.getSpecificWeaponMovementJSON(jemad.getEquippedWeapon());
+            if (weaponMovements == null || weaponMovements.isEmpty()) {
+                // null check
+                System.out.println("Hey designer, check the json file for weapon movement and room json for item");
+                return;
+            }
             // clear out the weapon menu item
             // weaponMovementButton.getItems().clear();
             for (Object eachWeaponMoves: weaponMovements) {
@@ -486,14 +499,15 @@ public class MainScreenController {
         Media punch;
         MediaPlayer punchPlayer;
         // test
-        punch  = new Media(Controller.class.getResource("/punch.wav").toString());
-        // end of test
-        // punch = new Media(new File("module/json/punch.wav").toURI().toString());
-        System.out.println(punch);
-        punchPlayer = new MediaPlayer(punch);
-        punchPlayer.play();
-
         boolean isDefeated = false;
+        if (currentEnemy.getHp() > 0) {
+            punch  = new Media(Controller.class.getResource("/punch.wav").toString());
+            // end of test
+            // punch = new Media(new File("module/json/punch.wav").toURI().toString());
+            System.out.println(punch);
+            punchPlayer = new MediaPlayer(punch);
+            punchPlayer.play();
+        }
         JemadCombat jemadCombatMove = new JemadCombat();
         int jemadHp = jemad.getHp();
         int enemyHp = currentEnemy.getHp();
@@ -648,7 +662,7 @@ public class MainScreenController {
     private boolean restrictGeneratePossibleItemInCurrentRoom() {
         JSONArray enemyList = ReadRoomContentJson.retrieveEnemiesOnCurrentRoom(jemad.getCurrentLocation());
         if (enemyList == null || enemyList.size() == 0) {
-            return false;
+            return true;
         }
         if (DEFEATED_ENEMYLIST != null && DEFEATED_ENEMYLIST.size() > 0) {
             // if enemy got defeated in current user's location
