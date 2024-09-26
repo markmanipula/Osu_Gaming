@@ -1,16 +1,30 @@
 package com.combat;
 
+import com.game.Player;
+
 import java.awt.image.RasterOp;
 import java.util.HashMap;
 import java.util.Random;
 
 public class JemadCombat extends SotfCharacters{
-
+    private Player jemad = new Player();
     Random random = new Random();
     //Hashmap for Jemad attack and damage
+
+    // set up a default constructor
+    public JemadCombat() {
+        // empty
+    }
+
+    // method overloading
+    public int jemadMoves() {
+        int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());
+        return randomDamage;
+    }
+
     public int jemadMoves (String moves) {
 
-        int randomDamage = randomDamage(7,12);
+        int randomDamage = randomDamage(jemad.getMinDamage(),jemad.getMaxDamage());
 
         HashMap<String, Integer> jemadMoves = new HashMap<>();
         jemadMoves.put("straight punch", randomDamage);
@@ -62,4 +76,4 @@ public class JemadCombat extends SotfCharacters{
          int randomDamage = min + (int)(Math.random() * ((max - min) + 1));
          return randomDamage;
     }
-    }
+}
