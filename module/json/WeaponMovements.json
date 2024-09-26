@@ -1,0 +1,29 @@
+{
+  "wood stick": {
+    "movements": ["wood stab", "wood charge", "wood swing"]
+  },
+
+  "pool cue": {
+    "movements": ["pool cue swing", "pool cue charge", "wield pool cue"]
+  },
+
+  "baseball bat": {
+    "movements": ["baseball smash", "power swing", "leg breaker"]
+  },
+
+  "wooden knuckle": {
+    "movements": ["one two punch", "wooden body blow"]
+  },
+
+  "chef's knife": {
+    "movements": ["Chop chop", "slash", "knife combat"]
+  },
+
+  "iron fist": {
+    "movements": ["iron punch", "iron body blow"]
+  },
+
+  "spirit of fist": {
+    "movements": ["the good ol' tokyo sand blaster", "arirang maneuver", "the gochujang"]
+  }
+}
